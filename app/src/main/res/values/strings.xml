@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">RxMagicCube</string>
+    <string name="app_name">RxMagic</string>
     <string name="doSomeWork">doSomeWork</string>
+    <string name="declare">Declare</string>
     <string name="operators">Operators</string>
     <string name="networking">Networking</string>
     <string name="cache">Cache</string>
@@ -46,4 +47,8 @@
     <string name="switch_map">Switch Map</string>
     <string name="take_while">Take While</string>
     <string name="take_until">Take Until</string>
+
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+
 </resources>

@@ -4,44 +4,58 @@
 
     <group android:id="@+id/group1">
         <item
-            android:id="@+id/nav_operators"
-            android:icon="@drawable/ic_operators"
-            android:title="@string/operators"
-            app:showAsAction="ifRoom" />
-        <item
-            android:id="@+id/nav_networking"
-            android:icon="@drawable/ic_networking"
-            android:title="@string/networking"
-            app:showAsAction="ifRoom" />
-        <item
-            android:id="@+id/nav_cache"
-            android:icon="@drawable/ic_cache"
-            android:title="@string/cache"
-            app:showAsAction="ifRoom" />
-
-        <item
-            android:id="@+id/nav_rxbus"
-            android:icon="@drawable/ic_rxbus"
-            android:title="@string/rx_bus"
-            app:showAsAction="ifRoom" />
-
-        <item
-            android:id="@+id/nav_pagination"
-            android:icon="@drawable/ic_pagination"
-            android:title="@string/pagination"
-            app:showAsAction="ifRoom" />
-
-        <item
-            android:id="@+id/nav_compose"
-            android:icon="@drawable/ic_compose"
-            android:title="@string/compose"
-            app:showAsAction="ifRoom" />
-
-        <item
-            android:id="@+id/nav_search"
-            android:icon="@drawable/ic_search"
-            android:title="@string/search"
+            android:id="@+id/nav_declare"
+            android:icon="@drawable/ic_declare"
+            android:title="@string/declare"
             app:showAsAction="ifRoom" />
     </group>
+
+    <item android:title="Samples">
+        <menu>
+
+            <group android:id="@+id/group2">
+                <item
+                    android:id="@+id/nav_operators"
+                    android:icon="@drawable/ic_operators"
+                    android:title="@string/operators"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/nav_networking"
+                    android:icon="@drawable/ic_networking"
+                    android:title="@string/networking"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/nav_cache"
+                    android:icon="@drawable/ic_cache"
+                    android:title="@string/cache"
+                    app:showAsAction="ifRoom" />
+
+                <item
+                    android:id="@+id/nav_rxbus"
+                    android:icon="@drawable/ic_rxbus"
+                    android:title="@string/rx_bus"
+                    app:showAsAction="ifRoom" />
+
+                <item
+                    android:id="@+id/nav_pagination"
+                    android:icon="@drawable/ic_pagination"
+                    android:title="@string/pagination"
+                    app:showAsAction="ifRoom" />
+
+                <item
+                    android:id="@+id/nav_compose"
+                    android:icon="@drawable/ic_compose"
+                    android:title="@string/compose"
+                    app:showAsAction="ifRoom" />
+
+                <item
+                    android:id="@+id/nav_search"
+                    android:icon="@drawable/ic_search"
+                    android:title="@string/search"
+                    app:showAsAction="ifRoom" />
+            </group>
+
+        </menu>
+    </item>
 
 </menu>
