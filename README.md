@@ -62,7 +62,36 @@ Observable.just(1, 3, 5, 7, 9)
 ![请点赞 ~](https://upload-images.jianshu.io/upload_images/57036-3e15111b4263be48.png)
 
 
-更多内容请关注我的微信公众号
+
+# Rx钥匙：本周读者留言回复
+
+上周我在掘金发布了 Rx钥匙，没想到在评论区收到那么多留言。
+
+有的读者因为豁然开朗而喜出望外，不吝留下夸张的赞美；也有读者觉得意犹未尽，表达了对见证更多的愿望。
+
+![](https://upload-images.jianshu.io/upload_images/57036-0c2e1cc89253dc22.png)
+
+![](https://upload-images.jianshu.io/upload_images/57036-ed92fc17cc7284e6.png)
+
+![](https://upload-images.jianshu.io/upload_images/57036-f960ade1565fa041.png)
+
+从留言中我看到了大家对 Rx钥匙的期待 和 各自多彩的内心世界，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决更多、带给自己更多的 魔法棒。
+
+如你所愿，我在 GitHub 开源了这套操作符示例项目，该项目的计划分三步走：
+
+1.收集业内关于操作符的 代码案例 和 最佳实践，以便随时查阅。
+2.设计一款操作符组合工具，让人们可以直观而简便地组合操作符。
+3.在组合工具的基础上映射代码，让代码可以自由复制。
+
+![](https://upload-images.jianshu.io/upload_images/57036-07df9019c086acd0.png)
+
+我会不定期地只在公众号公布 Rx钥匙 研发的最新动态，并固定在每周三或周四下午 2点在公众号或掘金推送新的短平快文章。
+
+公众号刚开通，文章留言功能暂无法使用，欢迎在公众号中与 KunMinX（可以叫我坤哥）交流，消息看到了我便回复。
+
+
+
+我的微信公众号
 
 ![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
 
