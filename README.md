@@ -62,6 +62,7 @@ Observable.just(1, 3, 5, 7, 9)
 ![请点赞 ~](https://upload-images.jianshu.io/upload_images/57036-3e15111b4263be48.png)
 
 
+![blank](https://upload-images.jianshu.io/upload_images/57036-c53194da0800af8a.png)
 
 # Rx钥匙：本周读者留言回复
 
@@ -80,7 +81,9 @@ Observable.just(1, 3, 5, 7, 9)
 如你所愿，我在 GitHub 开源了这套操作符示例项目，该项目的计划分三步走：
 
 1.收集业内关于操作符的 代码案例 和 最佳实践，以便随时查阅。
+
 2.设计一款操作符组合工具，让人们可以直观而简便地组合操作符。
+
 3.在组合工具的基础上映射代码，让代码可以自由复制。
 
 ![](https://upload-images.jianshu.io/upload_images/57036-07df9019c086acd0.png)
