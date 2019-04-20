@@ -61,7 +61,7 @@ public class RxMagicFragment extends Fragment {
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
-        mBinding.navView.setBackgroundTintList(getDefaultTint());
+//        mBinding.navView.setBackgroundTintList(getDefaultTint());
         mBinding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
