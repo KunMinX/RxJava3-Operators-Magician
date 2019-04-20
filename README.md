@@ -76,7 +76,9 @@ Observable.just(1, 3, 5, 7, 9)
 
 ![](https://upload-images.jianshu.io/upload_images/57036-f960ade1565fa041.png)
 
-从留言中我看到了大家对 Rx钥匙的期待 和 各自多彩的内心世界，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决更多、带给自己更多的 魔法棒。
+从留言中我看到了大家对 Rx钥匙的期待 和 各自丰富多彩的内心世界，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决更多、带给自己更多的 魔法棒。
+
+![](https://upload-images.jianshu.io/upload_images/57036-23325e335e96987e.jpeg)
 
 如你所愿，我在 GitHub 开源了这套操作符示例项目，该项目的计划分三步走：
 
