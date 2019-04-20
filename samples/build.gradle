@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.kunminx.rxmagic"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -46,7 +45,4 @@ dependencies {
 
     // FastAndroidNetworking Dependency
     implementation 'com.amitshekhar.android:rx2-android-networking:1.0.2'
-
-    implementation project(":rxjava")
-    implementation project(":samples")
 }
