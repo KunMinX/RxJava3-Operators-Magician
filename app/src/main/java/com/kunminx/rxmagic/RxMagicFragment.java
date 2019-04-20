@@ -4,17 +4,13 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
 import com.kunminx.samples.MyApplication;
@@ -29,6 +25,7 @@ import com.kunminx.samples.ui.search.SearchActivity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -59,9 +56,11 @@ public class RxMagicFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        ImageView ivHead = (ImageView) mBinding.navView.inflateHeaderView(R.layout.layout_drawer_header);
-//        ImageView imageView = (ImageView) ivHead.findViewById(R.id.iv_drawer);
-//        Glide.with(this).load(getResources().getDrawable(R.drawable.bg_head)).into(ivHead);
+
+        mBinding.toolbar.setTitle(R.string.app_name);
+        mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
+
         mBinding.navView.setBackgroundTintList(getDefaultTint());
         mBinding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -98,6 +97,8 @@ public class RxMagicFragment extends Fragment {
                 return true;
             }
         });
+
+        mBinding.tvCode.setText(getString(R.string.test_code));
     }
 
     //TODO
@@ -122,14 +123,17 @@ public class RxMagicFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.rxmagic_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-//            case android.
+            case android.R.id.home:
+                mBinding.drawer.openDrawer(GravityCompat.START);
+
+                break;
         }
 
         return super.onOptionsItemSelected(item);
