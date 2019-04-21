@@ -42,6 +42,7 @@ SQL 也是种编程语言，是一种典型的声明式编程。声明式编程�
 学习操作符，就和你在大学里接受的 SQL 语句一样理所当然。
 
 SQL 你是理解的，就是按一定的规则，向数据库中的数据声明你要做什么。
+
 ![SQL代码示例](https://upload-images.jianshu.io/upload_images/57036-da21d86723997dd8.png)
 
 同理，RxJava 也是按一定的规则，向数据流声明你要做什么。
@@ -61,12 +62,11 @@ Observable.just(1, 3, 5, 7, 9)
 
 ![请点赞 ~](https://upload-images.jianshu.io/upload_images/57036-3e15111b4263be48.png)
 
-
-![blank](https://upload-images.jianshu.io/upload_images/57036-c53194da0800af8a.png)
+![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
 
 # Rx钥匙：本周读者留言回复
 
-上周我在掘金发布了 Rx钥匙，没想到在评论区收到那么多留言。
+上周我在掘金发布了 Rx钥匙，没想到在评论区收到 40 多条留言。
 
 有的读者因为豁然开朗而喜出望外，不吝留下夸张的赞美；也有读者觉得意犹未尽，表达了对见证更多的愿望。
 
@@ -76,7 +76,7 @@ Observable.just(1, 3, 5, 7, 9)
 
 ![](https://upload-images.jianshu.io/upload_images/57036-f960ade1565fa041.png)
 
-从留言中我看到了大家对 Rx钥匙的期待 和 各自丰富多彩的内心世界，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决更多、带给自己更多的 魔法棒。
+从留言中我看到了大家对 Rx钥匙的期待 和 各自内心世界的丰富多彩，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决更多、带给自己更多的 魔法棒。
 
 ![](https://upload-images.jianshu.io/upload_images/57036-23325e335e96987e.jpeg)
 
@@ -90,9 +90,9 @@ Observable.just(1, 3, 5, 7, 9)
 
 ![](https://upload-images.jianshu.io/upload_images/57036-07df9019c086acd0.png)
 
-我会不定期地只在公众号公布 Rx钥匙 研发的最新动态，并固定在每周三或周四下午 2点在公众号或掘金推送新的短平快文章。
+我会不定期地 **只在公众号公布** Rx钥匙 研发的最新动态，并固定于每周三或周四下午3点 在公众号或掘金 推送新的短平快文章。
 
-公众号刚开通，文章留言功能暂无法使用，欢迎在公众号中与 KunMinX（可以叫我坤哥）交流，消息看到了我便回复。
+公众号刚开通，文章留言功能暂无法使用，欢迎在公众号中与 KunMinX（可以叫我坤哥）交流，消息我一般看到了就会回复。
 
 
 
