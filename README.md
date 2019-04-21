@@ -76,7 +76,7 @@ Observable.just(1, 3, 5, 7, 9)
 
 ![](https://upload-images.jianshu.io/upload_images/57036-f960ade1565fa041.png)
 
-从留言中我看到了大家对 Rx钥匙的期待 和 各自内心世界的丰富多彩，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决更多、带给自己更多的 魔法棒。
+从留言中我看到了大家对 Rx钥匙的期待 和 各自内心世界的丰富多彩，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决无聊、带给自己更多的 魔法棒。
 
 ![](https://upload-images.jianshu.io/upload_images/57036-23325e335e96987e.jpeg)
 

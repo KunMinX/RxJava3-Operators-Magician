@@ -89,6 +89,9 @@ public class RxMagicFragment extends Fragment {
                 case R.id.nav_search:
                     startActivity(new Intent(getActivity(), SearchActivity.class));
                     break;
+                case R.id.nav_about:
+//                    startActivity(new Intent(getActivity(), SearchActivity.class));
+                    break;
                 default:
             }
             return true;
