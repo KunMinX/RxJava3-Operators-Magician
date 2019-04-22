@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void loadMagicFragment() {
+    public void loadMagicFragment() {
         if (mRxMagicFragment == null) {
             mRxMagicFragment = RxMagicFragment.newInstance();
         }

@@ -72,14 +72,10 @@ public class RxGuideFragment extends Fragment {
 //        mBinding.webView.getSettings().setJavaScriptEnabled(true);
         mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
         mBinding.webView.loadUrl("https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README.md");
-        mBinding.webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                //设置加载进度条
-                view.setWebChromeClient(new WebChromeClientProgress());
-                return true;
-            }
+        mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
+
+        mBinding.btnGot.setOnClickListener(v -> {
+
         });
     }
 
