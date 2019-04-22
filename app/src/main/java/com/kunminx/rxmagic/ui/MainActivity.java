@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * Create by KunMinX at 19/4/17
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding;
     private RxMagicFragment mRxMagicFragment;
     private RxGuideFragment mRxGuideFragment;
+    private Fragment mLastFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,11 +46,15 @@ public class MainActivity extends AppCompatActivity {
         mBinding.navView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_guide:
-                    loadGuideFragment();
+                    if (!item.isChecked()) {
+                        loadGuideFragment();
+                    }
                     closeDrawer();
                     break;
                 case R.id.nav_declare:
-                    loadMagicFragment();
+                    if (!item.isChecked()) {
+                        loadMagicFragment();
+                    }
                     closeDrawer();
                     break;
                 case R.id.nav_operators:
@@ -125,19 +131,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadMagicFragment() {
-        mRxMagicFragment = RxMagicFragment.newInstance();
+        if (mRxMagicFragment == null) {
+            mRxMagicFragment = RxMagicFragment.newInstance();
+        }
         loadFragment(mRxMagicFragment);
     }
 
     private void loadGuideFragment() {
-        mRxGuideFragment = RxGuideFragment.newInstance();
+        if (mRxGuideFragment == null) {
+            mRxGuideFragment = RxGuideFragment.newInstance();
+        }
         loadFragment(mRxGuideFragment);
     }
 
     private void loadFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null).commit();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        if (!fragment.isAdded()) {
+            transaction.add(R.id.fragment_container, fragment, fragment.getClass().getSimpleName());
+        } else {
+            transaction.show(fragment);
+        }
+        if (mLastFragment != null) {
+            transaction.hide(mLastFragment);
+        }
+        transaction.commit();
+        mLastFragment = fragment;
     }
 
     public void openDrawer() {
