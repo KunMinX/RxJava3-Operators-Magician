@@ -1,18 +1,15 @@
-package com.kunminx.rxmagic;
+package com.kunminx.rxmagic.ui;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.material.internal.NavigationMenuView;
 import com.google.android.material.navigation.NavigationView;
-import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
+import com.kunminx.rxmagic.R;
+import com.kunminx.rxmagic.databinding.ActivityMainBinding;
+import com.kunminx.rxmagic.utils.SystemBarHelper;
 import com.kunminx.samples.MyApplication;
 import com.kunminx.samples.ui.OperatorsActivity;
 import com.kunminx.samples.ui.cache.CacheExampleActivity;
@@ -22,82 +19,72 @@ import com.kunminx.samples.ui.pagination.PaginationActivity;
 import com.kunminx.samples.ui.rxbus.RxBusActivity;
 import com.kunminx.samples.ui.search.SearchActivity;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 /**
- * Create by KunMinX at 19/4/20
+ * Create by KunMinX at 19/4/17
  */
-public class RxMagicFragment extends Fragment {
+public class MainActivity extends AppCompatActivity {
 
-    private FragmentRxmagicBinding mBinding;
-
-    public static RxMagicFragment newInstance() {
-        Bundle args = new Bundle();
-        RxMagicFragment fragment = new RxMagicFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_rxmagic, container, false);
-        mBinding = FragmentRxmagicBinding.bind(view);
-        setHasOptionsMenu(true);
-        return view;
-    }
+    private ActivityMainBinding mBinding;
+    private RxMagicFragment mRxMagicFragment;
+    private RxGuideFragment mRxGuideFragment;
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+//        SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.colorPurple));
 
-        mBinding.toolbar.setTitle(R.string.app_name);
-        mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
-
-//        mBinding.navView.setBackgroundTintList(getDefaultTint());
         hideNavigationViewScrollbars(mBinding.navView);
         mBinding.navView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
+                case R.id.nav_guide:
+                    loadGuideFragment();
+                    closeDrawer();
+                    break;
                 case R.id.nav_declare:
-                    mBinding.drawer.closeDrawer(GravityCompat.START);
+                    loadMagicFragment();
+                    closeDrawer();
                     break;
                 case R.id.nav_operators:
-                    startActivity(new Intent(getActivity(), OperatorsActivity.class));
+                    startActivity(new Intent(MainActivity.this, OperatorsActivity.class));
                     break;
                 case R.id.nav_networking:
-                    startActivity(new Intent(getActivity(), NetworkingActivity.class));
+                    startActivity(new Intent(MainActivity.this, NetworkingActivity.class));
                     break;
                 case R.id.nav_cache:
-                    startActivity(new Intent(getActivity(), CacheExampleActivity.class));
+                    startActivity(new Intent(MainActivity.this, CacheExampleActivity.class));
                     break;
                 case R.id.nav_rxbus:
                     //TODO
-                    ((MyApplication) getActivity().getApplication()).sendAutoEvent();
-                    startActivity(new Intent(getActivity(), RxBusActivity.class));
+                    ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
+                    startActivity(new Intent(MainActivity.this, RxBusActivity.class));
                     break;
                 case R.id.nav_pagination:
-                    startActivity(new Intent(getActivity(), PaginationActivity.class));
+                    startActivity(new Intent(MainActivity.this, PaginationActivity.class));
                     break;
                 case R.id.nav_compose:
-                    startActivity(new Intent(getActivity(), ComposeOperatorExampleActivity.class));
+                    startActivity(new Intent(MainActivity.this, ComposeOperatorExampleActivity.class));
                     break;
                 case R.id.nav_search:
-                    startActivity(new Intent(getActivity(), SearchActivity.class));
+                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     break;
                 case R.id.nav_about:
-//                    startActivity(new Intent(getActivity(), SearchActivity.class));
+//                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     break;
                 default:
             }
             return true;
         });
 
-        mBinding.tvCode.setText(getString(R.string.test_code));
+        loadMagicFragment();
+
+
     }
 
     //TODO
@@ -137,22 +124,27 @@ public class RxMagicFragment extends Fragment {
         }
     }
 
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.rxmagic_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+    private void loadMagicFragment() {
+        mRxMagicFragment = RxMagicFragment.newInstance();
+        loadFragment(mRxMagicFragment);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mBinding.drawer.openDrawer(GravityCompat.START);
+    private void loadGuideFragment() {
+        mRxGuideFragment = RxGuideFragment.newInstance();
+        loadFragment(mRxGuideFragment);
+    }
 
-                break;
-        }
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null).commit();
+    }
 
-        return super.onOptionsItemSelected(item);
+    public void openDrawer() {
+        mBinding.drawer.openDrawer(GravityCompat.START);
+    }
+
+    public void closeDrawer() {
+        mBinding.drawer.closeDrawer(GravityCompat.START);
     }
 }

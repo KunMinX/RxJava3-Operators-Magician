@@ -1,4 +1,6 @@
-package com.kunminx.rxmagic;
+package com.kunminx.rxmagic.bean;
+
+import com.kunminx.rxmagic.bean.RxOperator;
 
 /**
  * Create by KunMinX at 19/4/21

@@ -1,4 +1,4 @@
-package com.kunminx.rxmagic;
+package com.kunminx.rxmagic.ui;
 
 import android.view.View;
 import android.view.ViewGroup;

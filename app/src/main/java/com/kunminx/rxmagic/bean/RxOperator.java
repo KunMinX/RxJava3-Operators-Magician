@@ -1,4 +1,4 @@
-package com.kunminx.rxmagic;
+package com.kunminx.rxmagic.bean;
 
 /**
  * Create by KunMinX at 19/4/21

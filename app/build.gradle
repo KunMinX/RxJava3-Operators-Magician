@@ -50,4 +50,7 @@ dependencies {
 
     implementation project(":samples")
 
+//    implementation 'com.kunminx.viabus:architecture:0.4.7'
+    implementation 'com.kunminx.viabus:core:0.4.7'
+
 }

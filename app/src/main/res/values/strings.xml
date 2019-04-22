@@ -2,6 +2,7 @@
     <string name="app_name">RxMagic</string>
     <string name="doSomeWork">doSomeWork</string>
     <string name="declare">Declare</string>
+    <string name="guide">Guide</string>
     <string name="about">About</string>
     <string name="operators">Operators</string>
     <string name="networking">Networking</string>
@@ -50,6 +51,7 @@
     <string name="take_until">Take Until</string>
 
     <string name="copy">Copy</string>
+    <string name="i_got_it">I Got It</string>
     <string name="share">Share</string>
 
     <string name="test_code">

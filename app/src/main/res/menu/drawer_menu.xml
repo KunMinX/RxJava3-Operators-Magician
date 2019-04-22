@@ -2,7 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:id="@+id/group1">
+    <group android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_guide"
+            android:icon="@drawable/ic_guide"
+            android:title="@string/guide"
+            app:showAsAction="ifRoom" />
+
         <item
             android:id="@+id/nav_declare"
             android:icon="@drawable/ic_declare"
