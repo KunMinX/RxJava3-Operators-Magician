@@ -66,7 +66,7 @@ public class RxMagicFragment extends Fragment {
         mBinding.code.showCode(getString(R.string.test_code));
 
         mBinding.btnAdd.setOnClickListener(v -> {
-            //TODO
+            //TODO testData
             RxOperator rxOperator = new RxOperator();
             rxOperator.setName("Just");
             rxOperator.setGroup("Creator");
@@ -74,6 +74,16 @@ public class RxMagicFragment extends Fragment {
             expression.setRxOperator(rxOperator);
             mAdapter.getList().add(expression);
             mAdapter.notifyItemInserted(mAdapter.getList().size() - 1);
+            if (!mBinding.btnDelete.isEnabled()) {
+                mBinding.btnDelete.setEnabled(true);
+            }
+        });
+
+        mBinding.btnDelete.setOnClickListener(v -> {
+            Snackbar.make(mBinding.btnPreview, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
+                    .setAnchorView(mBinding.btnPreview)
+                    .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+                    .show();
         });
 
         mBinding.btnPreview.setOnClickListener(v -> {
