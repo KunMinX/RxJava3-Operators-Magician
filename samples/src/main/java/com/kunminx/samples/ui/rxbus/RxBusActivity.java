@@ -1,20 +1,13 @@
 package com.kunminx.samples.ui.rxbus;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.kunminx.samples.MyApplication;
-
 import com.kunminx.samples.R;
-import com.kunminx.samples.model.Events;
 
 import androidx.appcompat.app.AppCompatActivity;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 06/02/17.
@@ -40,7 +33,7 @@ public class RxBusActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         button = findViewById(R.id.button);
 
-        disposables.add(((MyApplication) getApplication())
+       /* disposables.add(((MyApplication) getApplication())
                 .bus()
                 .toObservable()
                 .subscribeOn(Schedulers.io())
@@ -63,9 +56,8 @@ public class RxBusActivity extends AppCompatActivity {
                         .bus()
                         .send(new Events.TapEvent());
             }
-        });
+        });*/
     }
-
 
 
 }

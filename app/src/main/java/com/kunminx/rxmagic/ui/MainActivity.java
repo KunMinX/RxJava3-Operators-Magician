@@ -9,8 +9,7 @@ import com.google.android.material.internal.NavigationMenuView;
 import com.google.android.material.navigation.NavigationView;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.ActivityMainBinding;
-import com.kunminx.rxmagic.utils.SystemBarHelper;
-import com.kunminx.samples.MyApplication;
+import com.kunminx.rxmagic.MyApplication;
 import com.kunminx.samples.ui.OperatorsActivity;
 import com.kunminx.samples.ui.cache.CacheExampleActivity;
 import com.kunminx.samples.ui.compose.ComposeOperatorExampleActivity;
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-//        SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.colorPurple));
 
         hideNavigationViewScrollbars(mBinding.navView);
         mBinding.navView.setNavigationItemSelectedListener(item -> {
@@ -68,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_rxbus:
                     //TODO
-                    ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
-                    startActivity(new Intent(MainActivity.this, RxBusActivity.class));
+//                    ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
+//                    startActivity(new Intent(MainActivity.this, RxBusActivity.class));
                     break;
                 case R.id.nav_pagination:
                     startActivity(new Intent(MainActivity.this, PaginationActivity.class));

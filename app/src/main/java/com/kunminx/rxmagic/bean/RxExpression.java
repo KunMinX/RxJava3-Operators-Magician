@@ -16,6 +16,14 @@ public class RxExpression {
      */
     private String expression;
 
+    public RxExpression() {
+    }
+
+    public RxExpression(RxOperator rxOperator, String expression) {
+        this.rxOperator = rxOperator;
+        this.expression = expression;
+    }
+
     public RxOperator getRxOperator() {
         return rxOperator;
     }

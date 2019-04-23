@@ -1,39 +1,32 @@
 package com.kunminx.rxmagic.ui;
 
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Context;
 
-import androidx.annotation.NonNull;
+import com.kunminx.rxmagic.R;
+import com.kunminx.rxmagic.bean.RxExpression;
+import com.kunminx.rxmagic.databinding.AdapterRxExpressionBinding;
+import com.kunminx.rxmagic.ui.adapter.BaseBindingAdapter;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Create by KunMinX at 19/4/21
  */
-public class RxExpressionAdapter extends RecyclerView.Adapter<RxExpressionAdapter.RxExpressionViewHolder> {
+public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, AdapterRxExpressionBinding> {
 
-
-    @NonNull
-    @Override
-    public RxExpressionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        return null;
+    public RxExpressionAdapter(Context context) {
+        super(context);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RxExpressionViewHolder holder, int position) {
-
+    protected int getLayoutResId(int viewType) {
+        return R.layout.adapter_rx_expression;
     }
 
     @Override
-    public int getItemCount() {
-        return 0;
-    }
-
-    class RxExpressionViewHolder extends RecyclerView.ViewHolder {
-
-        public RxExpressionViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
+    protected void onBindItem(AdapterRxExpressionBinding binding, RxExpression item, RecyclerView.ViewHolder holder) {
+        binding.btnOp.setText(item.getRxOperator().getName());
+        binding.et.setText(item.getExpression());
 
     }
 }

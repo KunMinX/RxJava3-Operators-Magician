@@ -5,4 +5,5 @@
     <dimen name="margin12">12dp</dimen>
     <dimen name="margin4">4dp</dimen>
     <dimen name="margin8">8dp</dimen>
+    <dimen name="btn_op_width">96dp</dimen>
 </resources>
