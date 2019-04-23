@@ -1,4 +1,4 @@
-package com.kunminx.rxmagic;
+package com.kunminx.samples;
 
 import android.app.Application;
 

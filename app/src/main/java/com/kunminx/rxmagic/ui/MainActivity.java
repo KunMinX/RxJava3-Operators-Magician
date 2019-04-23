@@ -1,5 +1,21 @@
 package com.kunminx.rxmagic.ui;
 
+/*
+ * Copyright (c) 2018-2019. KunMinX
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +27,6 @@ import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.ActivityMainBinding;
 import com.kunminx.samples.ui.OperatorsActivity;
 import com.kunminx.samples.ui.cache.CacheExampleActivity;
-import com.kunminx.samples.ui.compose.ComposeOperatorExampleActivity;
 import com.kunminx.samples.ui.networking.NetworkingActivity;
 import com.kunminx.samples.ui.pagination.PaginationActivity;
 import com.kunminx.samples.ui.search.SearchActivity;
@@ -72,13 +87,21 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, PaginationActivity.class));
                     break;
                 case R.id.nav_compose:
-                    startActivity(new Intent(MainActivity.this, ComposeOperatorExampleActivity.class));
+                    //TODO
+                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
+//                    startActivity(new Intent(MainActivity.this, ComposeOperatorExampleActivity.class));
                     break;
                 case R.id.nav_search:
                     startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     break;
+                case R.id.nav_settings:
+                    //TODO
+                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
+//                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
+                    break;
                 case R.id.nav_about:
                     //TODO
+                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
 //                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     break;
                 default:

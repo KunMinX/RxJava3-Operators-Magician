@@ -23,14 +23,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
-import com.kunminx.rxmagic.databinding.FragmentRxGuideBinding;
+import com.kunminx.rxmagic.databinding.FragmentAboutBinding;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,25 +35,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 /**
- * Create by KunMinX at 19/4/22
+ * Create by KunMinX at 19/4/23
  */
-public class RxGuideFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
-
-    private FragmentRxGuideBinding mBinding;
-
-    public static RxGuideFragment newInstance() {
-        Bundle args = new Bundle();
-        RxGuideFragment fragment = new RxGuideFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private FragmentAboutBinding mBinding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_rx_guide, container, false);
-        mBinding = FragmentRxGuideBinding.bind(view);
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
+        mBinding = FragmentAboutBinding.bind(view);
         setHasOptionsMenu(true);
         return view;
     }
@@ -69,25 +58,9 @@ public class RxGuideFragment extends Fragment {
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
-        mBinding.webView.getSettings().setUseWideViewPort(true);
-//        mBinding.webView.getSettings().setJavaScriptEnabled(true);
-        mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
-        mBinding.webView.loadUrl("https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README.md");
-        mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
 
-        mBinding.btnGot.setOnClickListener(this::showTipOfDeveloping);
     }
 
-    private class WebChromeClientProgress extends WebChromeClient {
-        @Override
-        public void onProgressChanged(WebView view, int progress) {
-            mBinding.progress.setProgress(progress);
-            if (progress == 100) {
-                mBinding.progress.setVisibility(View.GONE);
-            }
-            super.onProgressChanged(view, progress);
-        }
-    }
 
     private void showTipOfDeveloping(View v) {
         Snackbar.make(v, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)

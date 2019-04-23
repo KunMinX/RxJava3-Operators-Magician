@@ -19,7 +19,7 @@
             app:showAsAction="ifRoom" />
     </group>
 
-    <item android:title="Samples">
+    <item android:title="@string/group_samples">
         <menu>
 
             <group android:id="@+id/group2">
@@ -67,10 +67,16 @@
         </menu>
     </item>
 
-    <item android:title="More">
+    <item android:title="@string/group_more">
         <menu>
 
             <group android:id="@+id/group3">
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="@string/setting"
+                    app:showAsAction="ifRoom" />
+
                 <item
                     android:id="@+id/nav_about"
                     android:icon="@drawable/ic_about"
