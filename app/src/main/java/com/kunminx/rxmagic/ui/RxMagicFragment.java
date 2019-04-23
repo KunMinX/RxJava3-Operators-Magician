@@ -8,10 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.bean.RxExpression;
 import com.kunminx.rxmagic.bean.RxOperator;
 import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
+import com.kunminx.rxmagic.ui.adapter.RxExpressionAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import io.github.kbiakov.codeview.adapters.Options;
-import io.github.kbiakov.codeview.highlight.ColorTheme;
+import thereisnospon.codeview.CodeViewTheme;
 
 /**
  * Create by KunMinX at 19/4/20
@@ -60,10 +62,8 @@ public class RxMagicFragment extends Fragment {
         mAdapter.setList(mRxExpressions);
         mBinding.rv.setAdapter(mAdapter);
 
-        mBinding.code.setOptions(Options.Default.get(getContext())
-                .withLanguage("java")
-                .withCode(R.string.test_code)
-                .withTheme(ColorTheme.DEFAULT));
+        mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
+        mBinding.code.showCode(getString(R.string.test_code));
 
         mBinding.btnAdd.setOnClickListener(v -> {
             //TODO
@@ -74,6 +74,13 @@ public class RxMagicFragment extends Fragment {
             expression.setRxOperator(rxOperator);
             mAdapter.getList().add(expression);
             mAdapter.notifyItemInserted(mAdapter.getList().size() - 1);
+        });
+
+        mBinding.btnPreview.setOnClickListener(v -> {
+            Snackbar.make(mBinding.btnPreview, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
+                    .setAnchorView(mBinding.btnPreview)
+                    .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+                    .show();
         });
     }
 

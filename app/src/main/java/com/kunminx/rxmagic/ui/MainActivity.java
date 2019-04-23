@@ -1,21 +1,19 @@
 package com.kunminx.rxmagic.ui;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.internal.NavigationMenuView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.ActivityMainBinding;
-import com.kunminx.rxmagic.MyApplication;
 import com.kunminx.samples.ui.OperatorsActivity;
 import com.kunminx.samples.ui.cache.CacheExampleActivity;
 import com.kunminx.samples.ui.compose.ComposeOperatorExampleActivity;
 import com.kunminx.samples.ui.networking.NetworkingActivity;
 import com.kunminx.samples.ui.pagination.PaginationActivity;
-import com.kunminx.samples.ui.rxbus.RxBusActivity;
 import com.kunminx.samples.ui.search.SearchActivity;
 
 import androidx.annotation.Nullable;
@@ -66,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_rxbus:
                     //TODO
+                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
 //                    ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
 //                    startActivity(new Intent(MainActivity.this, RxBusActivity.class));
                     break;
@@ -79,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     break;
                 case R.id.nav_about:
+                    //TODO
 //                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     break;
                 default:
@@ -91,28 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //TODO
-    private ColorStateList getDefaultTint() {
-        int[] colors = new int[]{
-                getResources().getColor(R.color.colorWhite),
-                getResources().getColor(R.color.colorWhite),
-                getResources().getColor(R.color.colorWhite),
-                getResources().getColor(R.color.colorWhite),
-                getResources().getColor(R.color.colorWhite),
-                getResources().getColor(R.color.colorWhite)
-        };
-        int[][] states = new int[6][];
-        states[0] = new int[]{android.R.attr.state_checked, android.R.attr.state_enabled};
-        states[1] = new int[]{android.R.attr.state_enabled, android.R.attr.state_focused};
-        states[2] = new int[]{android.R.attr.state_enabled};
-        states[3] = new int[]{android.R.attr.state_focused};
-        states[4] = new int[]{android.R.attr.state_window_focused};
-        states[5] = new int[]{};
-        return new ColorStateList(states, colors);
-    }
-
-
-    //TODO 此处遍历可用操作符简写
     private void hideNavigationViewScrollbars(NavigationView navigationView) {
         if (navigationView != null) {
             for (int i = 0; i < navigationView.getChildCount(); i++) {

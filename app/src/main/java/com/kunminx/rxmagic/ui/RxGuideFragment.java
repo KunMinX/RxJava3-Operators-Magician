@@ -28,6 +28,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentRxGuideBinding;
 
@@ -75,7 +77,10 @@ public class RxGuideFragment extends Fragment {
         mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
 
         mBinding.btnGot.setOnClickListener(v -> {
-
+            Snackbar.make(mBinding.btnGot, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
+                    .setAnchorView(mBinding.btnGot)
+                    .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+                    .show();
         });
     }
 

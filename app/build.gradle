@@ -52,7 +52,7 @@ dependencies {
 
 //    implementation 'com.kunminx.viabus:architecture:0.4.9'
 //    implementation 'com.kunminx.viabus:core:0.4.8'
-    implementation 'com.github.kbiakov:CodeView-Android:1.3.2'
+    implementation 'thereisnospon.codeview:codeview:0.3.1'
 
 
 }
