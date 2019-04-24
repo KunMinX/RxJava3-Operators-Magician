@@ -17,6 +17,7 @@ package com.kunminx.rxmagic.ui;
  */
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -120,12 +121,21 @@ public class RxMagicFragment extends Fragment {
         });
 
         mBinding.btnPreview.setOnClickListener(v -> {
-            mBinding.code.showCode(getCodeOfExpressions());
+            String code = getCodeOfExpressions();
+            if (TextUtils.isEmpty(code)) {
+                showTip(v,"Press ADD button to get start ^_^");
+            } else {
+                mBinding.code.showCode(code);
+            }
         });
     }
 
     private void showTipOfDeveloping(View v) {
-        Snackbar.make(v, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
+        showTip(v, getString(R.string.tip_developing));
+    }
+
+    private void showTip(View v, String tip) {
+        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
                 .setAnchorView(v)
                 .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
                 .show();
@@ -163,7 +173,7 @@ public class RxMagicFragment extends Fragment {
         return sb.toString();
     }
 
-    public void setCardViewVisible(boolean isKeyboardShow) {
+    void setCardViewVisible(boolean isKeyboardShow) {
         mBinding.cdvCode.setVisibility(isKeyboardShow ? View.GONE : View.VISIBLE);
     }
 
