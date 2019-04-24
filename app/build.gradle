@@ -30,9 +30,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
-    androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
-    androidTestImplementation 'androidx.test:rules:1.2.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
+    androidTestImplementation 'androidx.test:rules:1.2.0-alpha04'
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha04'
     implementation 'com.google.android.material:material:1.1.0-alpha05'
@@ -53,6 +53,7 @@ dependencies {
 //    implementation 'com.kunminx.viabus:architecture:0.4.9'
 //    implementation 'com.kunminx.viabus:core:0.4.8'
     implementation 'thereisnospon.codeview:codeview:0.3.1'
+    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
 
 
 }

@@ -31,6 +31,8 @@ import com.kunminx.samples.ui.networking.NetworkingActivity;
 import com.kunminx.samples.ui.pagination.PaginationActivity;
 import com.kunminx.samples.ui.search.SearchActivity;
 
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -43,6 +45,7 @@ import androidx.fragment.app.FragmentTransaction;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private int mScreenHeight;
     private ActivityMainBinding mBinding;
     private RxMagicFragment mRxMagicFragment;
     private RxGuideFragment mRxGuideFragment;
@@ -52,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        KeyboardVisibilityEvent.setEventListener(this, isOpen -> {
+            mRxMagicFragment.setCardViewVisible(isOpen);
+        });
 
         hideNavigationViewScrollbars(mBinding.navView);
         mBinding.navView.setNavigationItemSelectedListener(item -> {
@@ -165,4 +172,5 @@ public class MainActivity extends AppCompatActivity {
     public void closeDrawer() {
         mBinding.drawer.closeDrawer(GravityCompat.START);
     }
+
 }

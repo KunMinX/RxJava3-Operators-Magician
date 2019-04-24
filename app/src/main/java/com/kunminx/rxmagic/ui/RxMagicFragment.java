@@ -113,6 +113,7 @@ public class RxMagicFragment extends Fragment {
                         mBinding.ivEmpty.setVisibility(View.VISIBLE);
                         mBinding.btnDelete.setEnabled(false);
                         mBinding.btnClear.setEnabled(false);
+                        mBinding.code.showCode(getString(R.string.code_tip));
                     })
                     .setNegativeButton(getString(R.string.cancel), null)
                     .show();
@@ -160,6 +161,10 @@ public class RxMagicFragment extends Fragment {
         }
         sb.append(".subscribe(getObserve());\n");
         return sb.toString();
+    }
+
+    public void setCardViewVisible(boolean isKeyboardShow) {
+        mBinding.cdvCode.setVisibility(isKeyboardShow ? View.GONE : View.VISIBLE);
     }
 
     @Override
