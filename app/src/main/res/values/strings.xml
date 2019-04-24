@@ -73,4 +73,8 @@
     <string name="dialog_msg_clear_op_list">Are you sure to clear operator list ?</string>
     <string name="sure">Sure</string>
     <string name="cancel">Cancel</string>
+
+    <string name="op_just">JUST</string>
+    <string name="op_map">MAP</string>
+    <string name="op_filter">FILTER</string>
 </resources>

@@ -33,12 +33,12 @@ import com.kunminx.rxmagic.bean.RxOperator;
 import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
 import com.kunminx.rxmagic.ui.adapter.RxExpressionAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import thereisnospon.codeview.CodeViewTheme;
 
@@ -75,6 +75,10 @@ public class RxMagicFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
         mAdapter = new RxExpressionAdapter(getContext());
+        mAdapter.setListener((view1, item, position) -> {
+            //TODO should be replaced by linkageListView
+            showMenu(view1, R.menu.operator_menu, item);
+        });
         mBinding.rv.setAdapter(mAdapter);
 
         mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
@@ -114,7 +118,9 @@ public class RxMagicFragment extends Fragment {
                     .show();
         });
 
-        mBinding.btnPreview.setOnClickListener(this::showTipOfDeveloping);
+        mBinding.btnPreview.setOnClickListener(v -> {
+            mBinding.code.showCode(getCodeOfExpressions());
+        });
     }
 
     private void showTipOfDeveloping(View v) {
@@ -122,6 +128,38 @@ public class RxMagicFragment extends Fragment {
                 .setAnchorView(v)
                 .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
                 .show();
+    }
+
+    private void showMenu(View v, @MenuRes int menuRes, RxExpression rxExpression) {
+        PopupMenu popup = new PopupMenu(getContext(), v);
+        popup.getMenuInflater().inflate(menuRes, popup.getMenu());
+        if (popup.getMenu() instanceof MenuBuilder) {
+            MenuBuilder menuBuilder = (MenuBuilder) popup.getMenu();
+            menuBuilder.setOptionalIconsVisible(true);
+        }
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                rxExpression.getRxOperator().setName(menuItem.getTitle().toString());
+                mAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
+        popup.show();
+    }
+
+    private String getCodeOfExpressions() {
+        if (mAdapter.getList().size() == 0) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("Output:\n\n").append("Observable");
+        for (RxExpression rxExpression : mAdapter.getList()) {
+            sb.append(".").append(rxExpression.getRxOperator().getName().toLowerCase())
+                    .append("(").append(rxExpression.getExpression()).append(")\n");
+        }
+        sb.append(".subscribe(getObserve());\n");
+        return sb.toString();
     }
 
     @Override

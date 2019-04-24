@@ -21,6 +21,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.SparseArray;
+import android.view.View;
 
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.bean.RxExpression;
@@ -34,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, AdapterRxExpressionBinding> {
 
     private SparseArray<String> mTextCache = new SparseArray<>();
+    private OnItemClickListener mListener;
 
     public RxExpressionAdapter(Context context) {
         super(context);
@@ -76,5 +78,17 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
                 }
             }
         });
+
+        binding.btnOp.setOnClickListener(v -> {
+            mListener.onItemClick(v, item, holder.getAdapterPosition());
+        });
+    }
+
+    public void setListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, RxExpression item, int position);
     }
 }
