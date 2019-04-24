@@ -69,4 +69,8 @@
     <string name="btn_name_clear">CLEAR</string>
     <string name="group_samples">Samples</string>
     <string name="group_more">More</string>
+    <string name="dialog_title_warning">Warning</string>
+    <string name="dialog_msg_clear_op_list">Are you sure to clear operator list ?</string>
+    <string name="sure">Sure</string>
+    <string name="cancel">Cancel</string>
 </resources>

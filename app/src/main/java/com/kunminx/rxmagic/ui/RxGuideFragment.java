@@ -70,7 +70,7 @@ public class RxGuideFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
         mBinding.webView.getSettings().setUseWideViewPort(true);
-//        mBinding.webView.getSettings().setJavaScriptEnabled(true);
+        mBinding.webView.getSettings().setJavaScriptEnabled(true);
         mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
         mBinding.webView.loadUrl("https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README.md");
         mBinding.webView.setWebChromeClient(new WebChromeClientProgress());

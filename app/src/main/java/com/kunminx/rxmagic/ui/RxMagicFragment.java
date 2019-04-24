@@ -1,5 +1,21 @@
 package com.kunminx.rxmagic.ui;
 
+/*
+ * Copyright (c) 2018-2019. KunMinX
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -8,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
@@ -32,7 +49,6 @@ public class RxMagicFragment extends Fragment {
 
     private FragmentRxmagicBinding mBinding;
     private RxExpressionAdapter mAdapter;
-    private List<RxExpression> mRxExpressions = new ArrayList<>();
 
     public static RxMagicFragment newInstance() {
         Bundle args = new Bundle();
@@ -59,11 +75,10 @@ public class RxMagicFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
         mAdapter = new RxExpressionAdapter(getContext());
-        mAdapter.setList(mRxExpressions);
         mBinding.rv.setAdapter(mAdapter);
 
         mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
-        mBinding.code.showCode(getString(R.string.test_code));
+        mBinding.code.showCode(getString(R.string.code_tip));
 
         mBinding.btnAdd.setOnClickListener(v -> {
             //TODO testData
@@ -72,28 +87,42 @@ public class RxMagicFragment extends Fragment {
             rxOperator.setGroup("Creator");
             RxExpression expression = new RxExpression();
             expression.setRxOperator(rxOperator);
+
             mAdapter.getList().add(expression);
             mAdapter.notifyItemInserted(mAdapter.getList().size() - 1);
-            if (!mBinding.btnDelete.isEnabled()) {
+
+            if (!mBinding.btnDelete.isEnabled() && mAdapter.getList().size() > 0) {
                 mBinding.btnDelete.setEnabled(true);
+                mBinding.btnClear.setEnabled(true);
+                mBinding.ivEmpty.setVisibility(View.GONE);
             }
         });
 
-        mBinding.btnDelete.setOnClickListener(v -> {
-            Snackbar.make(mBinding.btnPreview, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
-                    .setAnchorView(mBinding.btnPreview)
-                    .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+        mBinding.btnDelete.setOnClickListener(this::showTipOfDeveloping);
+        mBinding.btnClear.setOnClickListener(v -> {
+            new MaterialAlertDialogBuilder(getContext(), R.style.AlertDialogTheme)
+                    .setTitle(getString(R.string.dialog_title_warning))
+                    .setMessage(getString(R.string.dialog_msg_clear_op_list))
+                    .setPositiveButton(getString(R.string.sure), (dialog, which) -> {
+                        mAdapter.getList().clear();
+                        mAdapter.notifyDataSetChanged();
+                        mBinding.ivEmpty.setVisibility(View.VISIBLE);
+                        mBinding.btnDelete.setEnabled(false);
+                        mBinding.btnClear.setEnabled(false);
+                    })
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
 
-        mBinding.btnPreview.setOnClickListener(v -> {
-            Snackbar.make(mBinding.btnPreview, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
-                    .setAnchorView(mBinding.btnPreview)
-                    .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
-                    .show();
-        });
+        mBinding.btnPreview.setOnClickListener(this::showTipOfDeveloping);
     }
 
+    private void showTipOfDeveloping(View v) {
+        Snackbar.make(v, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
+                .setAnchorView(v)
+                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+                .show();
+    }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
