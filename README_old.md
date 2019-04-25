@@ -9,13 +9,15 @@
 
 ![](https://upload-images.jianshu.io/upload_images/57036-d64787fa6df74e62.png)
 
-再加上，我自己也因为 **“拿 SQL 来隐喻操作符”** 的那番见解，而心生灵感：
+再加上，我自己也因为“拿 SQL 来隐喻操作符”的那番见解，而心生灵感：
 
 不如做一件史上最无聊的事吧 —— **像设计师一样将每个像素都抠到极致，像工程师一样将工程设计模式和原则应用到每一个功能的编写，用无聊的方式来对抗无聊** —— 这是一款为无聊而生的面向 Android 开发者的操作符练习工具。
 
-| Add Operators | Output Code |  Clear Expressions |
-| :-: | :-: | :-: |
-|![](https://upload-images.jianshu.io/upload_images/57036-bcb97adb16f309ea.gif)|![](https://upload-images.jianshu.io/upload_images/57036-77454b962bfc9d09.gif) |![](https://upload-images.jianshu.io/upload_images/57036-4dfd67d168698644.gif) |
+![](https://upload-images.jianshu.io/upload_images/57036-832073b8b7f9801d.gif?imageMogr2/auto-orient/strip)
+
+![](https://upload-images.jianshu.io/upload_images/57036-77454b962bfc9d09.gif?imageMogr2/auto-orient/strip)
+
+![](https://upload-images.jianshu.io/upload_images/57036-4dfd67d168698644.gif?imageMogr2/auto-orient/strip)
 
 除了提供“解决无聊”这一最核心功能之外，你还可以从这个开源项目获得的内容包括：
 
@@ -31,14 +33,6 @@
 如你所见，Rx钥匙的界面效果大体已经出来了，我的目标是，将首页先打磨好，这样 Rx钥匙 Apk 最快可能下周就能正式和大家见面了。
 
 鉴于目前在 RxOperatorAdapter 的 EditText 读写缓存逻辑上存有一些问题，如果你对此十分熟悉，请不吝参与进来，这个项目会因为你的参与而变得更好！
-
-# 扫码关注往期热门动态
-
-[2019.4.20：Rx钥匙：本周读者留言回复](#wechatQrcode)
-
-[2019.4.18：你用不惯 RxJava，只因缺了这把钥匙 🔥](#wechatQrcode)
-
-
 
 ![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
 
@@ -171,7 +165,7 @@ JianShu：[kunminx@jianshu](https://www.jianshu.com/u/5d956b6dcf1f)
 
 Juejin：[kunminx@juejin](https://juejin.im/user/58ab0de9ac502e006975d757/posts)
 
-<span id="wechatQrcode">My WeChat Public Account：</span>
+My WeChat Public Account：
 
 ![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
 
