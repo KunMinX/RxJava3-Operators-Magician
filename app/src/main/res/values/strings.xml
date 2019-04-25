@@ -77,4 +77,5 @@
     <string name="op_just">JUST</string>
     <string name="op_map">MAP</string>
     <string name="op_filter">FILTER</string>
+    <string name="tip_of_developing">Press ADD button to get start ^_^</string>
 </resources>

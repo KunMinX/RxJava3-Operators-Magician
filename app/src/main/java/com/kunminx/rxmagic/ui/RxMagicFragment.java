@@ -123,7 +123,7 @@ public class RxMagicFragment extends Fragment {
         mBinding.btnPreview.setOnClickListener(v -> {
             String code = getCodeOfExpressions();
             if (TextUtils.isEmpty(code)) {
-                showTip(v,"Press ADD button to get start ^_^");
+                showTip(v, getString(R.string.tip_of_developing));
             } else {
                 mBinding.code.showCode(code);
             }

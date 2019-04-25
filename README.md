@@ -23,17 +23,14 @@
 2. 基于前沿的、遵循关注点分离的 JetPack MVVM 架构。
 3. 使用 RxJava 和 lambda 表达式。
 4. AndroidX 和 Material Design 2 的全面使用。
-5. 为提升手机桌面的逼格做贡献，让知识与美观并存，即使从不打开。
-6. 绝不使用 Dagger，绝不使用奇技淫巧、编写艰深晦涩的代码。
-7. 长期更新。
+5. ConstraintLayout 约束布局的最佳实践。
+6. 为提升手机桌面的逼格做贡献，让知识与美观并存，即使从不打开。
+7. 绝不使用 Dagger，绝不使用奇技淫巧、编写艰深晦涩的代码。
+8. 长期更新。
 
 如你所见，Rx钥匙的界面效果大体已经出来了，我的目标是，将首页先打磨好，这样 Rx钥匙 Apk 最快可能下周就能正式和大家见面了。
 
-鉴于目前 RecyclerView 逻辑上存有一些问题，如果你对此十分熟悉，请不吝参与进来，这个项目会因为你的参与而变得更好！
-
-这一期的动态就到这里，文章评论暂未开通，欢迎直接在公众号中给坤哥留言，我们下期再见！
-
-[https://github.com/KunMinX/RxJava2-Operators-Sample](https://github.com/KunMinX/RxJava2-Operators-Sample)
+鉴于目前在 RxOperatorAdapter 的 EditText 读写缓存逻辑上存有一些问题，如果你对此十分熟悉，请不吝参与进来，这个项目会因为你的参与而变得更好！
 
 ![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
 
@@ -138,4 +135,52 @@ Observable.just(1, 3, 5, 7, 9)
 
 ![请点赞 ~](https://upload-images.jianshu.io/upload_images/57036-3e15111b4263be48.png)
 
+![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
 
+# Thanks to
+
+[RxJava 2](https://github.com/ReactiveX/RxJava)
+
+[RxJava2-Android-Samples](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples)
+
+[material-components-android](https://github.com/material-components/material-components-android)
+
+[LicenseAdapter](https://github.com/yshrsmz/LicenseAdapter)
+
+[JetPack :](https://developer.android.google.cn/jetpack/)
+
+[AndroidX](https://developer.android.google.cn/jetpack/androidx)
+
+[DataBinding](https://developer.android.google.cn/topic/libraries/data-binding)
+
+[Room](https://developer.android.google.cn/topic/libraries/architecture/room)
+
+# My Pages
+
+Email：[kunminx@gmail.com](mailto:kunminx@gmail.com)
+
+JianShu：[kunminx@jianshu](https://www.jianshu.com/u/5d956b6dcf1f)
+
+Juejin：[kunminx@juejin](https://juejin.im/post/5bcd58b6e51d45404c71d23f)
+
+My WeChat Public Account:
+
+![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
+
+# License
+
+```
+Copyright 2018-2019 KunMinX
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

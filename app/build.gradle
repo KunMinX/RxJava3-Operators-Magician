@@ -54,6 +54,7 @@ dependencies {
 //    implementation 'com.kunminx.viabus:core:0.4.8'
     implementation 'thereisnospon.codeview:codeview:0.3.1'
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
+    implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'
 
 
 }
