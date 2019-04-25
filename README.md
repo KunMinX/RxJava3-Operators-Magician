@@ -1,7 +1,83 @@
+![](https://upload-images.jianshu.io/upload_images/57036-a656f3cb7ab534cd.jpg)
+
+# Rx钥匙：为无聊而生的 Android 开发者工具
+`更新动态 | 2019.4.25`
+
+很高兴又和大家见面啦！
+
+有不少热心网友关心，上一期的 Rx钥匙 后来怎么样了，再次谢谢大家的期待，原本目标只是给大家一把钥匙，方便大家意会 RxJava 操作符的本质，想不到有不少网友对 Rx钥匙 的期待远远超出了其本身，期望那是一把能够解决无聊、带给自己更多的魔法棒。
+
+![](https://upload-images.jianshu.io/upload_images/57036-d64787fa6df74e62.png)
+
+再加上，我自己也因为“拿 SQL 来隐喻操作符”的那番见解，而心生灵感：不如做一件史上无聊的事吧 —— **像设计师一样将每个像素都抠到极致，像工程师一样将工程设计模式和原则应用到每一个功能的编写，用无聊的方式来对抗无聊** —— 这是一款为无聊而生的面向 Android 开发者的操作符练习工具。
+
+![](https://upload-images.jianshu.io/upload_images/57036-832073b8b7f9801d.gif?imageMogr2/auto-orient/strip)
+
+![](https://upload-images.jianshu.io/upload_images/57036-77454b962bfc9d09.gif?imageMogr2/auto-orient/strip)
+
+![](https://upload-images.jianshu.io/upload_images/57036-4dfd67d168698644.gif?imageMogr2/auto-orient/strip)
+
+除了提供“解决无聊”这一最核心功能之外，你还可以从这个开源项目获得的内容包括：
+
+1. 整洁的代码风格和标准的资源命名规范。
+2. 基于前沿的、遵循关注点分离的 JetPack MVVM 架构。
+3. 使用 RxJava 和 lambda 表达式。
+4. AndroidX 和 Material Design 2 的全面使用。
+5. 为提升手机桌面的逼格做贡献，让知识与美观并存，即使从不打开。
+6. 绝不使用 Dagger，绝不使用奇技淫巧、编写艰深晦涩的代码。
+7. 长期更新。
+
+如你所见，Rx钥匙的界面效果大体已经出来了，我的目标是，将首页先打磨好，这样 Rx钥匙 Apk 最快可能下周就能正式和大家见面了。
+
+鉴于目前 RecyclerView 逻辑上存有一些问题，如果你对此十分熟悉，请不吝参与进来，这个项目会因为你的参与而变得更好！
+
+这一期的动态就到这里，文章评论暂未开通，欢迎直接在公众号中给坤哥留言，我们下期再见！
+
+[https://github.com/KunMinX/RxJava2-Operators-Sample](https://github.com/KunMinX/RxJava2-Operators-Sample)
+
+![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
+
+# Rx钥匙：本周读者留言回复
+`更新动态 | 2019.4.20`
+
+上周我在掘金发布了 Rx钥匙，没想到在评论区收到 40 多条留言。
+
+有的读者因为豁然开朗而喜出望外，不吝留下夸张的赞美；也有读者觉得意犹未尽，表达了对见证更多的愿望。
+
+![](https://upload-images.jianshu.io/upload_images/57036-0c2e1cc89253dc22.png)
+
+![](https://upload-images.jianshu.io/upload_images/57036-ed92fc17cc7284e6.png)
+
+![](https://upload-images.jianshu.io/upload_images/57036-f960ade1565fa041.png)
+
+从留言中我看到了大家对 Rx钥匙的期待 和 各自内心世界的丰富多彩，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决无聊、带给自己更多的 魔法棒。
+
+![](https://upload-images.jianshu.io/upload_images/57036-23325e335e96987e.jpeg)
+
+如你所愿，我在 GitHub 开源了这套操作符示例项目，该项目的计划分三步走：
+
+1.收集业内关于操作符的 代码案例 和 最佳实践，以便随时查阅。
+
+2.设计一款操作符组合工具，让人们可以直观而简便地组合操作符。
+
+3.在组合工具的基础上映射代码，让代码可以自由复制。
+
+![](https://upload-images.jianshu.io/upload_images/57036-07df9019c086acd0.png)
+
+我会不定期地 **只在公众号公布** Rx钥匙 研发的最新动态，并固定于每周三或周四下午3点 在公众号或掘金 推送新的短平快文章。
+
+公众号刚开通，文章留言功能暂无法使用，欢迎在公众号中与 KunMinX（可以叫我坤哥）交流，消息我一般看到了就会回复。
+
+我的微信公众号
+
+![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
+
+![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
+
 ![](https://upload-images.jianshu.io/upload_images/57036-550b81d8d77c687d.jpg)
 
-
 # 你用不惯 RxJava，只因缺了这把钥匙
+`更新动态 | 2019.4.18`
 
 ## 前言
 
@@ -62,41 +138,4 @@ Observable.just(1, 3, 5, 7, 9)
 
 ![请点赞 ~](https://upload-images.jianshu.io/upload_images/57036-3e15111b4263be48.png)
 
-![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
-
-# Rx钥匙：本周读者留言回复
-
-上周我在掘金发布了 Rx钥匙，没想到在评论区收到 40 多条留言。
-
-有的读者因为豁然开朗而喜出望外，不吝留下夸张的赞美；也有读者觉得意犹未尽，表达了对见证更多的愿望。
-
-![](https://upload-images.jianshu.io/upload_images/57036-0c2e1cc89253dc22.png)
-
-![](https://upload-images.jianshu.io/upload_images/57036-ed92fc17cc7284e6.png)
-
-![](https://upload-images.jianshu.io/upload_images/57036-f960ade1565fa041.png)
-
-从留言中我看到了大家对 Rx钥匙的期待 和 各自内心世界的丰富多彩，这些期待甚至远远超出了 Rx钥匙本身，期望它是一把能够解决无聊、带给自己更多的 魔法棒。
-
-![](https://upload-images.jianshu.io/upload_images/57036-23325e335e96987e.jpeg)
-
-如你所愿，我在 GitHub 开源了这套操作符示例项目，该项目的计划分三步走：
-
-1.收集业内关于操作符的 代码案例 和 最佳实践，以便随时查阅。
-
-2.设计一款操作符组合工具，让人们可以直观而简便地组合操作符。
-
-3.在组合工具的基础上映射代码，让代码可以自由复制。
-
-![](https://upload-images.jianshu.io/upload_images/57036-07df9019c086acd0.png)
-
-我会不定期地 **只在公众号公布** Rx钥匙 研发的最新动态，并固定于每周三或周四下午3点 在公众号或掘金 推送新的短平快文章。
-
-公众号刚开通，文章留言功能暂无法使用，欢迎在公众号中与 KunMinX（可以叫我坤哥）交流，消息我一般看到了就会回复。
-
-
-
-我的微信公众号
-
-![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
 

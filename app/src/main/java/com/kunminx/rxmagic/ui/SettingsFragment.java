@@ -63,7 +63,11 @@ public class SettingsFragment extends Fragment {
 
 
     private void showTipOfDeveloping(View v) {
-        Snackbar.make(v, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT)
+        showTip(v, getString(R.string.tip_developing));
+    }
+
+    private void showTip(View v, String tip) {
+        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
                 .setAnchorView(v)
                 .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
                 .show();
