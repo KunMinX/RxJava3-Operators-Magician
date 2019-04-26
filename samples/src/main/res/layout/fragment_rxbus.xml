@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kunminx.samples.ui.rxbus.RxBusActivity">
+    tools:context="com.kunminx.samples.ui.rxbus.RxBusFragment">
 
     <TextView
         android:id="@+id/textView"
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:layout_marginTop="12dp"
-        android:text="Hello World!"
+        android:text="Press Button To Test RxBus !"
         android:textColor="@android:color/black" />
 
     <Button

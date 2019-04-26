@@ -32,10 +32,13 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.ActivityMainBinding;
-import com.kunminx.samples.ui.cache.CacheExampleActivity;
-import com.kunminx.samples.ui.networking.NetworkingActivity;
-import com.kunminx.samples.ui.pagination.PaginationActivity;
-import com.kunminx.samples.ui.search.SearchActivity;
+import com.kunminx.samples.MyApplication;
+import com.kunminx.samples.ui.cache.CacheExampleFragment;
+import com.kunminx.samples.ui.networking.NetworkingFragment;
+import com.kunminx.samples.ui.operators.CompletableObserverExampleFragment;
+import com.kunminx.samples.ui.pagination.PaginationFragment;
+import com.kunminx.samples.ui.rxbus.RxBusFragment;
+import com.kunminx.samples.ui.search.SearchFragment;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 
@@ -46,11 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
     private int mScreenHeight;
     private ActivityMainBinding mBinding;
-    private RxMagicFragment mRxMagicFragment;
     private RxGuideFragment mRxGuideFragment;
+    private RxMagicFragment mRxMagicFragment;
     private OperatorsFragment mOperatorsFragment;
-    private AboutFragment mAboutFragment;
+    private OtherSampleFragment mOtherSampleFragment;
     private SettingsFragment mSettingsFragment;
+    private AboutFragment mAboutFragment;
     private Fragment mLastFragment;
 
     @Override
@@ -69,59 +73,61 @@ public class MainActivity extends AppCompatActivity {
                     if (!item.isChecked()) {
                         loadGuideFragment();
                     }
-                    closeDrawer();
                     break;
                 case R.id.nav_declare:
                     if (!item.isChecked()) {
                         loadMagicFragment();
                     }
-                    closeDrawer();
                     break;
                 case R.id.nav_operators:
                     if (!item.isChecked()) {
                         loadOperatorsFragment();
                     }
-                    closeDrawer();
                     break;
                 case R.id.nav_networking:
-                    startActivity(new Intent(MainActivity.this, NetworkingActivity.class));
+                    if (!item.isChecked()) {
+                        loadOtherSampleFragment(NetworkingFragment.class.getSimpleName());
+                    }
                     break;
                 case R.id.nav_cache:
-                    startActivity(new Intent(MainActivity.this, CacheExampleActivity.class));
+                    if (!item.isChecked()) {
+                        loadOtherSampleFragment(CacheExampleFragment.class.getSimpleName());
+                    }
                     break;
                 case R.id.nav_rxbus:
-                    //TODO
-                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
-//                    ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
-//                    startActivity(new Intent(MainActivity.this, RxBusActivity.class));
+                    if (!item.isChecked()) {
+                        ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
+                        loadOtherSampleFragment(RxBusFragment.class.getSimpleName());
+                    }
                     break;
                 case R.id.nav_pagination:
-                    startActivity(new Intent(MainActivity.this, PaginationActivity.class));
+                    if (!item.isChecked()) {
+                        loadOtherSampleFragment(PaginationFragment.class.getSimpleName());
+                    }
                     break;
                 case R.id.nav_compose:
-                    //TODO
-                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
-//                    startActivity(new Intent(MainActivity.this, ComposeOperatorExampleActivity.class));
+                    if (!item.isChecked()) {
+                        loadOtherSampleFragment(CompletableObserverExampleFragment.class.getSimpleName());
+                    }
                     break;
                 case R.id.nav_search:
-                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
+                    if (!item.isChecked()) {
+                        loadOtherSampleFragment(SearchFragment.class.getSimpleName());
+                    }
                     break;
                 case R.id.nav_settings:
-                    //TODO
-                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
-                    /*if (!item.isChecked()) {
+                    if (!item.isChecked()) {
                         loadSettingFragment();
                     }
-                    closeDrawer();*/
                     break;
                 case R.id.nav_about:
                     if (!item.isChecked()) {
                         loadAboutFragment();
                     }
-                    closeDrawer();
                     break;
                 default:
             }
+            closeDrawer();
             return true;
         });
 
@@ -166,6 +172,16 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(mOperatorsFragment);
     }
 
+    private void loadOtherSampleFragment(String fragmentTag) {
+        if (mOtherSampleFragment == null) {
+            mOtherSampleFragment = OtherSampleFragment.newInstance(fragmentTag);
+            loadFragment(mOtherSampleFragment);
+        } else {
+            mOtherSampleFragment.replaceSubFragment(fragmentTag);
+            loadFragment(mOtherSampleFragment);
+        }
+    }
+
     private void loadSettingFragment() {
         if (mSettingsFragment == null) {
             mSettingsFragment = SettingsFragment.newInstance();
@@ -180,15 +196,16 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(mAboutFragment);
     }
 
+    //Fixme: when cache switch to networking and then switch to operator finally switch to networking, networking may not visible
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         if (!fragment.isAdded()) {
             transaction.add(R.id.fragment_container, fragment, fragment.getClass().getSimpleName());
-        } else {
+        } else if (!fragment.isVisible()) {
             transaction.show(fragment);
         }
-        if (mLastFragment != null) {
+        if (mLastFragment != null && !mLastFragment.equals(fragment)) {
             transaction.hide(mLastFragment);
         }
         transaction.commit();

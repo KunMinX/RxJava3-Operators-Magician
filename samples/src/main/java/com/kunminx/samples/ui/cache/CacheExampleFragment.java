@@ -2,9 +2,15 @@ package com.kunminx.samples.ui.cache;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.kunminx.samples.R;
 import com.kunminx.samples.ui.cache.model.Data;
@@ -14,26 +20,30 @@ import com.kunminx.samples.ui.cache.source.MemoryDataSource;
 import com.kunminx.samples.ui.cache.source.NetworkDataSource;
 import com.kunminx.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CacheExampleActivity extends AppCompatActivity {
+public class CacheExampleFragment extends Fragment {
 
-    private static final String TAG = CacheExampleActivity.class.getSimpleName();
+    private static final String TAG = CacheExampleFragment.class.getSimpleName();
     Button btn;
     TextView textView;
     DataSource dataSource;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_example, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        btn = view.findViewById(R.id.btn);
+        textView = view.findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

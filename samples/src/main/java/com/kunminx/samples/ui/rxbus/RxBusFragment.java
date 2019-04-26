@@ -1,39 +1,55 @@
 package com.kunminx.samples.ui.rxbus;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.kunminx.samples.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.kunminx.samples.MyApplication;
+import com.kunminx.samples.R;
+import com.kunminx.samples.model.Events;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 06/02/17.
  */
 
-public class RxBusActivity extends AppCompatActivity {
+public class RxBusFragment extends Fragment {
 
-    public static final String TAG = RxBusActivity.class.getSimpleName();
+    public static final String TAG = RxBusFragment.class.getSimpleName();
     TextView textView;
     Button button;
     private final CompositeDisposable disposables = new CompositeDisposable();
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         disposables.clear(); // do not send event after activity has been destroyed
     }
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rxbus);
-        textView = findViewById(R.id.textView);
-        button = findViewById(R.id.button);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_example, container, false);
+    }
 
-       /* disposables.add(((MyApplication) getApplication())
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        button = view.findViewById(R.id.btn);
+        textView = view.findViewById(R.id.textView);
+
+        disposables.add(((MyApplication) getActivity().getApplication())
                 .bus()
                 .toObservable()
                 .subscribeOn(Schedulers.io())
@@ -51,13 +67,12 @@ public class RxBusActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                ((MyApplication) getApplication())
+            public void onClick(View view) {
+                ((MyApplication) getActivity().getApplication())
                         .bus()
                         .send(new Events.TapEvent());
             }
-        });*/
+        });
     }
-
 
 }

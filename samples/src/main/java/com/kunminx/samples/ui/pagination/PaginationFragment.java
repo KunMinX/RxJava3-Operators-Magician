@@ -1,9 +1,16 @@
 package com.kunminx.samples.ui.pagination;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kunminx.samples.R;
 
@@ -11,9 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -25,9 +29,9 @@ import io.reactivex.schedulers.Schedulers;
  * Created by amitshekhar on 15/03/17.
  */
 
-public class PaginationActivity extends AppCompatActivity {
+public class PaginationFragment extends Fragment {
 
-    public static final String TAG = PaginationActivity.class.getSimpleName();
+    public static final String TAG = PaginationFragment.class.getSimpleName();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private PublishProcessor<Integer> paginator = PublishProcessor.create();
     private PaginationAdapter paginationAdapter;
@@ -40,13 +44,18 @@ public class PaginationActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
 
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pagination);
-        recyclerView = findViewById(R.id.recyclerView);
-        progressBar = findViewById(R.id.progressBar);
-        layoutManager = new LinearLayoutManager(this);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_pagination, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        progressBar = view.findViewById(R.id.progressBar);
+        layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         paginationAdapter = new PaginationAdapter();
@@ -55,8 +64,9 @@ public class PaginationActivity extends AppCompatActivity {
         subscribeForData();
     }
 
+
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         compositeDisposable.clear();
     }

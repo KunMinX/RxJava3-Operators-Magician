@@ -43,7 +43,7 @@ public class OperatorsFragment extends Fragment {
 
     private FragmentOperatorsBinding mBinding;
     private String[] mFragmentTitles;
-    private Fragment[] mFragments = new Fragment[33];
+    private Fragment[] mFragments;
 
     public static OperatorsFragment newInstance() {
         Bundle args = new Bundle();
@@ -65,11 +65,12 @@ public class OperatorsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mBinding.toolbar.setTitle(R.string.setting);
+        mBinding.toolbar.setTitle(R.string.operators);
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
         mFragmentTitles = getResources().getStringArray(R.array.fragments);
+        mFragments = new Fragment[mFragmentTitles.length];
 
         mBinding.viewPager.setAdapter(new FragmentStateAdapter(getActivity()) {
             @NonNull

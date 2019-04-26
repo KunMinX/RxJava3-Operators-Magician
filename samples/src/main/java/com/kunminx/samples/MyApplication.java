@@ -2,7 +2,13 @@ package com.kunminx.samples;
 
 import android.app.Application;
 
+import com.kunminx.samples.model.Events;
 import com.kunminx.samples.ui.rxbus.RxBus;
+
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by threshold on 2017/1/12.
@@ -16,10 +22,10 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        bus = new RxBus();
+        bus = new RxBus();
     }
 
-   /* public RxBus bus() {
+    public RxBus bus() {
         return bus;
     }
 
@@ -31,6 +37,6 @@ public class MyApplication extends Application {
                         bus.send(new Events.AutoEvent());
                     }
                 });
-    }*/
+    }
 
 }

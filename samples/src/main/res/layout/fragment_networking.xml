@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickProxy"
+            type="com.kunminx.samples.ui.networking.NetworkingFragment.ClickProxy" />
+
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.kunminx.samples.ui.networking.NetworkingFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/map"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:onClick="@{()->clickProxy.map()}"
+                android:text="@string/map" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/zip"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:onClick="@{()->clickProxy.zip()}"
+                android:text="@string/zip" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/flatMapAndFilter"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:onClick="@{()->clickProxy.flatMapAndFilter()}"
+                android:text="@string/flatMapAndFilter" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/take"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:onClick="@{()->clickProxy.take()}"
+                android:text="@string/take" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/flatMap"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:onClick="@{()->clickProxy.flatMap()}"
+                android:text="@string/flatMap" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/flatMapWithZip"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:onClick="@{()->clickProxy.flatMapWithZip()}"
+                android:text="@string/flatMapWithZip" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
+

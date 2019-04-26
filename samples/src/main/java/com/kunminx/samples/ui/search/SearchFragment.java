@@ -1,15 +1,19 @@
 package com.kunminx.samples.ui.search;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.kunminx.samples.R;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,18 +27,23 @@ import io.reactivex.schedulers.Schedulers;
  * Created by amitshekhar on 15/10/17.
  */
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchFragment extends Fragment {
 
-    public static final String TAG = SearchActivity.class.getSimpleName();
+    public static final String TAG = SearchFragment.class.getSimpleName();
     private SearchView searchView;
     private TextView textViewResult;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-        searchView = findViewById(R.id.searchView);
-        textViewResult = findViewById(R.id.textViewResult);
+    public View onCreateView(@androidx.annotation.NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_search, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@androidx.annotation.NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        searchView = view.findViewById(R.id.searchView);
+        textViewResult = view.findViewById(R.id.textViewResult);
 
         setUpSearchObservable();
     }
