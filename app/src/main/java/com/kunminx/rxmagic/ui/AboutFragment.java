@@ -23,6 +23,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -41,6 +44,13 @@ public class AboutFragment extends Fragment {
 
     private FragmentAboutBinding mBinding;
 
+    public static AboutFragment newInstance() {
+        Bundle args = new Bundle();
+        AboutFragment fragment = new AboutFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,13 +64,27 @@ public class AboutFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mBinding.toolbar.setTitle(R.string.guide);
+        mBinding.toolbar.setTitle(R.string.about);
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
-
+        mBinding.webView.getSettings().setUseWideViewPort(true);
+        mBinding.webView.getSettings().setJavaScriptEnabled(true);
+        mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
+        mBinding.webView.loadUrl(getString(R.string.link_about));
+        mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
     }
 
+    private class WebChromeClientProgress extends WebChromeClient {
+        @Override
+        public void onProgressChanged(WebView view, int progress) {
+            mBinding.progress.setProgress(progress);
+            if (progress == 100) {
+                mBinding.progress.setVisibility(View.GONE);
+            }
+            super.onProgressChanged(view, progress);
+        }
+    }
 
     private void showTipOfDeveloping(View v) {
         showTip(v, getString(R.string.tip_developing));

@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding;
     private RxMagicFragment mRxMagicFragment;
     private RxGuideFragment mRxGuideFragment;
+    private AboutFragment mAboutFragment;
+    private SettingsFragment mSettingsFragment;
     private Fragment mLastFragment;
 
     @Override
@@ -104,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_settings:
                     //TODO
                     Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
-//                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     break;
                 case R.id.nav_about:
-                    //TODO
-                    Snackbar.make(mBinding.navView, getString(R.string.tip_developing), Snackbar.LENGTH_SHORT).show();
-//                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
+                    if (!item.isChecked()) {
+                        loadAboutFragment();
+                    }
+                    closeDrawer();
                     break;
                 default:
             }
@@ -148,6 +150,20 @@ public class MainActivity extends AppCompatActivity {
             mRxGuideFragment = RxGuideFragment.newInstance();
         }
         loadFragment(mRxGuideFragment);
+    }
+
+    private void loadAboutFragment() {
+        if (mAboutFragment == null) {
+            mAboutFragment = AboutFragment.newInstance();
+        }
+        loadFragment(mAboutFragment);
+    }
+
+    private void loadSettingFragment() {
+        if (mSettingsFragment == null) {
+            mSettingsFragment = SettingsFragment.newInstance();
+        }
+        loadFragment(mSettingsFragment);
     }
 
     private void loadFragment(Fragment fragment) {

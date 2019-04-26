@@ -54,6 +54,7 @@
     <string name="copy">Copy</string>
     <string name="view_integrity">View integrity</string>
     <string name="i_got_it">I Got It</string>
+    <string name="about_me">- Produce by KunMinX with Love -</string>
     <string name="share">Share</string>
 
     <string name="test_code">
@@ -78,4 +79,6 @@
     <string name="op_map">MAP</string>
     <string name="op_filter">FILTER</string>
     <string name="tip_of_developing">Press ADD button to get start ^_^</string>
+    <string name="link_guide">https://mp.weixin.qq.com/s/LQLvwtmKNoOfiCtl4iADgw</string>
+    <string name="link_about">https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README.md</string>
 </resources>

@@ -29,21 +29,20 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            app:layout_constraintBottom_toTopOf="@+id/btn_got"
+            app:layout_constraintBottom_toTopOf="@+id/tv_copyright"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_got"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        <TextView
+            android:id="@+id/tv_copyright"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin4"
-            android:layout_marginBottom="@dimen/margin12"
-            android:backgroundTint="@color/colorPurple"
-            android:text="@string/i_got_it"
-            android:textColor="@color/colorWhite"
+            android:paddingTop="@dimen/margin8"
+            android:paddingBottom="@dimen/margin8"
+            android:text="@string/about_me"
+            android:textColor="@color/colorGray"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />

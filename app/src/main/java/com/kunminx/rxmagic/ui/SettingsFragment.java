@@ -41,6 +41,13 @@ public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding mBinding;
 
+    public static SettingsFragment newInstance() {
+        Bundle args = new Bundle();
+        SettingsFragment fragment = new SettingsFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,7 +61,7 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mBinding.toolbar.setTitle(R.string.guide);
+        mBinding.toolbar.setTitle(R.string.setting);
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
