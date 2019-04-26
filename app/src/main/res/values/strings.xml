@@ -81,4 +81,5 @@
     <string name="tip_of_developing">Press ADD button to get start ^_^</string>
     <string name="link_guide">https://mp.weixin.qq.com/s/LQLvwtmKNoOfiCtl4iADgw</string>
     <string name="link_about">https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README.md</string>
+    <string name="tip_got_it">Congratulations! ^_^</string>
 </resources>

@@ -22,7 +22,9 @@
     <item android:title="@string/group_samples">
         <menu>
 
-            <group android:id="@+id/group2">
+            <group
+                android:id="@+id/group2"
+                android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_operators"
                     android:icon="@drawable/ic_operators"
@@ -70,7 +72,9 @@
     <item android:title="@string/group_more">
         <menu>
 
-            <group android:id="@+id/group3">
+            <group
+                android:id="@+id/group3"
+                android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_settings"
                     android:icon="@drawable/ic_settings"

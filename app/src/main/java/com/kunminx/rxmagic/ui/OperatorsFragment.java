@@ -23,31 +23,31 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.kunminx.rxmagic.R;
-import com.kunminx.rxmagic.databinding.FragmentRxGuideBinding;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+import com.kunminx.rxmagic.R;
+import com.kunminx.rxmagic.databinding.FragmentOperatorsBinding;
+import com.kunminx.rxmagic.ui.manager.TabLayoutMediator;
 
 /**
- * Create by KunMinX at 19/4/22
+ * Create by KunMinX at 19/4/23
  */
-public class RxGuideFragment extends Fragment {
+public class OperatorsFragment extends Fragment {
 
+    private FragmentOperatorsBinding mBinding;
+    private String[] mFragmentTitles;
+    private Fragment[] mFragments = new Fragment[33];
 
-    private FragmentRxGuideBinding mBinding;
-
-    public static RxGuideFragment newInstance() {
+    public static OperatorsFragment newInstance() {
         Bundle args = new Bundle();
-        RxGuideFragment fragment = new RxGuideFragment();
+        OperatorsFragment fragment = new OperatorsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,8 +55,8 @@ public class RxGuideFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_rx_guide, container, false);
-        mBinding = FragmentRxGuideBinding.bind(view);
+        View view = inflater.inflate(R.layout.fragment_operators, container, false);
+        mBinding = FragmentOperatorsBinding.bind(view);
         setHasOptionsMenu(true);
         return view;
     }
@@ -65,30 +65,47 @@ public class RxGuideFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mBinding.toolbar.setTitle(R.string.guide);
+        mBinding.toolbar.setTitle(R.string.setting);
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
-        mBinding.webView.getSettings().setUseWideViewPort(true);
-        mBinding.webView.getSettings().setJavaScriptEnabled(true);
-        mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
-        mBinding.webView.loadUrl(getString(R.string.link_guide));
-        mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
+        mFragmentTitles = getResources().getStringArray(R.array.fragments);
 
-        mBinding.btnGot.setOnClickListener(v -> {
-            showTip(v, getString(R.string.tip_got_it));
+        mBinding.viewPager.setAdapter(new FragmentStateAdapter(getActivity()) {
+            @NonNull
+            @Override
+            public Fragment getItem(int position) {
+                return createFragment(position);
+            }
+
+            @Override
+            public int getItemCount() {
+                return mFragmentTitles.length;
+            }
         });
+
+        new TabLayoutMediator(mBinding.tabs, mBinding.viewPager, (tab, position) -> {
+            tab.setText(mFragmentTitles[position].replace("ExampleFragment", ""));
+        }).attach();
     }
 
-    private class WebChromeClientProgress extends WebChromeClient {
-        @Override
-        public void onProgressChanged(WebView view, int progress) {
-            mBinding.progress.setProgress(progress);
-            if (progress == 100) {
-                mBinding.progress.setVisibility(View.GONE);
-            }
-            super.onProgressChanged(view, progress);
+    private Fragment createFragment(Integer tag) {
+        if (mFragments[tag] != null) {
+            return mFragments[tag];
         }
+        String name = "com.kunminx.samples.ui.operators." + mFragmentTitles[tag];
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) Class.forName(name).newInstance();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (java.lang.InstantiationException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        mFragments[tag] = fragment;
+        return mFragments[tag];
     }
 
     private void showTipOfDeveloping(View v) {

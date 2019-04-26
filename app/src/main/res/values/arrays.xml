@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fragments">
+
+        <item>AsyncSubjectExampleFragment</item>
+        <item>BehaviorSubjectExampleFragment</item>
+        <item>BufferExampleFragment</item>
+        <item>CompletableObserverExampleFragment</item>
+        <item>ConcatExampleFragment</item>
+        <item>DebounceExampleFragment</item>
+        <item>DeferExampleFragment</item>
+        <item>DelayExampleFragment</item>
+        <item>DisposableExampleFragment</item>
+        <item>DistinctExampleFragment</item>
+        <item>FilterExampleFragment</item>
+        <item>FlowableExampleFragment</item>
+        <item>IntervalExampleFragment</item>
+        <item>LastOperatorExampleFragment</item>
+        <item>MapExampleFragment</item>
+        <item>MergeExampleFragment</item>
+        <item>PublishSubjectExampleFragment</item>
+        <item>ReduceExampleFragment</item>
+        <item>ReplayExampleFragment</item>
+        <item>ReplaySubjectExampleFragment</item>
+        <item>ScanExampleFragment</item>
+        <item>SimpleExampleFragment</item>
+        <item>SingleObserverExampleFragment</item>
+        <item>SkipExampleFragment</item>
+        <item>SwitchMapExampleFragment</item>
+        <item>TakeExampleFragment</item>
+        <!--<item>TakeOperatorBaseFragment</item>-->
+        <item>TakeUntilExampleFragment</item>
+        <item>TakeWhileExampleFragment</item>
+        <item>ThrottleFirstExampleFragment</item>
+        <item>ThrottleLastExampleFragment</item>
+        <item>TimerExampleFragment</item>
+        <item>WindowExampleFragment</item>
+        <item>ZipExampleFragment</item>
+
+    </string-array>
+
+</resources>
