@@ -41,6 +41,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
+
 import thereisnospon.codeview.CodeViewTheme;
 
 /**
@@ -82,8 +83,12 @@ public class RxMagicFragment extends Fragment {
         });
         mBinding.rv.setAdapter(mAdapter);
 
-        mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
-        mBinding.code.showCode(getString(R.string.code_tip));
+        try {
+            mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
+            mBinding.code.showCode(getString(R.string.code_tip));
+        } catch (Exception ex) {
+            System.out.println(ex.toString() + "--------------------------------------");
+        }
 
         mBinding.btnAdd.setOnClickListener(v -> {
             //TODO testData
