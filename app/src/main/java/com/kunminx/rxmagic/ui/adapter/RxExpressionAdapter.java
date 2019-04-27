@@ -84,7 +84,7 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
         });
     }
 
-    public void setListener(OnItemClickListener listener) {
+    public void setOnButtonClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 

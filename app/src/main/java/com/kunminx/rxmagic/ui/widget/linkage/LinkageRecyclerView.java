@@ -17,15 +17,14 @@ package com.kunminx.rxmagic.ui.widget.linkage;
 
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,7 +39,7 @@ import java.util.List;
 /**
  * Create by KunMinX at 19/4/27
  */
-public class LinkageRecyclerView extends ConstraintLayout {
+public class LinkageRecyclerView extends RelativeLayout {
 
     private Context mContext;
     private RecyclerView mRvLevel1;
@@ -50,16 +49,16 @@ public class LinkageRecyclerView extends ConstraintLayout {
     private TextView mTvLevel2Header;
     private List<String> mGroupNames;
     private List<LinkageItem> mItems;
-
-
-    //右侧title在数据中所对应的position集合
     private List<Integer> mHeaderPositions = new ArrayList<>();
-
-    //title的高度
     private int mTitleHeight;
-    //记录右侧当前可见的第一个item的position
     private int mFirstPosition = 0;
-    private GridLayoutManager mGridLayoutManager;
+    //    private GridLayoutManager mLevel2GridLayoutManager;
+    private LinearLayoutManager mLevel2LayoutManager;
+    private boolean mIsGridLayout;
+
+    public void setGridLayout(boolean gridLayout) {
+        mIsGridLayout = gridLayout;
+    }
 
     public List<Integer> getHeaderPositions() {
         return mHeaderPositions;
@@ -85,30 +84,32 @@ public class LinkageRecyclerView extends ConstraintLayout {
         mRvLevel2 = (RecyclerView) view.findViewById(R.id.rv_level_2);
         mTvLevel2Header = (TextView) view.findViewById(R.id.tv_level_2_header);
 
-        mGridLayoutManager = new GridLayoutManager(mContext, 3);
-        if (mLevel2Adapter == null) {
-            mLevel2Adapter = new LinkageLevel2Adapter(R.layout.adapter_linkage_level_2,
-                    R.layout.layout_linkage_level_2_title, null);
-            mRvLevel2.setLayoutManager(mGridLayoutManager);
-            mRvLevel2.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                    super.getItemOffsets(outRect, view, parent, state);
-                    outRect.set(dpToPx(mContext, getDimens(mContext, R.dimen.dp_4))
-                            , 0
-                            , dpToPx(mContext, getDimens(mContext, R.dimen.dp_4))
-                            , dpToPx(mContext, getDimens(mContext, R.dimen.dp_4)));
-                }
-            });
-            mRvLevel2.setAdapter(mLevel2Adapter);
+        int layout = R.layout.adapter_linkage_level_2_linear;
+        if (mIsGridLayout) {
+            mLevel2LayoutManager = new GridLayoutManager(mContext, 3);
+            layout = R.layout.adapter_linkage_level_2_grid;
+        } else {
+            mLevel2LayoutManager = new LinearLayoutManager(mContext, RecyclerView.VERTICAL, false);
         }
 
-        if (mLevel1Adapter == null) {
-            mLevel1Adapter = new LinkageLevel1Adapter(R.layout.adapter_linkage_level_1, null);
-            mRvLevel1.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.VERTICAL, false));
-            mRvLevel1.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
-            mRvLevel1.setAdapter(mLevel1Adapter);
-        }
+        mLevel2Adapter = new LinkageLevel2Adapter(layout, R.layout.adapter_linkage_level_2_title, null);
+        mRvLevel2.setLayoutManager(mLevel2LayoutManager);
+        /*mRvLevel2.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.set(dpToPx(mContext, getDimens(mContext, R.dimen.dp_4))
+                        , 0
+                        , dpToPx(mContext, getDimens(mContext, R.dimen.dp_4))
+                        , dpToPx(mContext, getDimens(mContext, R.dimen.dp_4)));
+            }
+        });*/
+        mRvLevel2.setAdapter(mLevel2Adapter);
+
+        mLevel1Adapter = new LinkageLevel1Adapter(R.layout.adapter_linkage_level_1, null);
+        mRvLevel1.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.VERTICAL, false));
+        mRvLevel1.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
+        mRvLevel1.setAdapter(mLevel1Adapter);
     }
 
     public void init(List<String> groupNames, List<LinkageItem> linkageItems) {
@@ -121,7 +122,6 @@ public class LinkageRecyclerView extends ConstraintLayout {
     private void initLinkageLevel2() {
         mLevel2Adapter.setNewData(mItems);
 
-        //设置右侧初始title
         if (mItems.get(mFirstPosition).isHeader) {
             mTvLevel2Header.setText(mItems.get(mFirstPosition).header);
         }
@@ -131,7 +131,6 @@ public class LinkageRecyclerView extends ConstraintLayout {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                //获取右侧title的高度
                 mTitleHeight = mTvLevel2Header.getHeight();
             }
 
@@ -139,31 +138,22 @@ public class LinkageRecyclerView extends ConstraintLayout {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-                //判断如果是header
                 if (mItems.get(mFirstPosition).isHeader) {
-                    //获取此组名item的view
-                    View view = mGridLayoutManager.findViewByPosition(mFirstPosition);
+                    View view = mLevel2LayoutManager.findViewByPosition(mFirstPosition);
                     if (view != null) {
-                        //如果此组名item顶部和父容器顶部距离大于等于title的高度,则设置偏移量
                         if (view.getTop() >= mTitleHeight) {
                             mTvLevel2Header.setY(view.getTop() - mTitleHeight);
                         } else {
-                            //否则不设置
                             mTvLevel2Header.setY(0);
                         }
                     }
                 }
 
-                //因为每次滑动之后,右侧列表中可见的第一个item的position肯定会改变,并且右侧列表中可见的第一个item的position变换了之后,
-                //才有可能改变右侧title的值,所以这个方法内的逻辑在右侧可见的第一个item的position改变之后一定会执行
-                int firstPosition = mGridLayoutManager.findFirstVisibleItemPosition();
+                int firstPosition = mLevel2LayoutManager.findFirstVisibleItemPosition();
                 if (mFirstPosition != firstPosition && firstPosition >= 0) {
-                    //给first赋值
                     mFirstPosition = firstPosition;
-                    //不设置Y轴的偏移量
                     mTvLevel2Header.setY(0);
 
-                    //判断如果右侧可见的第一个item是否是header,设置相应的值
                     if (mItems.get(mFirstPosition).isHeader) {
                         mTvLevel2Header.setText(mItems.get(mFirstPosition).header);
                     } else {
@@ -171,16 +161,13 @@ public class LinkageRecyclerView extends ConstraintLayout {
                     }
                 }
 
-                //遍历左边列表,列表对应的内容等于右边的title,则设置左侧对应item高亮
                 for (int i = 0; i < mGroupNames.size(); i++) {
                     if (mGroupNames.get(i).equals(mTvLevel2Header.getText().toString())) {
                         mLevel1Adapter.selectItem(i);
                     }
                 }
 
-                //如果右边最后一个完全显示的item的position,等于bean中最后一条数据的position(也就是右侧列表拉到底了),
-                //则设置左侧列表最后一条item高亮
-                if (mGridLayoutManager.findLastCompletelyVisibleItemPosition() == mItems.size() - 1) {
+                if (mLevel2LayoutManager.findLastCompletelyVisibleItemPosition() == mItems.size() - 1) {
                     mLevel1Adapter.selectItem(mGroupNames.size() - 1);
                 }
             }
@@ -194,11 +181,9 @@ public class LinkageRecyclerView extends ConstraintLayout {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()) {
-                    //点击左侧列表的相应item,右侧列表相应的title置顶显示
-                    //(最后一组内容若不能填充右侧整个可见页面,则显示到右侧列表的最底端)
                     case R.id.layout_group:
                         mLevel1Adapter.selectItem(position);
-                        mGridLayoutManager.scrollToPositionWithOffset(mHeaderPositions.get(position), 0);
+                        mLevel2LayoutManager.scrollToPositionWithOffset(mHeaderPositions.get(position), 0);
                         break;
                     default:
                 }
@@ -207,26 +192,12 @@ public class LinkageRecyclerView extends ConstraintLayout {
     }
 
 
-    /**
-     * 获得资源 dimens (dp)
-     *
-     * @param context
-     * @param id      资源id
-     * @return
-     */
     public float getDimens(Context context, int id) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         float px = context.getResources().getDimension(id);
         return px / dm.density;
     }
 
-    /**
-     * dp转px
-     *
-     * @param context
-     * @param dp
-     * @return
-     */
     public int dpToPx(Context context, float dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return (int) ((dp * displayMetrics.density) + 0.5f);

@@ -86,13 +86,19 @@ public class RxMagicFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
         mAdapter = new RxExpressionAdapter(getContext());
-        mAdapter.setListener((view1, item, position) -> {
-            linkageLayout = LayoutInflater.from(getContext()).inflate(R.layout.layout_linkage, null);
-            mLinkageRecyclerView = (LinkageRecyclerView) linkageLayout.findViewById(R.id.linkage);
-            initLinkageDatas();
-            new MaterialAlertDialogBuilder(getContext())
-                    .setView(linkageLayout)
-                    .show();
+        mAdapter.setOnButtonClickListener((view1, item, position) -> {
+            View view2 = View.inflate(getContext(), R.layout.layout_linkage, null);
+            LinkageRecyclerView linkage = view2.findViewById(R.id.linkage);
+            initLinkageDatas(linkage);
+            new MaterialAlertDialogBuilder(getActivity()).setView(linkage).show();
+
+            //TODO bottomSheetDialog may need overrite onTouch to deal with scroll conflict
+            /*View view2 = View.inflate(getContext(), R.layout.layout_linkage, null);
+            BottomSheetDialog dialog = new BottomSheetDialog(getContext());
+            dialog.setContentView(view2);
+            LinkageRecyclerView linkage = view2.findViewById(R.id.linkage);
+            initLinkageDatas(linkage);
+            dialog.show();*/
         });
         mBinding.rv.setAdapter(mAdapter);
 
@@ -148,10 +154,11 @@ public class RxMagicFragment extends Fragment {
         });
     }
 
-    private void initLinkageDatas() {
+    private void initLinkageDatas(LinkageRecyclerView linkage) {
         Gson gson = new Gson();
-        List<LinkageItem> items = (List<LinkageItem>) gson.fromJson(getString(R.string.operators_json), new TypeToken<List<LinkageItem>>() {
-        }.getType());
+        List<LinkageItem> items = (List<LinkageItem>) gson.fromJson(
+                getString(R.string.operators_json), new TypeToken<List<LinkageItem>>() {
+                }.getType());
         List<String> groupNames = new ArrayList<>();
 
         try {
@@ -165,13 +172,13 @@ public class RxMagicFragment extends Fragment {
             toString();
             for (int i = 0; i < items.size(); i++) {
                 if (items.get(i).isHeader) {
-                    mLinkageRecyclerView.getHeaderPositions().add(i);
+                    linkage.getHeaderPositions().add(i);
                 }
             }
         } catch (Exception e) {
             e.toString();
         }
-        mLinkageRecyclerView.init(groupNames, items);
+        linkage.init(groupNames, items);
     }
 
     private void showTipOfDeveloping(View v) {

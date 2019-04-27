@@ -8,6 +8,7 @@
         android:id="@+id/level_2_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorLightGray"
         android:padding="12dp"
         android:singleLine="true" />
 </LinearLayout>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linkage"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView
-        android:id="@+id/linkage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+</com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView>
 
-</FrameLayout>
+

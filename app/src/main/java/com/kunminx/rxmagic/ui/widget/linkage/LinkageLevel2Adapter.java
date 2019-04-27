@@ -38,7 +38,8 @@ public class LinkageLevel2Adapter extends BaseSectionQuickAdapter<LinkageItem, B
 
     @Override
     protected void convert(BaseViewHolder helper, LinkageItem item) {
-        LinkageItem.ItemInfo t = item.t;
-        helper.setText(R.id.level_2_title, t.getTitle());
+        LinkageItem.ItemInfo info = item.t;
+        helper.setText(R.id.level_2_title, info.getTitle());
+        helper.setText(R.id.level_2_content, info.getContent());
     }
 }
