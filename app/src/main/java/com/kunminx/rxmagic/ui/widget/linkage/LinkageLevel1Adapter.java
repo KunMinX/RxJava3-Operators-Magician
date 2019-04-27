@@ -53,23 +53,18 @@ public class LinkageLevel1Adapter extends BaseQuickAdapter<String, BaseViewHolde
         helper.getView(R.id.layout_group).setSelected(true);
     }
 
-    //传入position,设置左侧列表相应item高亮
     public void selectItem(int position) {
         for (int i = 0; i < getData().size(); i++) {
             if (position == i) {
-                mTextViews.get(i).setBackgroundColor(0xff0068b7);
+                mTextViews.get(i).setBackgroundColor(mContext.getResources().getColor(R.color.colorPurple));
                 mTextViews.get(i).setTextColor(ContextCompat.getColor(mContext, R.color.colorWhite));
-
-                //以下是指定某一个TextView滚动的效果
                 mTextViews.get(i).setEllipsize(TextUtils.TruncateAt.MARQUEE);
                 mTextViews.get(i).setFocusable(true);
                 mTextViews.get(i).setFocusableInTouchMode(true);
                 mTextViews.get(i).setMarqueeRepeatLimit(-1);
             } else {
-                mTextViews.get(i).setBackgroundColor(0xffffffff);
+                mTextViews.get(i).setBackgroundColor(mContext.getResources().getColor(R.color.colorWhite));
                 mTextViews.get(i).setTextColor(ContextCompat.getColor(mContext, R.color.colorGray));
-
-                //失去焦点则停止滚动
                 mTextViews.get(i).setEllipsize(TextUtils.TruncateAt.END);
                 mTextViews.get(i).setFocusable(false);
                 mTextViews.get(i).setFocusableInTouchMode(false);

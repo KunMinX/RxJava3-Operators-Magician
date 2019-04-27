@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.PopupMenu;
@@ -44,6 +45,8 @@ import com.kunminx.rxmagic.bean.RxOperator;
 import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
 import com.kunminx.rxmagic.ui.adapter.RxExpressionAdapter;
 import com.kunminx.rxmagic.ui.widget.linkage.LinkageItem;
+import com.kunminx.rxmagic.ui.widget.linkage.LinkageLevel1Adapter;
+import com.kunminx.rxmagic.ui.widget.linkage.LinkageLevel2Adapter;
 import com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView;
 
 import java.util.ArrayList;
@@ -58,8 +61,6 @@ public class RxMagicFragment extends Fragment {
 
     private FragmentRxmagicBinding mBinding;
     private RxExpressionAdapter mAdapter;
-    private LinkageRecyclerView mLinkageRecyclerView;
-    private View linkageLayout;
 
     public static RxMagicFragment newInstance() {
         Bundle args = new Bundle();
@@ -90,7 +91,21 @@ public class RxMagicFragment extends Fragment {
             View view2 = View.inflate(getContext(), R.layout.layout_linkage, null);
             LinkageRecyclerView linkage = view2.findViewById(R.id.linkage);
             initLinkageDatas(linkage);
-            new MaterialAlertDialogBuilder(getActivity()).setView(linkage).show();
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
+            AlertDialog dialog = builder.setView(linkage).show();
+            linkage.setClickListener(new LinkageRecyclerView.OnLinkageItemClickListener() {
+                @Override
+                public void onLinkageLevel1Click(LinkageLevel1Adapter adapter, View view, int position) {
+
+                }
+
+                @Override
+                public void onLinkageLevel2Click(LinkageLevel2Adapter adapter, View view, int position) {
+                    item.getRxOperator().setName(adapter.getData().get(position).t.getTitle());
+                    mAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
+                }
+            });
 
             //TODO bottomSheetDialog may need overrite onTouch to deal with scroll conflict
             /*View view2 = View.inflate(getContext(), R.layout.layout_linkage, null);

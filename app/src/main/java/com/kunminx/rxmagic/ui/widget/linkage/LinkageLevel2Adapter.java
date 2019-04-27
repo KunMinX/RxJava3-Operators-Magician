@@ -41,5 +41,6 @@ public class LinkageLevel2Adapter extends BaseSectionQuickAdapter<LinkageItem, B
         LinkageItem.ItemInfo info = item.t;
         helper.setText(R.id.level_2_title, info.getTitle());
         helper.setText(R.id.level_2_content, info.getContent());
+        helper.addOnClickListener(R.id.level_2_item);
     }
 }
