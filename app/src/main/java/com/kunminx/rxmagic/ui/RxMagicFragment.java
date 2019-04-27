@@ -25,15 +25,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.kunminx.rxmagic.R;
-import com.kunminx.rxmagic.bean.RxExpression;
-import com.kunminx.rxmagic.bean.RxOperator;
-import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
-import com.kunminx.rxmagic.ui.adapter.RxExpressionAdapter;
-
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,6 +32,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.kunminx.rxmagic.R;
+import com.kunminx.rxmagic.bean.RxExpression;
+import com.kunminx.rxmagic.bean.RxOperator;
+import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
+import com.kunminx.rxmagic.ui.adapter.RxExpressionAdapter;
+import com.kunminx.rxmagic.ui.widget.linkage.LinkageItem;
+import com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import thereisnospon.codeview.CodeViewTheme;
 
@@ -51,6 +58,8 @@ public class RxMagicFragment extends Fragment {
 
     private FragmentRxmagicBinding mBinding;
     private RxExpressionAdapter mAdapter;
+    private LinkageRecyclerView mLinkageRecyclerView;
+    private View linkageLayout;
 
     public static RxMagicFragment newInstance() {
         Bundle args = new Bundle();
@@ -78,8 +87,12 @@ public class RxMagicFragment extends Fragment {
 
         mAdapter = new RxExpressionAdapter(getContext());
         mAdapter.setListener((view1, item, position) -> {
-            //TODO should be replaced by linkageListView
-            showMenu(view1, R.menu.operator_menu, item);
+            linkageLayout = LayoutInflater.from(getContext()).inflate(R.layout.layout_linkage, null);
+            mLinkageRecyclerView = (LinkageRecyclerView) linkageLayout.findViewById(R.id.linkage);
+            initLinkageDatas();
+            new MaterialAlertDialogBuilder(getContext())
+                    .setView(linkageLayout)
+                    .show();
         });
         mBinding.rv.setAdapter(mAdapter);
 
@@ -87,7 +100,7 @@ public class RxMagicFragment extends Fragment {
             mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
             mBinding.code.showCode(getString(R.string.code_tip));
         } catch (Exception ex) {
-            System.out.println(ex.toString() + "--------------------------------------");
+            ex.printStackTrace();
         }
 
         mBinding.btnAdd.setOnClickListener(v -> {
@@ -133,6 +146,32 @@ public class RxMagicFragment extends Fragment {
                 mBinding.code.showCode(code);
             }
         });
+    }
+
+    private void initLinkageDatas() {
+        Gson gson = new Gson();
+        List<LinkageItem> items = (List<LinkageItem>) gson.fromJson(getString(R.string.operators_json), new TypeToken<List<LinkageItem>>() {
+        }.getType());
+        List<String> groupNames = new ArrayList<>();
+
+        try {
+            if (items != null && items.size() > 0) {
+                for (LinkageItem item1 : items) {
+                    if (item1.isHeader) {
+                        groupNames.add(item1.header);
+                    }
+                }
+            }
+            toString();
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).isHeader) {
+                    mLinkageRecyclerView.getHeaderPositions().add(i);
+                }
+            }
+        } catch (Exception e) {
+            e.toString();
+        }
+        mLinkageRecyclerView.init(groupNames, items);
     }
 
     private void showTipOfDeveloping(View v) {

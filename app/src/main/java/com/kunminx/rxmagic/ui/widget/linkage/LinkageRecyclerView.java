@@ -47,7 +47,7 @@ public class LinkageRecyclerView extends ConstraintLayout {
     private RecyclerView mRvLevel2;
     private LinkageLevel1Adapter mLevel1Adapter;
     private LinkageLevel2Adapter mLevel2Adapter;
-    private TextView mTvLevel2Title;
+    private TextView mTvLevel2Header;
     private List<String> mGroupNames;
     private List<LinkageItem> mItems;
 
@@ -83,7 +83,7 @@ public class LinkageRecyclerView extends ConstraintLayout {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_linkage_view, this);
         mRvLevel1 = (RecyclerView) view.findViewById(R.id.rv_level_1);
         mRvLevel2 = (RecyclerView) view.findViewById(R.id.rv_level_2);
-        mTvLevel2Title = (TextView) view.findViewById(R.id.level_2_header);
+        mTvLevel2Header = (TextView) view.findViewById(R.id.tv_level_2_header);
 
         mGridLayoutManager = new GridLayoutManager(mContext, 3);
         if (mLevel2Adapter == null) {
@@ -105,7 +105,7 @@ public class LinkageRecyclerView extends ConstraintLayout {
 
         if (mLevel1Adapter == null) {
             mLevel1Adapter = new LinkageLevel1Adapter(R.layout.adapter_linkage_level_1, null);
-            mRvLevel1.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+            mRvLevel1.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.VERTICAL, false));
             mRvLevel1.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
             mRvLevel1.setAdapter(mLevel1Adapter);
         }
@@ -114,8 +114,8 @@ public class LinkageRecyclerView extends ConstraintLayout {
     public void init(List<String> groupNames, List<LinkageItem> linkageItems) {
         this.mItems = linkageItems;
         this.mGroupNames = groupNames;
-        initLinkageLevel2();
         initLinkageLevel1();
+        initLinkageLevel2();
     }
 
     private void initLinkageLevel2() {
@@ -123,7 +123,7 @@ public class LinkageRecyclerView extends ConstraintLayout {
 
         //设置右侧初始title
         if (mItems.get(mFirstPosition).isHeader) {
-            mTvLevel2Title.setText(mItems.get(mFirstPosition).header);
+            mTvLevel2Header.setText(mItems.get(mFirstPosition).header);
         }
 
         mRvLevel2.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -132,7 +132,7 @@ public class LinkageRecyclerView extends ConstraintLayout {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 //获取右侧title的高度
-                mTitleHeight = mTvLevel2Title.getHeight();
+                mTitleHeight = mTvLevel2Header.getHeight();
             }
 
             @Override
@@ -146,10 +146,10 @@ public class LinkageRecyclerView extends ConstraintLayout {
                     if (view != null) {
                         //如果此组名item顶部和父容器顶部距离大于等于title的高度,则设置偏移量
                         if (view.getTop() >= mTitleHeight) {
-                            mTvLevel2Title.setY(view.getTop() - mTitleHeight);
+                            mTvLevel2Header.setY(view.getTop() - mTitleHeight);
                         } else {
                             //否则不设置
-                            mTvLevel2Title.setY(0);
+                            mTvLevel2Header.setY(0);
                         }
                     }
                 }
@@ -161,19 +161,19 @@ public class LinkageRecyclerView extends ConstraintLayout {
                     //给first赋值
                     mFirstPosition = firstPosition;
                     //不设置Y轴的偏移量
-                    mTvLevel2Title.setY(0);
+                    mTvLevel2Header.setY(0);
 
                     //判断如果右侧可见的第一个item是否是header,设置相应的值
                     if (mItems.get(mFirstPosition).isHeader) {
-                        mTvLevel2Title.setText(mItems.get(mFirstPosition).header);
+                        mTvLevel2Header.setText(mItems.get(mFirstPosition).header);
                     } else {
-                        mTvLevel2Title.setText(mItems.get(mFirstPosition).t.getGroup());
+                        mTvLevel2Header.setText(mItems.get(mFirstPosition).t.getGroup());
                     }
                 }
 
                 //遍历左边列表,列表对应的内容等于右边的title,则设置左侧对应item高亮
                 for (int i = 0; i < mGroupNames.size(); i++) {
-                    if (mGroupNames.get(i).equals(mTvLevel2Title.getText().toString())) {
+                    if (mGroupNames.get(i).equals(mTvLevel2Header.getText().toString())) {
                         mLevel1Adapter.selectItem(i);
                     }
                 }

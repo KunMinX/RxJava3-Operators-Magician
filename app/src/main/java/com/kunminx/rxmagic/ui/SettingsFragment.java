@@ -26,13 +26,19 @@ import android.view.ViewGroup;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentSettingsBinding;
+import com.kunminx.rxmagic.ui.widget.linkage.LinkageItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Create by KunMinX at 19/4/23
@@ -65,9 +71,34 @@ public class SettingsFragment extends Fragment {
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
-
+        initLinkageDatas();
     }
 
+    private void initLinkageDatas() {
+        Gson gson = new Gson();
+        List<LinkageItem> items = (List<LinkageItem>) gson.fromJson(getString(R.string.operators_json), new TypeToken<List<LinkageItem>>() {
+        }.getType());
+        List<String> groupNames = new ArrayList<>();
+
+        try {
+            if (items != null && items.size() > 0) {
+                for (LinkageItem item1 : items) {
+                    if (item1.isHeader) {
+                        groupNames.add(item1.header);
+                    }
+                }
+            }
+            toString();
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).isHeader) {
+                    mBinding.linkage.getHeaderPositions().add(i);
+                }
+            }
+        } catch (Exception e) {
+            e.toString();
+        }
+        mBinding.linkage.init(groupNames, items);
+    }
 
     private void showTipOfDeveloping(View v) {
         showTip(v, getString(R.string.tip_developing));

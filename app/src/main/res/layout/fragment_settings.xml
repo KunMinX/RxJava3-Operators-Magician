@@ -24,8 +24,8 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <WebView
-            android:id="@+id/web_view"
+        <com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView
+            android:id="@+id/linkage"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"
