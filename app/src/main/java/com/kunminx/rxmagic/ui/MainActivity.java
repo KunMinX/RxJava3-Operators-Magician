@@ -16,7 +16,6 @@ package com.kunminx.rxmagic.ui;
  * limitations under the License.
  */
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,7 +28,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.internal.NavigationMenuView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.ActivityMainBinding;
 import com.kunminx.samples.MyApplication;
@@ -68,62 +66,44 @@ public class MainActivity extends AppCompatActivity {
 
         hideNavigationViewScrollbars(mBinding.navView);
         mBinding.navView.setNavigationItemSelectedListener(item -> {
+            if (item.isChecked()) {
+                closeDrawer();
+                return true;
+            }
             switch (item.getItemId()) {
                 case R.id.nav_guide:
-                    if (!item.isChecked()) {
-                        loadGuideFragment();
-                    }
+                    loadGuideFragment();
                     break;
                 case R.id.nav_declare:
-                    if (!item.isChecked()) {
-                        loadMagicFragment();
-                    }
+                    loadMagicFragment();
                     break;
                 case R.id.nav_operators:
-                    if (!item.isChecked()) {
-                        loadOperatorsFragment();
-                    }
+                    loadOperatorsFragment();
                     break;
                 case R.id.nav_networking:
-                    if (!item.isChecked()) {
-                        loadOtherSampleFragment(NetworkingFragment.class.getSimpleName());
-                    }
+                    loadOtherSampleFragment(NetworkingFragment.class.getSimpleName());
                     break;
                 case R.id.nav_cache:
-                    if (!item.isChecked()) {
-                        loadOtherSampleFragment(CacheExampleFragment.class.getSimpleName());
-                    }
+                    loadOtherSampleFragment(CacheExampleFragment.class.getSimpleName());
                     break;
                 case R.id.nav_rxbus:
-                    if (!item.isChecked()) {
-                        ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
-                        loadOtherSampleFragment(RxBusFragment.class.getSimpleName());
-                    }
+                    ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
+                    loadOtherSampleFragment(RxBusFragment.class.getSimpleName());
                     break;
                 case R.id.nav_pagination:
-                    if (!item.isChecked()) {
-                        loadOtherSampleFragment(PaginationFragment.class.getSimpleName());
-                    }
+                    loadOtherSampleFragment(PaginationFragment.class.getSimpleName());
                     break;
                 case R.id.nav_compose:
-                    if (!item.isChecked()) {
-                        loadOtherSampleFragment(CompletableObserverExampleFragment.class.getSimpleName());
-                    }
+                    loadOtherSampleFragment(CompletableObserverExampleFragment.class.getSimpleName());
                     break;
                 case R.id.nav_search:
-                    if (!item.isChecked()) {
-                        loadOtherSampleFragment(SearchFragment.class.getSimpleName());
-                    }
+                    loadOtherSampleFragment(SearchFragment.class.getSimpleName());
                     break;
                 case R.id.nav_settings:
-                    if (!item.isChecked()) {
-                        loadSettingFragment();
-                    }
+                    loadSettingFragment();
                     break;
                 case R.id.nav_about:
-                    if (!item.isChecked()) {
-                        loadAboutFragment();
-                    }
+                    loadAboutFragment();
                     break;
                 default:
             }
@@ -132,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         loadMagicFragment();
-
 
     }
 
@@ -196,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(mAboutFragment);
     }
 
-    //Fixme: when cache switch to networking and then switch to operator finally switch to networking, networking may not visible
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 

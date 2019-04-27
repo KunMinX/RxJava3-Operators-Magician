@@ -70,3 +70,13 @@ rx.internal.util.atomic.LinkedQueueNode consumerNode;
 -keep class com.kunminx.rxmagic.bean.** {*;}
 
 -keep class thereisnospon.codeview.** {*;}
+
+
+-keep class com.chad.library.adapter.** {
+*;
+}
+-keep public class * extends com.chad.library.adapter.base.BaseQuickAdapter
+-keep public class * extends com.chad.library.adapter.base.BaseViewHolder
+-keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
+     <init>(...);
+}

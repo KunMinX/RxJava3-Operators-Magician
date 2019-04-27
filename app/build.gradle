@@ -26,6 +26,12 @@ android {
     dataBinding {
         enabled = true
     }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -58,5 +64,6 @@ dependencies {
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
     implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'
 
-
+    api(name: 'brvah_androidx', ext: 'aar')
+    implementation 'com.google.code.gson:gson:2.8.2'
 }

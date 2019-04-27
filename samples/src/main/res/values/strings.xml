@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">RxJava2-Android-Samples</string>
-    <string name="doSomeWork">DO SOME WORK</string>
+    <string name="doSomeWork">doSomeWork</string>
     <string name="operators">Operators</string>
     <string name="networking">Networking</string>
     <string name="cache">Cache</string>
@@ -46,4 +46,5 @@
     <string name="switch_map">Switch Map</string>
     <string name="take_while">Take While</string>
     <string name="take_until">Take Until</string>
+    <string name="tip_to_debug">Tip: You may debug it on Android Studio while press above buttons for watching result.</string>
 </resources>

@@ -79,6 +79,7 @@
                     android:id="@+id/nav_settings"
                     android:icon="@drawable/ic_settings"
                     android:title="@string/setting"
+                    android:visible="false"
                     app:showAsAction="ifRoom" />
 
                 <item

@@ -56,6 +56,7 @@ public class OtherSampleFragment extends Fragment {
     private CompletableObserverExampleFragment mCompletableObserverExampleFragment;
     private SearchFragment mSearchFragment;
     private Fragment mLastFragment;
+    private String mLastFragmentTag = "";
 
     public static OtherSampleFragment newInstance(String fragmentTag) {
         Bundle args = new Bundle();
@@ -91,6 +92,10 @@ public class OtherSampleFragment extends Fragment {
     }
 
     public void replaceSubFragment(String fragmentTag) {
+        if (TextUtils.isEmpty(fragmentTag) || mLastFragmentTag.equals(fragmentTag)) {
+            return;
+        }
+        mLastFragmentTag = fragmentTag;
         mBinding.toolbar.setTitle(fragmentTag.replace("Fragment", ""));
         switch (fragmentTag) {
             case "NetworkingFragment":
@@ -112,7 +117,6 @@ public class OtherSampleFragment extends Fragment {
                 loadSearchFragment();
                 break;
             default:
-                //TODO
         }
     }
 
