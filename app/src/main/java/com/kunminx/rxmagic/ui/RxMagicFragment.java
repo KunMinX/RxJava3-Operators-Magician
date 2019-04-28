@@ -85,35 +85,38 @@ public class RxMagicFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
         mAdapter = new RxExpressionAdapter(getContext());
-        mAdapter.setOnButtonClickListener((view1, item, position) -> {
-            View view2 = View.inflate(getContext(), R.layout.layout_linkage, null);
-            LinkageRecyclerView linkage = view2.findViewById(R.id.linkage);
-            initLinkageDatas(linkage);
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
-            AlertDialog dialog = builder.setView(linkage).show();
-            linkage.setLayoutHeight(DIALOG_HEIGHT);
-            linkage.setClickListener(new LinkageRecyclerView.OnLinkageItemClickListener() {
-                @Override
-                public void onLinkageLevel1Click(LinkageLevel1Adapter adapter, View view, int position) {
+        mAdapter.setOnButtonClickListener(new RxExpressionAdapter.OnItemClickListener() {
+            @Override
+            public void onOperatorButtonClick(View view, RxExpression item, int position) {
+                View view2 = View.inflate(getContext(), R.layout.layout_linkage, null);
+                LinkageRecyclerView linkage = view2.findViewById(R.id.linkage);
+                initLinkageDatas(linkage);
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
+                AlertDialog dialog = builder.setView(linkage).show();
+                linkage.setLayoutHeight(DIALOG_HEIGHT);
+                linkage.setClickListener(new LinkageRecyclerView.OnLinkageItemClickListener() {
+                    @Override
+                    public void onLinkageLevel1Click(LinkageLevel1Adapter adapter, View view, int position) {
 
-                }
+                    }
 
-                @Override
-                public void onLinkageLevel2Click(LinkageLevel2Adapter adapter, View view, int position) {
-                    item.getRxOperator().setName(adapter.getData().get(position).t.getTitle());
-                    mAdapter.notifyDataSetChanged();
-                    dialog.dismiss();
-                }
-            });
+                    @Override
+                    public void onLinkageLevel2Click(LinkageLevel2Adapter adapter, View view, int position) {
+                        item.getRxOperator().setName(adapter.getData().get(position).t.getTitle());
+                        mAdapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+            }
 
-            //TODO bottomSheetDialog may need overrite onTouch to deal with scroll conflict
-            /*View view2 = View.inflate(getContext(), R.layout.layout_linkage, null);
-            BottomSheetDialog dialog = new BottomSheetDialog(getContext());
-            dialog.setContentView(view2);
-            LinkageRecyclerView linkage = view2.findViewById(R.id.linkage);
-            initLinkageDatas(linkage);
-            dialog.show();*/
+            @Override
+            public void onDeleteButtonClick(View view, RxExpression item, int position) {
+                mAdapter.removeCacheByPosition(position);
+                mAdapter.getList().remove(position);
+                mAdapter.notifyItemRemoved(position);
+            }
         });
+
         mBinding.rv.setAdapter(mAdapter);
 
         try {
@@ -141,12 +144,20 @@ public class RxMagicFragment extends Fragment {
             }
         });
 
-        mBinding.btnDelete.setOnClickListener(this::showTipOfDeveloping);
+        mBinding.btnDelete.setOnClickListener(v -> {
+            boolean isDeleteMode = mAdapter.isDeleteMode();
+            mAdapter.setDeleteMode(!isDeleteMode);
+            mBinding.btnDelete.setText(isDeleteMode ? "REMOVE" : "CLOSE");
+            mBinding.btnAdd.setEnabled(isDeleteMode);
+            mBinding.btnClear.setEnabled(isDeleteMode && mAdapter.getList().size() > 0);
+        });
+
         mBinding.btnClear.setOnClickListener(v -> {
             new MaterialAlertDialogBuilder(getContext(), R.style.AlertDialogTheme)
                     .setTitle(getString(R.string.dialog_title_warning))
                     .setMessage(getString(R.string.dialog_msg_clear_op_list))
                     .setPositiveButton(getString(R.string.sure), (dialog, which) -> {
+                        mAdapter.clearCache();
                         mAdapter.getList().clear();
                         mAdapter.notifyDataSetChanged();
                         mBinding.ivEmpty.setVisibility(View.VISIBLE);

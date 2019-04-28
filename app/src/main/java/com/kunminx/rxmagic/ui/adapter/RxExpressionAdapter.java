@@ -40,6 +40,24 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
     private OnItemClickListener mListener;
     private int mEtFocusPosition = -1;
     private InputMethodManager inputMethodManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+    private boolean mIsDeleteMode;
+
+    public void setDeleteMode(boolean deleteMode) {
+        mIsDeleteMode = deleteMode;
+        notifyDataSetChanged();
+    }
+
+    public boolean isDeleteMode() {
+        return mIsDeleteMode;
+    }
+
+    public void removeCacheByPosition(int position) {
+        mTextCache.remove(position);
+    }
+
+    public void clearCache() {
+        mTextCache.clear();
+    }
 
     public RxExpressionAdapter(Context context) {
         super(context);
@@ -52,6 +70,10 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
 
     @Override
     protected void onBindItem(AdapterRxExpressionBinding binding, RxExpression item, RecyclerView.ViewHolder holder) {
+
+        binding.btnOp.setVisibility(mIsDeleteMode ? View.GONE : View.VISIBLE);
+        binding.btnDelete.setVisibility(mIsDeleteMode ? View.VISIBLE : View.GONE);
+
         binding.btnOp.setText(item.getRxOperator().getName());
         binding.et.setText(mTextCache.get(holder.getAdapterPosition()));
         binding.et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -64,7 +86,15 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
         });
 
         binding.btnOp.setOnClickListener(v -> {
-            mListener.onItemClick(v, item, holder.getAdapterPosition());
+            if (mListener != null) {
+                mListener.onOperatorButtonClick(v, item, holder.getAdapterPosition());
+            }
+        });
+
+        binding.btnDelete.setOnClickListener(v -> {
+            if (mListener != null) {
+                mListener.onDeleteButtonClick(v, item, holder.getAdapterPosition());
+            }
         });
     }
 
@@ -115,6 +145,10 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View view, RxExpression item, int position);
+//        void onItemClick(View view, RxExpression item, int position);
+
+        void onOperatorButtonClick(View view, RxExpression item, int position);
+
+        void onDeleteButtonClick(View view, RxExpression item, int position);
     }
 }
