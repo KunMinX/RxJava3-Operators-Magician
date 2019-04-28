@@ -4,7 +4,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -24,7 +25,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <WebView
+        <com.kunminx.rxmagic.ui.widget.ScrollListenWebView
             android:id="@+id/web_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -44,6 +45,7 @@
             android:backgroundTint="@color/colorPurple"
             android:text="@string/i_got_it"
             android:textColor="@color/colorWhite"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

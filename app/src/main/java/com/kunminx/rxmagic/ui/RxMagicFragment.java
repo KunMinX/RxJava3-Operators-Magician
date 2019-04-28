@@ -25,13 +25,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -61,6 +58,7 @@ public class RxMagicFragment extends Fragment {
 
     private FragmentRxmagicBinding mBinding;
     private RxExpressionAdapter mAdapter;
+    private static final int DIALOG_HEIGHT = 400;
 
     public static RxMagicFragment newInstance() {
         Bundle args = new Bundle();
@@ -93,6 +91,7 @@ public class RxMagicFragment extends Fragment {
             initLinkageDatas(linkage);
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
             AlertDialog dialog = builder.setView(linkage).show();
+            linkage.setLayoutHeight(DIALOG_HEIGHT);
             linkage.setClickListener(new LinkageRecyclerView.OnLinkageItemClickListener() {
                 @Override
                 public void onLinkageLevel1Click(LinkageLevel1Adapter adapter, View view, int position) {
@@ -171,27 +170,22 @@ public class RxMagicFragment extends Fragment {
 
     private void initLinkageDatas(LinkageRecyclerView linkage) {
         Gson gson = new Gson();
-        List<LinkageItem> items = (List<LinkageItem>) gson.fromJson(
-                getString(R.string.operators_json), new TypeToken<List<LinkageItem>>() {
+        List<LinkageItem> items = gson.fromJson(getString(R.string.operators_json),
+                new TypeToken<List<LinkageItem>>() {
                 }.getType());
-        List<String> groupNames = new ArrayList<>();
 
-        try {
-            if (items != null && items.size() > 0) {
-                for (LinkageItem item1 : items) {
-                    if (item1.isHeader) {
-                        groupNames.add(item1.header);
-                    }
+        List<String> groupNames = new ArrayList<>();
+        if (items != null && items.size() > 0) {
+            for (LinkageItem item1 : items) {
+                if (item1.isHeader) {
+                    groupNames.add(item1.header);
                 }
             }
-            toString();
-            for (int i = 0; i < items.size(); i++) {
-                if (items.get(i).isHeader) {
-                    linkage.getHeaderPositions().add(i);
-                }
+        }
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).isHeader) {
+                linkage.getHeaderPositions().add(i);
             }
-        } catch (Exception e) {
-            e.toString();
         }
         linkage.init(groupNames, items);
     }
@@ -207,24 +201,6 @@ public class RxMagicFragment extends Fragment {
                 .show();
     }
 
-    private void showMenu(View v, @MenuRes int menuRes, RxExpression rxExpression) {
-        PopupMenu popup = new PopupMenu(getContext(), v);
-        popup.getMenuInflater().inflate(menuRes, popup.getMenu());
-        if (popup.getMenu() instanceof MenuBuilder) {
-            MenuBuilder menuBuilder = (MenuBuilder) popup.getMenu();
-            menuBuilder.setOptionalIconsVisible(true);
-        }
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                rxExpression.getRxOperator().setName(menuItem.getTitle().toString());
-                mAdapter.notifyDataSetChanged();
-                return true;
-            }
-        });
-        popup.show();
-    }
-
     private String getCodeOfExpressions() {
         if (mAdapter.getList().size() == 0) {
             return null;
@@ -232,8 +208,11 @@ public class RxMagicFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
         sb.append("Output:\n\n").append("Observable");
         for (RxExpression rxExpression : mAdapter.getList()) {
-            sb.append(".").append(rxExpression.getRxOperator().getName().toLowerCase())
-                    .append("(").append(rxExpression.getExpression()).append(")\n");
+            sb.append(".").append(rxExpression.getRxOperator().getName()).append("(");
+            String expression = rxExpression.getExpression();
+
+            //TODO if expression is i + 1, then make it i -> i + 1
+            sb.append(expression).append(")\n");
         }
         sb.append(".subscribe(getObserve());\n");
         return sb.toString();

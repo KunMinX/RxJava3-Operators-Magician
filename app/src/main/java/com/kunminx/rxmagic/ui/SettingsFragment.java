@@ -76,27 +76,25 @@ public class SettingsFragment extends Fragment {
 
     private void initLinkageDatas() {
         Gson gson = new Gson();
-        List<LinkageItem> items = (List<LinkageItem>) gson.fromJson(getString(R.string.operators_json), new TypeToken<List<LinkageItem>>() {
-        }.getType());
+        List<LinkageItem> items = gson.fromJson(getString(R.string.operators_json),
+                new TypeToken<List<LinkageItem>>() {
+                }.getType());
+
         List<String> groupNames = new ArrayList<>();
 
-        try {
-            if (items != null && items.size() > 0) {
-                for (LinkageItem item1 : items) {
-                    if (item1.isHeader) {
-                        groupNames.add(item1.header);
-                    }
+        if (items != null && items.size() > 0) {
+            for (LinkageItem item1 : items) {
+                if (item1.isHeader) {
+                    groupNames.add(item1.header);
                 }
             }
-            toString();
-            for (int i = 0; i < items.size(); i++) {
-                if (items.get(i).isHeader) {
-                    mBinding.linkage.getHeaderPositions().add(i);
-                }
-            }
-        } catch (Exception e) {
-            e.toString();
         }
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).isHeader) {
+                mBinding.linkage.getHeaderPositions().add(i);
+            }
+        }
+
         mBinding.linkage.init(groupNames, items);
     }
 

@@ -18,8 +18,11 @@ package com.kunminx.rxmagic.ui.widget.linkage;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -42,6 +45,7 @@ public class LinkageRecyclerView extends RelativeLayout {
     private Context mContext;
     private RecyclerView mRvLevel1;
     private RecyclerView mRvLevel2;
+    private LinearLayout mLinkageLayout;
     private LinkageLevel1Adapter mLevel1Adapter;
     private LinkageLevel2Adapter mLevel2Adapter;
     private TextView mTvLevel2Header;
@@ -85,6 +89,7 @@ public class LinkageRecyclerView extends RelativeLayout {
         mRvLevel1 = (RecyclerView) view.findViewById(R.id.rv_level_1);
         mRvLevel2 = (RecyclerView) view.findViewById(R.id.rv_level_2);
         mTvLevel2Header = (TextView) view.findViewById(R.id.tv_level_2_header);
+        mLinkageLayout = (LinearLayout) view.findViewById(R.id.linkage_layout);
 
         int layout = R.layout.adapter_linkage_level_2_linear;
         if (mIsGridLayout) {
@@ -100,7 +105,6 @@ public class LinkageRecyclerView extends RelativeLayout {
 
         mLevel1Adapter = new LinkageLevel1Adapter(R.layout.adapter_linkage_level_1, null);
         mRvLevel1.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.VERTICAL, false));
-//        mRvLevel1.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
         mRvLevel1.setAdapter(mLevel1Adapter);
     }
 
@@ -109,6 +113,12 @@ public class LinkageRecyclerView extends RelativeLayout {
         this.mGroupNames = groupNames;
         initLinkageLevel1();
         initLinkageLevel2();
+    }
+
+    public void setLayoutHeight(float dp) {
+        ViewGroup.LayoutParams lp = mLinkageLayout.getLayoutParams();
+        lp.height = dpToPx(getContext(), dp);
+        mLinkageLayout.setLayoutParams(lp);
     }
 
     private void initLinkageLevel2() {
@@ -200,6 +210,10 @@ public class LinkageRecyclerView extends RelativeLayout {
         });
     }
 
+    private int dpToPx(Context context, float dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return (int) ((dp * displayMetrics.density) + 0.5f);
+    }
 
     public interface OnLinkageItemClickListener {
         void onLinkageLevel1Click(LinkageLevel1Adapter adapter, View view, int position);
