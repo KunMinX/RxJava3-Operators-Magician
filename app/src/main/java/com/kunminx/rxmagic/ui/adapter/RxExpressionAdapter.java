@@ -44,6 +44,15 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
 
     public void setDeleteMode(boolean deleteMode) {
         mIsDeleteMode = deleteMode;
+        //need to reset cache while leave delete mode, because of unknown chaos by cache.
+        mTextCache.clear();
+        if (mList.size() > 0) {
+            for (int i = 0, length = mList.size(); i < length; i++) {
+                if (mList.get(i) != null) {
+                    mTextCache.put(i, mList.get(i).getExpression());
+                }
+            }
+        }
         notifyDataSetChanged();
     }
 
