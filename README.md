@@ -3,9 +3,9 @@
 # Rx钥匙：为无聊而生的 Android 开发者工具
 `更新动态 | 2019.4.25`
 
-很高兴又和大家见面啦！
+很高兴又和大家见面！
 
-有不少热心网友关心，上一期的 Rx钥匙 后来怎么样了，再次谢谢大家的期待，原本目标只是给大家一把钥匙，方便大家意会 RxJava 操作符的本质，想不到有不少网友对 Rx钥匙 的期待远远超出了其本身，期望那是一把能够解决无聊、带给自己更多的魔法棒。
+有不少热心网友关心，上一期的 Rx钥匙 后来怎么样了，再次谢谢大家的期待，原本目标只是给大家一把钥匙，方便大家意会 RxJava 操作符的本质，想不到在后台收到 40 多条留言，且有不少网友对 Rx钥匙 的期待远远超出了其本身，期望那是一把能够解决无聊、带给自己更多的魔法棒。
 
 ![](https://upload-images.jianshu.io/upload_images/57036-d64787fa6df74e62.png)
 
@@ -32,12 +32,13 @@
 
 鉴于目前在 RxOperatorAdapter 的 EditText 读写缓存逻辑上存有一些问题，如果你对此十分熟悉，请不吝参与进来，这个项目会因为你的参与而变得更好！
 
-# 往期热门动态可通过扫码关注
+# 往期热门动态
 
-[2019.4.20：Rx钥匙：本周读者留言回复](#wechatQrcode)
+[2019.4.20：Rx钥匙：本周读者留言回复](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md)
 
-[2019.4.18：你用不惯 RxJava，只因缺了这把钥匙 🔥](#wechatQrcode)
+[2019.4.18：你用不惯 RxJava，只因缺了这把钥匙 🔥](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md)
 
+[# 更多最新动态请扫码关注我的微信公众号](#wechatQrcode)
 
 # Thanks to
 
@@ -47,15 +48,13 @@
 
 [material-components-android](https://github.com/material-components/material-components-android)
 
-[LicenseAdapter](https://github.com/yshrsmz/LicenseAdapter)
+[BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
 
-[JetPack :](https://developer.android.google.cn/jetpack/)
+[CodeView](https://github.com/Thereisnospon/CodeView)
 
 [AndroidX](https://developer.android.google.cn/jetpack/androidx)
 
 [DataBinding](https://developer.android.google.cn/topic/libraries/data-binding)
-
-[Room](https://developer.android.google.cn/topic/libraries/architecture/room)
 
 # My Pages
 
