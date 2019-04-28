@@ -34,11 +34,11 @@
 
 # 往期热门动态
 
-[2019.4.20：Rx钥匙：本周读者留言回复](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md)
+[2019.4.20：Rx钥匙：本周读者留言回复](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md#reply20190420)
 
-[2019.4.18：你用不惯 RxJava，只因缺了这把钥匙 🔥](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md)
+[2019.4.18：你用不惯 RxJava，只因缺了这把钥匙 🔥](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md#key20190418)
 
-[# 更多最新动态请扫码关注我的微信公众号](#wechatQrcode)
+[# 如想获取更多资讯，请关注我的微信公众号](#wechatQrcode)
 
 # Thanks to
 
