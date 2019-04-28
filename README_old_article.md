@@ -1,4 +1,4 @@
-![](https://upload-images.jianshu.io/upload_images/57036-a656f3cb7ab534cd.jpg)
+![](https://upload-images.jianshu.io/upload_images/57036-550b81d8d77c687d.jpg)
 
 <span id="reply20190420"></span>
 
@@ -33,14 +33,7 @@
 
 公众号刚开通，文章留言功能暂无法使用，欢迎在公众号中与 KunMinX（可以叫我坤哥）交流，消息我一般看到了就会回复。
 
-我的微信公众号
-
-![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
-
 ![blank](https://upload-images.jianshu.io/upload_images/57036-f59799c18ddccf9f.png)
-
-![](https://upload-images.jianshu.io/upload_images/57036-550b81d8d77c687d.jpg)
-
 
 <span id="key20190418"></span>
 

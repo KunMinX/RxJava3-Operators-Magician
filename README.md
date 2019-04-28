@@ -38,7 +38,7 @@
 
 [2019.4.18：你用不惯 RxJava，只因缺了这把钥匙 🔥](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md#key20190418)
 
-[# 如想获取更多资讯，请关注我的微信公众号](#wechatQrcode)
+[# 最新动态，微信公众号每周四下午 3 点准时更新，不见不散](#wechatQrcode)
 
 # Thanks to
 
@@ -54,15 +54,15 @@
 
 [AndroidX](https://developer.android.google.cn/jetpack/androidx)
 
-[DataBinding](https://developer.android.google.cn/topic/libraries/data-binding)
-
 # My Pages
 
 Email：[kunminx@gmail.com](mailto:kunminx@gmail.com)
 
-JianShu：[kunminx@jianshu](https://www.jianshu.com/u/5d956b6dcf1f)
+HomePage: [KunMinX 的个人博客](https://kunminx.github.io/)
 
-Juejin：[kunminx@juejin](https://juejin.im/user/58ab0de9ac502e006975d757/posts)
+Juejin：[KunMinX 在掘金](https://juejin.im/user/58ab0de9ac502e006975d757/posts)
+
+JianShu：[KunMinX 的简书](https://www.jianshu.com/u/5d956b6dcf1f)
 
 <span id="wechatQrcode">My WeChat Public Account：</span>
 
