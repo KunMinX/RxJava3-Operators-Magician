@@ -58,13 +58,13 @@
 
 Email：[kunminx@gmail.com](mailto:kunminx@gmail.com)
 
-HomePage: [KunMinX 的个人博客](https://kunminx.github.io/)
+Home：[KunMinX 的个人博客](https://kunminx.github.io/)
 
 Juejin：[KunMinX 在掘金](https://juejin.im/user/58ab0de9ac502e006975d757/posts)
 
 JianShu：[KunMinX 的简书](https://www.jianshu.com/u/5d956b6dcf1f)
 
-<span id="wechatQrcode">My WeChat Public Account：</span>
+<span id="wechatQrcode">KunMinX's WeChat Public Account：</span>
 
 ![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
 

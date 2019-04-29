@@ -80,22 +80,7 @@ public class SettingsFragment extends Fragment {
                 new TypeToken<List<LinkageItem>>() {
                 }.getType());
 
-        List<String> groupNames = new ArrayList<>();
-
-        if (items != null && items.size() > 0) {
-            for (LinkageItem item1 : items) {
-                if (item1.isHeader) {
-                    groupNames.add(item1.header);
-                }
-            }
-        }
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).isHeader) {
-                mBinding.linkage.getHeaderPositions().add(i);
-            }
-        }
-
-        mBinding.linkage.init(groupNames, items);
+        mBinding.linkage.init(items);
     }
 
     private void showTipOfDeveloping(View v) {

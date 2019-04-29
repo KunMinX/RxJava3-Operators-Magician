@@ -5,7 +5,7 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.kunminx.rxmagic1"
+        applicationId "com.kunminx.rxmagic"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -58,8 +58,6 @@ dependencies {
 
     implementation project(":samples")
 
-//    implementation 'com.kunminx.viabus:architecture:0.4.9'
-//    implementation 'com.kunminx.viabus:core:0.4.8'
     implementation 'thereisnospon.codeview:codeview:0.3.1'
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
     implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'

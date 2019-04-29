@@ -108,8 +108,23 @@ public class LinkageRecyclerView extends RelativeLayout {
         mRvLevel1.setAdapter(mLevel1Adapter);
     }
 
-    public void init(List<String> groupNames, List<LinkageItem> linkageItems) {
+    public void init(List<LinkageItem> linkageItems) {
         this.mItems = linkageItems;
+
+        List<String> groupNames = new ArrayList<>();
+        if (mItems != null && mItems.size() > 0) {
+            for (LinkageItem item1 : mItems) {
+                if (item1.isHeader) {
+                    groupNames.add(item1.header);
+                }
+            }
+        }
+        for (int i = 0; i < mItems.size(); i++) {
+            if (mItems.get(i).isHeader) {
+                getHeaderPositions().add(i);
+            }
+        }
+
         this.mGroupNames = groupNames;
         initLinkageLevel1();
         initLinkageLevel2();
