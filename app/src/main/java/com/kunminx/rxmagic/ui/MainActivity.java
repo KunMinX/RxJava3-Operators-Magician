@@ -30,7 +30,6 @@ import com.google.android.material.internal.NavigationMenuView;
 import com.google.android.material.navigation.NavigationView;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.ActivityMainBinding;
-import com.kunminx.samples.MyApplication;
 import com.kunminx.samples.ui.cache.CacheExampleFragment;
 import com.kunminx.samples.ui.networking.NetworkingFragment;
 import com.kunminx.samples.ui.operators.CompletableObserverExampleFragment;
@@ -87,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                     loadOtherSampleFragment(CacheExampleFragment.class.getSimpleName());
                     break;
                 case R.id.nav_rxbus:
-                    ((MyApplication) MainActivity.this.getApplication()).sendAutoEvent();
                     loadOtherSampleFragment(RxBusFragment.class.getSimpleName());
                     break;
                 case R.id.nav_pagination:

@@ -85,9 +85,6 @@ public class RxMagicFragment extends Fragment {
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
-        Resources resources = this.getResources();
-        DisplayMetrics dm = resources.getDisplayMetrics();
-
         mAdapter = new RxExpressionAdapter(getContext());
         mAdapter.setOnButtonClickListener(new RxExpressionAdapter.OnItemClickListener() {
             @Override

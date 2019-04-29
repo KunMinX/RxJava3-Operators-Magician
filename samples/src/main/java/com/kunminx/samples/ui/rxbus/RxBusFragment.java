@@ -11,10 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.kunminx.samples.MyApplication;
 import com.kunminx.samples.R;
 import com.kunminx.samples.model.Events;
 
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -30,6 +32,21 @@ public class RxBusFragment extends Fragment {
     TextView textView;
     Button button;
     private final CompositeDisposable disposables = new CompositeDisposable();
+    private RxBus bus;
+
+    public RxBus bus() {
+        return bus;
+    }
+
+    public void sendAutoEvent() {
+        Observable.timer(2, TimeUnit.SECONDS)
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) {
+                        bus.send(new Events.AutoEvent());
+                    }
+                });
+    }
 
     @Override
     public void onDestroy() {
@@ -48,9 +65,9 @@ public class RxBusFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         button = view.findViewById(R.id.btn);
         textView = view.findViewById(R.id.textView);
+        bus = new RxBus();
 
-        disposables.add(((MyApplication) getActivity().getApplication())
-                .bus()
+        disposables.add(bus()
                 .toObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -68,9 +85,7 @@ public class RxBusFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MyApplication) getActivity().getApplication())
-                        .bus()
-                        .send(new Events.TapEvent());
+                bus().send(new Events.TapEvent());
             }
         });
     }

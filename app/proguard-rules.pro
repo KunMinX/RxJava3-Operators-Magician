@@ -29,7 +29,6 @@
     java.lang.Object readResolve();
 }
 
-
 #RxJava RxAndroid
 -dontwarn sun.misc.**
 -keepclassmembers class rx.internal.util.unsafe.ArrayQueue*Field {
@@ -58,7 +57,7 @@ rx.internal.util.atomic.LinkedQueueNode consumerNode;
  -keepattributes Signature
  -keepattributes Exceptions
 
-
+#AndroidX
 -keep class com.google.android.material.** {*;}
 -keep class androidx.** {*;}
 -keep public class * extends androidx.**
@@ -67,20 +66,16 @@ rx.internal.util.atomic.LinkedQueueNode consumerNode;
 -dontnote com.google.android.material.**
 -dontwarn androidx.*
 
+#beans beans不能混淆，因为Gson解析时字母要一一对应的
 -keep class com.kunminx.rxmagic.bean.** {*;}
+-keep class com.kunminx.linkage.bean.** {*;}
 
--keep class thereisnospon.codeview.** {*;}
+#Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
 
-
--keep class com.chad.library.adapter.** {
-*;
-}
--keep public class * extends com.chad.library.adapter.base.BaseQuickAdapter
--keep public class * extends com.chad.library.adapter.base.BaseViewHolder
--keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
-     <init>(...);
-}
-
-
--dontwarn com.lxj.xpopup.widget.**
--keep class com.lxj.xpopup.widget.**{*;}
+#widget codeView调用showCode方法实际上是通过jsoup来去解析，因此需要排除jsoup关键项的混淆
+#https://blog.csdn.net/yanzhenjie1003/article/details/78384725
+-keeppackagenames org.jsoup.nodes

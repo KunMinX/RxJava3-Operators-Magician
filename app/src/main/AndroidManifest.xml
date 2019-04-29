@@ -3,16 +3,17 @@
     package="com.kunminx.rxmagic">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.kunminx.samples.MyApplication"
+        android:name=".RxMagicApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +21,9 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="2c7610a074fe43d20cebd3fec4be2c519adf3f1d" />
     </application>
 
 </manifest>
