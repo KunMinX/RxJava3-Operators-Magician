@@ -42,7 +42,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView
+        <com.kunminx.linkage.LinkageRecyclerView
             android:id="@+id/linkage"
             android:layout_width="0dp"
             android:layout_height="0dp"

@@ -30,7 +30,7 @@
 
 如你所见，Rx钥匙的界面效果大体已经出来了，我的目标是，将首页先打磨好，这样 Rx钥匙 Apk 最快可能下周就能正式和大家见面了。
 
-鉴于目前在 RxJava 表达式的书写上存有一些字符联想上的小问题，如果你对此十分熟悉，请不吝参与进来，这个项目会因为你的参与而变得更好！
+鉴于目前在 RxJava 表达式的书写上存有 “字符联想” 上的小问题，如果你对此十分熟悉，请不吝参与进来，这个项目会因为你的参与而变得更好！
 
 
 # 往期热门动态
@@ -43,17 +43,18 @@
 
 # Thanks to
 
+[LinkageRecyclerView](https://github.com/KunMinX/LinkageRecyclerView)
+
 [RxJava2](https://github.com/ReactiveX/RxJava)
 
 [RxJava2-Android-Samples](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples)
 
 [material-components-android](https://github.com/material-components/material-components-android)
 
-[BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
+[AndroidX](https://developer.android.google.cn/jetpack/androidx)
 
 [CodeView](https://github.com/Thereisnospon/CodeView)
 
-[AndroidX](https://developer.android.google.cn/jetpack/androidx)
 
 # My Pages
 
@@ -62,8 +63,6 @@ Email：[kunminx@gmail.com](mailto:kunminx@gmail.com)
 Home：[KunMinX 的个人博客](https://kunminx.github.io/)
 
 Juejin：[KunMinX 在掘金](https://juejin.im/user/58ab0de9ac502e006975d757/posts)
-
-JianShu：[KunMinX 的简书](https://www.jianshu.com/u/5d956b6dcf1f)
 
 <span id="wechatQrcode">KunMinX's WeChat Public Account：</span>
 

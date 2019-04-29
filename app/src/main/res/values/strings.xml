@@ -16,7 +16,8 @@
 -->
 
 <resources>
-    <string name="app_name">RxMagic</string>
+    <string name="app_name">RxJava魔法师</string>
+    <!--<string name="app_name">RxMagic</string>-->
     <string name="doSomeWork">doSomeWork</string>
     <string name="declare">Declare</string>
     <string name="guide">Guide</string>

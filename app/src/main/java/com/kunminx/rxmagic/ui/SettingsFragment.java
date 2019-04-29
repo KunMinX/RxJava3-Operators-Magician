@@ -24,20 +24,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.kunminx.rxmagic.R;
-import com.kunminx.rxmagic.databinding.FragmentSettingsBinding;
-import com.kunminx.rxmagic.ui.widget.linkage.LinkageItem;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.kunminx.linkage.bean.LinkageItem;
+import com.kunminx.rxmagic.R;
+import com.kunminx.rxmagic.databinding.FragmentSettingsBinding;
+
 import java.util.List;
 
 /**

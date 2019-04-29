@@ -27,11 +27,6 @@ android {
         enabled = true
     }
 
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
 }
 
 dependencies {
@@ -62,7 +57,7 @@ dependencies {
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
     implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'
 
-    api(name: 'brvah_androidx', ext: 'aar')
+    implementation 'com.kunminx.linkage:linkage-recyclerview:1.0.4'
     implementation 'com.google.code.gson:gson:2.8.2'
 
 }

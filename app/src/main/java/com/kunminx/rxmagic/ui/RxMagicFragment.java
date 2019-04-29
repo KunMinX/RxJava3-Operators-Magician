@@ -16,8 +16,10 @@ package com.kunminx.rxmagic.ui;
  * limitations under the License.
  */
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,17 +38,16 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.kunminx.linkage.LinkageLevelOneAdapter;
+import com.kunminx.linkage.LinkageLevelTwoAdapter;
+import com.kunminx.linkage.LinkageRecyclerView;
+import com.kunminx.linkage.bean.LinkageItem;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.bean.RxExpression;
 import com.kunminx.rxmagic.bean.RxOperator;
 import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
 import com.kunminx.rxmagic.ui.adapter.RxExpressionAdapter;
-import com.kunminx.rxmagic.ui.widget.linkage.LinkageItem;
-import com.kunminx.rxmagic.ui.widget.linkage.LinkageLevel1Adapter;
-import com.kunminx.rxmagic.ui.widget.linkage.LinkageLevel2Adapter;
-import com.kunminx.rxmagic.ui.widget.linkage.LinkageRecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import thereisnospon.codeview.CodeViewTheme;
@@ -58,7 +59,7 @@ public class RxMagicFragment extends Fragment {
 
     private FragmentRxmagicBinding mBinding;
     private RxExpressionAdapter mAdapter;
-    private static final int DIALOG_HEIGHT = 400;
+    private static float DIALOG_HEIGHT = 480;
 
     public static RxMagicFragment newInstance() {
         Bundle args = new Bundle();
@@ -84,6 +85,9 @@ public class RxMagicFragment extends Fragment {
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
 
+        Resources resources = this.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+
         mAdapter = new RxExpressionAdapter(getContext());
         mAdapter.setOnButtonClickListener(new RxExpressionAdapter.OnItemClickListener() {
             @Override
@@ -96,13 +100,13 @@ public class RxMagicFragment extends Fragment {
                 linkage.setLayoutHeight(DIALOG_HEIGHT);
                 linkage.setClickListener(new LinkageRecyclerView.OnLinkageItemClickListener() {
                     @Override
-                    public void onLinkageLevel1Click(LinkageLevel1Adapter adapter, View view, int position) {
+                    public void onLinkageLevel1Click(LinkageLevelOneAdapter.LevelOneViewHolder holder, String group, int position) {
 
                     }
 
                     @Override
-                    public void onLinkageLevel2Click(LinkageLevel2Adapter adapter, View view, int position) {
-                        item.getRxOperator().setName(adapter.getData().get(position).t.getTitle());
+                    public void onLinkageLevel2Click(LinkageLevelTwoAdapter.LevelTwoViewHolder holder, LinkageItem linkageItem, int position) {
+                        item.getRxOperator().setName(linkageItem.t.getTitle());
                         mAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
