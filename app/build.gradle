@@ -59,8 +59,8 @@ dependencies {
 
     implementation 'com.kunminx.linkage:linkage-recyclerview:1.0.4'
     implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
 
 
+    implementation 'com.orhanobut:logger:2.2.0'
 
 }
