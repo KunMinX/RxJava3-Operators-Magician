@@ -1,0 +1,108 @@
+<!--
+    ~ Copyright (c) 2018-2019. KunMinX
+    ~
+    ~ Licensed under the Apache License, Version 2.0 (the "License");
+    ~ you may not use this file except in compliance with the License.
+    ~ You may obtain a copy of the License at
+    ~
+    ~    http://www.apache.org/licenses/LICENSE-2.0
+    ~
+    ~ Unless required by applicable law or agreed to in writing, software
+    ~ distributed under the License is distributed on an "AS IS" BASIS,
+    ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    ~ See the License for the specific language governing permissions and
+    ~ limitations under the License.
+    ~
+-->
+
+<resources>
+    <string name="app_name">RxJava魔法师</string>
+    <string name="doSomeWork">doSomeWork</string>
+    <string name="declare">Declare</string>
+    <string name="guide">Guide</string>
+    <string name="about">About</string>
+    <string name="setting">Settings</string>
+    <string name="operators">Operators</string>
+    <string name="networking">Networking</string>
+    <string name="cache">Cache</string>
+    <string name="pagination">Pagination</string>
+    <string name="search">Search</string>
+    <string name="simple">Simple</string>
+    <string name="map">Map</string>
+    <string name="zip">Zip</string>
+    <string name="disposable">Disposable</string>
+    <string name="take">Take</string>
+    <string name="timer">Timer</string>
+    <string name="interval">Interval</string>
+    <string name="SingleObserver">SingleObserver</string>
+    <string name="CompletableObserver">CompletableObserver</string>
+    <string name="Flowable">Flowable</string>
+    <string name="reduce">Reduce</string>
+    <string name="buffer">Buffer</string>
+    <string name="filter">Filter</string>
+    <string name="skip">Skip</string>
+    <string name="scan">Scan</string>
+    <string name="replay">Replay</string>
+    <string name="concat">Concat</string>
+    <string name="merge">Merge</string>
+    <string name="defer">Defer</string>
+    <string name="distinct">Distinct</string>
+    <string name="last">Last</string>
+    <string name="replay_subject">ReplaySubject</string>
+    <string name="publish_subject">PublishSubject</string>
+    <string name="behavior_subject">BehaviorSubject</string>
+    <string name="async_subject">AsyncSubject</string>
+    <string name="throttle_last">ThrottleLast</string>
+    <string name="debounce">Debounce</string>
+    <string name="window">Window</string>
+    <string name="delay">delay</string>
+    <string name="throttle_first">ThrottleFirst</string>
+    <string name="flatMapAndFilter">flatMapAndFilter</string>
+    <string name="flatMap">flatMap</string>
+    <string name="flatMapWithZip">flatMapWithZip</string>
+    <string name="click_me">Click Me</string>
+    <string name="rx_bus">RxBus</string>
+    <string name="compose">Compose for reusable</string>
+    <string name="result">Result</string>
+    <string name="switch_map">Switch Map</string>
+    <string name="take_while">Take While</string>
+    <string name="take_until">Take Until</string>
+
+    <string name="copy">Copy</string>
+    <string name="view_integrity">View integrity</string>
+    <string name="i_got_it">I Got It</string>
+    <string name="about_me">- Produce by KunMinX with Love -</string>
+    <string name="share">Share</string>
+
+    <string name="test_code">
+        Output：\n\nObservable.just(1, 3, 5, 7, 9)\n .map(i -&gt; i + 1)\n .filter(i -&gt; i &lt; 5)\n .subscribe(getObserve());\n
+    </string>
+    <string name="code_tip">
+        Tip:\n\n Press ADD button to get start.\n
+    </string>
+
+    <string name="tip_developing">This function is developing ^_^</string>
+    <string name="btn_name_add">ADD</string>
+    <string name="btn_name_remove">REMOVE</string>
+    <string name="btn_name_close">CLOSE</string>
+    <string name="btn_name_clear">CLEAR</string>
+    <string name="group_samples">Samples</string>
+    <string name="group_more">More</string>
+    <string name="dialog_title_warning">Warning</string>
+    <string name="dialog_msg_clear_op_list">Are you sure to clear operator list ?</string>
+    <string name="sure">Sure</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="op_just">JUST</string>
+    <string name="op_map">MAP</string>
+    <string name="op_filter">FILTER</string>
+    <string name="tip_of_developing">Press ADD button to get start ^_^</string>
+    <string name="link_guide">https://mp.weixin.qq.com/s/LQLvwtmKNoOfiCtl4iADgw</string>
+    <string name="link_about">https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README.md</string>
+    <string name="tip_got_it">恭喜！ ^_^</string>
+
+    <string name="operators_json">
+        [{\"header\":\"创建\",\"isHeader\":true},{\"isHeader\":false,\"t\":{\"content\":\"复杂数据遍历\",\"group\":\"创建\",\"title\":\"just\"}},{\"isHeader\":false,\"t\":{\"content\":\"复杂数据遍历\",\"group\":\"创建\",\"title\":\"fromArray\"}},{\"isHeader\":false,\"t\":{\"content\":\"复杂数据遍历\",\"group\":\"创建\",\"title\":\"fromIterable\"}},{\"isHeader\":false,\"t\":{\"content\":\"定时任务\",\"group\":\"创建\",\"title\":\"interval\"}},{\"isHeader\":false,\"t\":{\"content\":\"定时任务\",\"group\":\"创建\",\"title\":\"intervalRange\"}},{\"isHeader\":false,\"t\":{\"content\":\"嵌套回调异步事件\",\"group\":\"创建\",\"title\":\"create\"}},{\"isHeader\":false,\"t\":{\"content\":\"延迟任务\",\"group\":\"创建\",\"title\":\"defer\"}},{\"isHeader\":false,\"t\":{\"content\":\"延迟任务\",\"group\":\"创建\",\"title\":\"timer\"}},{\"header\":\"变换\",\"isHeader\":true},{\"isHeader\":false,\"t\":{\"content\":\"变换\",\"group\":\"变换\",\"title\":\"map\"}},{\"isHeader\":false,\"t\":{\"content\":\"变换\",\"group\":\"变换\",\"title\":\"flatMap\"}},{\"isHeader\":false,\"t\":{\"content\":\"变换\",\"group\":\"变换\",\"title\":\"concatMap\"}},{\"header\":\"合并\",\"isHeader\":true},{\"isHeader\":false,\"t\":{\"content\":\"组合多个被观察者，合并事件\",\"group\":\"合并\",\"title\":\"concatArray\"}},{\"isHeader\":false,\"t\":{\"content\":\"组合多个被观察者，合并事件\",\"group\":\"合并\",\"title\":\"concatDelayError\"}},{\"isHeader\":false,\"t\":{\"content\":\"组合多个被观察者，合并事件\",\"group\":\"合并\",\"title\":\"megerArray\"}},{\"isHeader\":false,\"t\":{\"content\":\"组合多个被观察者，合并事件\",\"group\":\"合并\",\"title\":\"megerArrayDelayError\"}},{\"isHeader\":false,\"t\":{\"content\":\"组合多个被观察者，合并为一个被观察者\",\"group\":\"合并\",\"title\":\"zip\"}},{\"isHeader\":false,\"t\":{\"content\":\"组合多个被观察者，合并为一个被观察者\",\"group\":\"合并\",\"title\":\"combineLatest\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送事件前追加其他事件\",\"group\":\"合并\",\"title\":\"startWithArray\"}},{\"isHeader\":false,\"t\":{\"content\":\"组合多个事件为一个事件\",\"group\":\"合并\",\"title\":\"reduce\"}},{\"isHeader\":false,\"t\":{\"content\":\"组合多个事件为一个事件\",\"group\":\"合并\",\"title\":\"collect\"}},{\"isHeader\":false,\"t\":{\"content\":\"汇总发送事件数量\",\"group\":\"合并\",\"title\":\"count\"}},{\"header\":\"过滤\",\"isHeader\":true},{\"isHeader\":false,\"t\":{\"content\":\"指定过滤条件，过滤需要的事件/数据\",\"group\":\"过滤\",\"title\":\"filter\"}},{\"isHeader\":false,\"t\":{\"content\":\"过滤指定类型的事件/数据\",\"group\":\"过滤\",\"title\":\"ofType\"}},{\"isHeader\":false,\"t\":{\"content\":\"过滤条件不满足的事件/数据\",\"group\":\"过滤\",\"title\":\"skip\"}},{\"isHeader\":false,\"t\":{\"content\":\"过滤重复的事件/数据\",\"group\":\"过滤\",\"title\":\"distinct\"}},{\"isHeader\":false,\"t\":{\"content\":\"过滤重复的事件/数据\",\"group\":\"过滤\",\"title\":\"distinctUntilChanged\"}},{\"isHeader\":false,\"t\":{\"content\":\"按时间或数量过滤事件/数据\",\"group\":\"过滤\",\"title\":\"take\"}},{\"isHeader\":false,\"t\":{\"content\":\"过滤指定位置的事件\",\"group\":\"过滤\",\"title\":\"elementAt\"}},{\"isHeader\":false,\"t\":{\"content\":\"按时间段过滤事件\",\"group\":\"过滤\",\"title\":\"throttleFirst\"}},{\"isHeader\":false,\"t\":{\"content\":\"按时间段过滤事件\",\"group\":\"过滤\",\"title\":\"throttleLast\"}},{\"header\":\"条件\",\"isHeader\":true},{\"isHeader\":false,\"t\":{\"content\":\"判断所有事件是否满足\",\"group\":\"条件\",\"title\":\"all\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送的事件判断条件不满足时，就会终止后续事件接收\",\"group\":\"条件\",\"title\":\"takeWhile\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送的事件判断条件不满足时，才接收后续事件\",\"group\":\"条件\",\"title\":\"skipWhile\"}},{\"isHeader\":false,\"t\":{\"content\":\"同filter\",\"group\":\"条件\",\"title\":\"takeUntil\"}},{\"isHeader\":false,\"t\":{\"content\":\"接收判断条件满足之外的事件\",\"group\":\"条件\",\"title\":\"skipUntil\"}},{\"isHeader\":false,\"t\":{\"content\":\"判断2个被观察者发送的事件是否一样\",\"group\":\"条件\",\"title\":\"sequenceEqual\"}},{\"isHeader\":false,\"t\":{\"content\":\"判断发送的数据里面是否包含指定数据\",\"group\":\"条件\",\"title\":\"contains\"}},{\"isHeader\":false,\"t\":{\"content\":\"判断发送的数据是否为空\",\"group\":\"条件\",\"title\":\"isEmpty\"}},{\"isHeader\":false,\"t\":{\"content\":\"多个被观察者，只接收“第一个成功发送数据的被观察者”\",\"group\":\"条件\",\"title\":\"amb\"}},{\"header\":\"其他\",\"isHeader\":true},{\"isHeader\":false,\"t\":{\"content\":\"发送、接收事件的监听\",\"group\":\"其他\",\"title\":\"doOnEach\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送、接收事件的监听\",\"group\":\"其他\",\"title\":\"doOnSubscribe\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送、接收事件的监听\",\"group\":\"其他\",\"title\":\"doOnNext\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送、接收事件的监听\",\"group\":\"其他\",\"title\":\"doAfterNext\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送、接收事件的监听\",\"group\":\"其他\",\"title\":\"doOnComplete\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送、接收事件的监听\",\"group\":\"其他\",\"title\":\"doOnError\"}},{\"isHeader\":false,\"t\":{\"content\":\"错误或异常处理：捕获异常并反馈特殊结果、正常终止\",\"group\":\"其他\",\"title\":\"onErrorReturn\"}},{\"isHeader\":false,\"t\":{\"content\":\"错误或异常处理：捕获异常并返回一个新的事件\",\"group\":\"其他\",\"title\":\"onErrorResumeNext\"}},{\"isHeader\":false,\"t\":{\"content\":\"错误或异常处理：异常重试\",\"group\":\"其他\",\"title\":\"retry\"}},{\"isHeader\":false,\"t\":{\"content\":\"事件重发\",\"group\":\"其他\",\"title\":\"repeat\"}},{\"isHeader\":false,\"t\":{\"content\":\"事件重发\",\"group\":\"其他\",\"title\":\"repeatWhen\"}},{\"isHeader\":false,\"t\":{\"content\":\"事件重发\",\"group\":\"其他\",\"title\":\"repeatUntil\"}},{\"isHeader\":false,\"t\":{\"content\":\"延迟发送被观察者的事件\",\"group\":\"其他\",\"title\":\"delay\"}},{\"isHeader\":false,\"t\":{\"content\":\"发送事件超时处理\",\"group\":\"其他\",\"title\":\"timeout\"}}]
+    </string>
+
+</resources>
