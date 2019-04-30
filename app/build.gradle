@@ -6,15 +6,15 @@ android {
 
     defaultConfig {
         applicationId "com.kunminx.rxmagic"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 10502
+        versionName "1.5.2"
     }
     buildTypes {
         release {
             minifyEnabled true
-//            shrinkResources true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

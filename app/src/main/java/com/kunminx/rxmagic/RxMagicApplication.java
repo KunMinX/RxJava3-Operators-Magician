@@ -33,9 +33,9 @@ public class RxMagicApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Logger.addLogAdapter(new AndroidLogAdapter());
-        Logger.addLogAdapter(new DiskLogAdapter());
-        CrashHandler.init(this);
+//        Logger.addLogAdapter(new AndroidLogAdapter());
+//        Logger.addLogAdapter(new DiskLogAdapter());
+//        CrashHandler.init(this);
 
     }
 }
