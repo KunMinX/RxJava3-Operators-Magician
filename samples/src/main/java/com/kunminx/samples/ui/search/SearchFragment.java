@@ -55,7 +55,7 @@ public class SearchFragment extends Fragment {
                     @Override
                     public boolean test(String text) {
                         if (text.isEmpty()) {
-                            textViewResult.setText("");
+//                            textViewResult.setText("");
                             return false;
                         } else {
                             return true;

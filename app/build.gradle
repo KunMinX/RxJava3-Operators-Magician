@@ -8,8 +8,8 @@ android {
         applicationId "com.kunminx.rxmagic"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 10502
-        versionName "1.5.2"
+        versionCode 10503
+        versionName "1.5.3"
     }
     buildTypes {
         release {
