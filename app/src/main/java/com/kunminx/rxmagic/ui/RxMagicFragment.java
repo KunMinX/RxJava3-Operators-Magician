@@ -97,12 +97,14 @@ public class RxMagicFragment extends Fragment {
                 linkage.setLayoutHeight(DIALOG_HEIGHT);
                 linkage.setClickListener(new LinkageRecyclerView.OnLinkageItemClickListener() {
                     @Override
-                    public void onLinkageLevel1Click(LinkageLevelOneAdapter.LevelOneViewHolder holder, String group, int position) {
+                    public void onLinkageLevel1Click(LinkageLevelOneAdapter.LevelOneViewHolder holder,
+                                                     String group, int position) {
 
                     }
 
                     @Override
-                    public void onLinkageLevel2Click(LinkageLevelTwoAdapter.LevelTwoViewHolder holder, LinkageItem linkageItem, int position) {
+                    public void onLinkageLevel2Click(LinkageLevelTwoAdapter.LevelTwoViewHolder holder,
+                                                     LinkageItem linkageItem, int position) {
                         item.getRxOperator().setName(linkageItem.t.getTitle());
                         mAdapter.notifyDataSetChanged();
                         dialog.dismiss();
@@ -115,6 +117,7 @@ public class RxMagicFragment extends Fragment {
                 mAdapter.removeCacheByPosition(position);
                 mAdapter.getList().remove(position);
                 mAdapter.notifyItemRemoved(position);
+                afterRemoveItems();
             }
         });
 
@@ -138,19 +141,19 @@ public class RxMagicFragment extends Fragment {
             mAdapter.getList().add(expression);
             mAdapter.notifyItemInserted(mAdapter.getList().size() - 1);
 
-            if (!mBinding.btnDelete.isEnabled() && mAdapter.getList().size() > 0) {
-                mBinding.btnDelete.setEnabled(true);
+            if (!mBinding.btnRemove.isEnabled() && mAdapter.getList().size() > 0) {
+                mBinding.btnRemove.setEnabled(true);
                 mBinding.btnClear.setEnabled(true);
                 mBinding.ivEmpty.setVisibility(View.GONE);
             }
         });
 
-        mBinding.btnDelete.setOnClickListener(v -> {
+        mBinding.btnRemove.setOnClickListener(v -> {
+            // if isDeleteMode when click btnRemove, then everything is going to disDeleteMode. Visa versa.
             boolean isDeleteMode = mAdapter.isDeleteMode();
             mAdapter.setDeleteMode(!isDeleteMode);
-            mBinding.btnDelete.setText(isDeleteMode ? "REMOVE" : "CLOSE");
+            mBinding.btnRemove.setText(isDeleteMode ? getString(R.string.btn_name_remove) : getString(R.string.btn_name_close));
             mBinding.btnAdd.setEnabled(isDeleteMode);
-            mBinding.btnClear.setEnabled(isDeleteMode && mAdapter.getList().size() > 0);
         });
 
         mBinding.btnClear.setOnClickListener(v -> {
@@ -161,10 +164,7 @@ public class RxMagicFragment extends Fragment {
                         mAdapter.clearCache();
                         mAdapter.getList().clear();
                         mAdapter.notifyDataSetChanged();
-                        mBinding.ivEmpty.setVisibility(View.VISIBLE);
-                        mBinding.btnDelete.setEnabled(false);
-                        mBinding.btnClear.setEnabled(false);
-                        mBinding.code.showCode(getString(R.string.code_tip));
+                        afterRemoveItems();
                     })
                     .setNegativeButton(getString(R.string.cancel), null)
                     .show();
@@ -178,6 +178,18 @@ public class RxMagicFragment extends Fragment {
                 mBinding.code.showCode(code);
             }
         });
+    }
+
+    private void afterRemoveItems() {
+        mBinding.btnClear.setEnabled(mAdapter.isDeleteMode() && mAdapter.getList().size() > 0);
+        if (mAdapter.getList().size() == 0) {
+            mBinding.ivEmpty.setVisibility(View.VISIBLE);
+            mBinding.code.showCode(getString(R.string.code_tip));
+            mBinding.btnRemove.setEnabled(false);
+            mAdapter.setDeleteMode(false);
+            mBinding.btnRemove.setText(getString(R.string.btn_name_remove));
+            mBinding.btnAdd.setEnabled(true);
+        }
     }
 
     private void initLinkageDatas(LinkageRecyclerView linkage) {

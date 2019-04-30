@@ -26,6 +26,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.material.internal.NavigationMenuView;
 import com.google.android.material.navigation.NavigationView;
 import com.kunminx.rxmagic.R;
@@ -38,6 +39,8 @@ import com.kunminx.samples.ui.rxbus.RxBusFragment;
 import com.kunminx.samples.ui.search.SearchFragment;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Create by KunMinX at 19/4/17
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         KeyboardVisibilityEvent.setEventListener(this, isOpen -> {

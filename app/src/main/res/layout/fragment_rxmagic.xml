@@ -86,7 +86,7 @@
                     android:text="@string/btn_name_add" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_delete"
+                    android:id="@+id/btn_remove"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
