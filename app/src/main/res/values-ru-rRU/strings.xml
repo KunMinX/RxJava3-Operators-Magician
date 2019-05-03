@@ -19,15 +19,15 @@
     <string name="app_name">RxJava魔法师</string>
     <!--<string name="app_name">RxMagic</string>-->
     <string name="doSomeWork">doSomeWork</string>
-    <string name="declare">Declare</string>
-    <string name="guide">Guide</string>
-    <string name="about">About</string>
-    <string name="setting">Settings</string>
+    <string name="declare">декларативный</string>
+    <string name="guide">идея</string>
+    <string name="about">на</string>
+    <string name="setting">устанавливать</string>
     <string name="operators">Operators</string>
-    <string name="networking">Networking</string>
-    <string name="cache">Cache</string>
-    <string name="pagination">Pagination</string>
-    <string name="search">Search</string>
+    <string name="networking">Пример сети</string>
+    <string name="cache">Пример кэша</string>
+    <string name="pagination">Пример пейджинговой нагрузки</string>
+    <string name="search">Пример поиска</string>
     <string name="simple">Simple</string>
     <string name="map">Map</string>
     <string name="zip">Zip</string>
@@ -69,11 +69,11 @@
     <string name="take_while">Take While</string>
     <string name="take_until">Take Until</string>
 
-    <string name="copy">Copy</string>
-    <string name="view_integrity">View integrity</string>
-    <string name="i_got_it">I Got It</string>
+    <string name="copy">копия</string>
+    <string name="view_integrity">Просмотр вывода кода</string>
+    <string name="i_got_it">Я понимаю</string>
     <string name="about_me">- Produce by KunMinX with Love -</string>
-    <string name="share">Share</string>
+    <string name="share">доля</string>
 
     <string name="test_code">
         Output：\n\nObservable.just(1, 3, 5, 7, 9)\n .map(i -&gt; i + 1)\n .filter(i -&gt; i &lt; 5)\n .subscribe(getObserve());\n
@@ -91,8 +91,8 @@
     <string name="group_more">More</string>
     <string name="dialog_title_warning">Warning</string>
     <string name="dialog_msg_clear_op_list">Are you sure to clear operator list ?</string>
-    <string name="sure">Sure</string>
-    <string name="cancel">Cancel</string>
+    <string name="sure">определить</string>
+    <string name="cancel">отменен</string>
 
     <string name="op_just">JUST</string>
     <string name="op_map">MAP</string>
