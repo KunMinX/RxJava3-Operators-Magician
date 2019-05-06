@@ -31,7 +31,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentRxGuideBinding;
-import com.kunminx.rxmagic.ui.widget.ScrollListenWebView;
+import com.kunminx.rxmagic.ui.widget.ScrollListenableWebView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,7 +75,7 @@ public class RxGuideFragment extends Fragment {
         mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
         mBinding.webView.loadUrl(getString(R.string.link_guide));
         mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
-        mBinding.webView.setListener(new ScrollListenWebView.OnScrollChangeListener() {
+        mBinding.webView.setListener(new ScrollListenableWebView.OnScrollChangeListener() {
             @Override
             public void onPageEnd(int l, int t, int oldl, int oldt) {
                 mBinding.btnGot.setVisibility(View.VISIBLE);

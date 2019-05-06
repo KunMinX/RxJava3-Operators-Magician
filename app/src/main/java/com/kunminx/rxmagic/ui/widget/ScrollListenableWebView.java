@@ -23,20 +23,20 @@ import android.webkit.WebView;
 /**
  * Create by KunMinX at 19/4/28
  */
-public class ScrollListenWebView extends WebView {
+public class ScrollListenableWebView extends WebView {
 
     private OnScrollChangeListener mListener;
     private int mCalCount;
 
-    public ScrollListenWebView(Context context) {
+    public ScrollListenableWebView(Context context) {
         super(context);
     }
 
-    public ScrollListenWebView(Context context, AttributeSet attrs) {
+    public ScrollListenableWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public ScrollListenWebView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ScrollListenableWebView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

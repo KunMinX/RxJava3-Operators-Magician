@@ -43,7 +43,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.kunminx.rxmagic.ui.widget.ScrollListenWebView
+        <com.kunminx.rxmagic.ui.widget.ScrollListenableWebView
             android:id="@+id/web_view"
             android:layout_width="0dp"
             android:layout_height="0dp"

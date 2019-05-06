@@ -2,8 +2,7 @@
 
 buildscript {
     repositories {
-        jcenter { url "http://jcenter.bintray.com/" }
-        maven { url "https://dl.bintray.com/viabus-architecture/maven/" }
+        jcenter()
         google()
     }
     dependencies {
@@ -16,8 +15,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter { url "http://jcenter.bintray.com/" }
-        maven { url "https://dl.bintray.com/viabus-architecture/maven/" }
+        jcenter()
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
