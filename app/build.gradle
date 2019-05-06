@@ -8,8 +8,8 @@ android {
         applicationId "com.kunminx.rxmagic"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 10503
-        versionName "1.5.3"
+        versionCode 10600
+        versionName "1.6.0"
     }
     buildTypes {
         release {
@@ -32,12 +32,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.13-beta-2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
-    androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
-    androidTestImplementation 'androidx.test:rules:1.2.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha05'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha05'
+    androidTestImplementation 'androidx.test:rules:1.2.0-alpha05'
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha04'
-    implementation 'com.google.android.material:material:1.1.0-alpha05'
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha03'
 

@@ -25,7 +25,12 @@
         <item name="colorAccent">@color/colorPurple</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
 
+    <style name="CustomActionBarMenu">
+        <item name="android:textSize">14sp</item>
+        <!--<item name="android:textColor">@color/colorGray</item>-->
+        <!--<item name="android:textStyle">bold</item>-->
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
