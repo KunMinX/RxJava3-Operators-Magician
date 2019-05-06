@@ -16,10 +16,8 @@ package com.kunminx.rxmagic.ui;
  * limitations under the License.
  */
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -114,6 +112,10 @@ public class RxMagicFragment extends Fragment {
 
             @Override
             public void onDeleteButtonClick(View view, RxExpression item, int position) {
+                //to avoid click delete button too quickly to over animation and get index -1.
+                if (position == -1) {
+                    return;
+                }
                 mAdapter.removeCacheByPosition(position);
                 mAdapter.getList().remove(position);
                 mAdapter.notifyItemRemoved(position);
