@@ -35,6 +35,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentOtherSampleBinding;
+import com.kunminx.rxmagic.ui.base.BaseFragment;
 import com.kunminx.samples.ui.cache.CacheExampleFragment;
 import com.kunminx.samples.ui.networking.NetworkingFragment;
 import com.kunminx.samples.ui.operators.CompletableObserverExampleFragment;
@@ -45,7 +46,7 @@ import com.kunminx.samples.ui.search.SearchFragment;
 /**
  * Create by KunMinX at 19/4/23
  */
-public class OtherSampleFragment extends Fragment {
+public class OtherSampleFragment extends BaseFragment {
 
     private static final String TAG = "";
     private FragmentOtherSampleBinding mBinding;
@@ -118,17 +119,6 @@ public class OtherSampleFragment extends Fragment {
                 break;
             default:
         }
-    }
-
-    private void showTipOfDeveloping(View v) {
-        showTip(v, getString(R.string.tip_developing));
-    }
-
-    private void showTip(View v, String tip) {
-        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
-                .setAnchorView(v)
-                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
-                .show();
     }
 
     private void loadFragment(Fragment fragment) {

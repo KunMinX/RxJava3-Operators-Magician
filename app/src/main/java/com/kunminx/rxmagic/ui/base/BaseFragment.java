@@ -16,7 +16,13 @@ package com.kunminx.rxmagic.ui.base;
  */
 
 
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+import com.kunminx.rxmagic.R;
 
 /**
  * Create by KunMinX at 19/5/6
@@ -24,4 +30,14 @@ import androidx.fragment.app.Fragment;
 public class BaseFragment extends Fragment {
 
 
+    protected void showTipOfDeveloping(View v) {
+        showTip(v, getString(R.string.tip_developing));
+    }
+
+    protected void showTip(View v, String tip) {
+        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
+                .setAnchorView(v)
+                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+                .show();
+    }
 }

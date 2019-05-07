@@ -1,4 +1,4 @@
-package com.kunminx.rxmagic.ui.adapter;
+package com.kunminx.rxmagic.ui.base;
 
 /*
  * Copyright (c) 2018-2019. KunMinX

@@ -31,6 +31,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentRxGuideBinding;
+import com.kunminx.rxmagic.ui.base.BaseFragment;
 import com.kunminx.rxmagic.ui.widget.ScrollListenableWebView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,7 @@ import androidx.fragment.app.Fragment;
 /**
  * Create by KunMinX at 19/4/22
  */
-public class RxGuideFragment extends Fragment {
+public class RxGuideFragment extends BaseFragment {
 
 
     private FragmentRxGuideBinding mBinding;
@@ -106,17 +107,6 @@ public class RxGuideFragment extends Fragment {
             }
             super.onProgressChanged(view, progress);
         }
-    }
-
-    private void showTipOfDeveloping(View v) {
-        showTip(v, getString(R.string.tip_developing));
-    }
-
-    private void showTip(View v, String tip) {
-        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
-                .setAnchorView(v)
-                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
-                .show();
     }
 
     @Override

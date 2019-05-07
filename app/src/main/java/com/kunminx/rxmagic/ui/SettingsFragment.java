@@ -36,13 +36,14 @@ import com.google.gson.reflect.TypeToken;
 import com.kunminx.linkage.bean.LinkageItem;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentSettingsBinding;
+import com.kunminx.rxmagic.ui.base.BaseFragment;
 
 import java.util.List;
 
 /**
  * Create by KunMinX at 19/4/23
  */
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends BaseFragment {
 
     private FragmentSettingsBinding mBinding;
 
@@ -80,17 +81,6 @@ public class SettingsFragment extends Fragment {
                 }.getType());
 
         mBinding.linkage.init(items);
-    }
-
-    private void showTipOfDeveloping(View v) {
-        showTip(v, getString(R.string.tip_developing));
-    }
-
-    private void showTip(View v, String tip) {
-        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
-                .setAnchorView(v)
-                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
-                .show();
     }
 
     @Override

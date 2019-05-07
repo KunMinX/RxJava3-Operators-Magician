@@ -31,6 +31,7 @@ import com.google.android.material.internal.NavigationMenuView;
 import com.google.android.material.navigation.NavigationView;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.ActivityMainBinding;
+import com.kunminx.rxmagic.ui.base.BaseActivity;
 import com.kunminx.samples.ui.cache.CacheExampleFragment;
 import com.kunminx.samples.ui.networking.NetworkingFragment;
 import com.kunminx.samples.ui.operators.CompletableObserverExampleFragment;
@@ -45,9 +46,8 @@ import io.fabric.sdk.android.Fabric;
 /**
  * Create by KunMinX at 19/4/17
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
-    private int mScreenHeight;
     private ActivityMainBinding mBinding;
     private RxGuideFragment mRxGuideFragment;
     private RxMagicFragment mRxMagicFragment;
@@ -196,8 +196,19 @@ public class MainActivity extends AppCompatActivity {
         mBinding.drawer.openDrawer(GravityCompat.START);
     }
 
-    public void closeDrawer() {
-        mBinding.drawer.closeDrawer(GravityCompat.START);
+    public boolean closeDrawer() {
+        if (mBinding.drawer.isDrawerOpen(GravityCompat.START)) {
+            mBinding.drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
+        return false;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (closeDrawer() || isSureToExitAfterDoubleClick()) {
+
+        }
+    }
 }

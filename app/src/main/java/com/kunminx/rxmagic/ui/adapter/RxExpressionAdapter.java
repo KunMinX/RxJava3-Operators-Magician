@@ -26,6 +26,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.bean.RxExpression;
 import com.kunminx.rxmagic.databinding.AdapterRxExpressionBinding;
+import com.kunminx.rxmagic.ui.base.BaseBindingAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;

@@ -45,6 +45,7 @@ import com.kunminx.rxmagic.bean.RxExpression;
 import com.kunminx.rxmagic.bean.RxOperator;
 import com.kunminx.rxmagic.databinding.FragmentRxmagicBinding;
 import com.kunminx.rxmagic.ui.adapter.RxExpressionAdapter;
+import com.kunminx.rxmagic.ui.base.BaseFragment;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ import thereisnospon.codeview.CodeViewTheme;
 /**
  * Create by KunMinX at 19/4/20
  */
-public class RxMagicFragment extends Fragment {
+public class RxMagicFragment extends BaseFragment {
 
     private FragmentRxmagicBinding mBinding;
     private RxExpressionAdapter mAdapter;
@@ -125,12 +126,8 @@ public class RxMagicFragment extends Fragment {
 
         mBinding.rv.setAdapter(mAdapter);
 
-        try {
-            mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
-            mBinding.code.showCode(getString(R.string.code_tip));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        mBinding.code.setTheme(CodeViewTheme.ARDUINO_LIGHT).fillColor();
+        mBinding.code.showCode(getString(R.string.code_tip));
 
         mBinding.btnAdd.setOnClickListener(v -> {
             //TODO testData
@@ -201,17 +198,6 @@ public class RxMagicFragment extends Fragment {
                 }.getType());
 
         linkage.init(items);
-    }
-
-    private void showTipOfDeveloping(View v) {
-        showTip(v, getString(R.string.tip_developing));
-    }
-
-    private void showTip(View v, String tip) {
-        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
-                .setAnchorView(v)
-                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
-                .show();
     }
 
     private String getCodeOfExpressions() {
