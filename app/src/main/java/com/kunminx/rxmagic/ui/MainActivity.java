@@ -17,6 +17,7 @@ package com.kunminx.rxmagic.ui;
  */
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -205,10 +206,16 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (closeDrawer() || isSureToExitAfterDoubleClick()) {
-
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if (closeDrawer() || isSureToExitAfterDoubleClick()) {
+                    return true;
+                }
+                break;
+            default:
         }
+        return super.onKeyDown(keyCode, event);
     }
+
 }
