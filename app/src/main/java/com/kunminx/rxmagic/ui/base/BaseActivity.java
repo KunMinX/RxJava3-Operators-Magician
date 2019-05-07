@@ -78,10 +78,14 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected boolean isSureToExitAfterDoubleClick(String tip) {
-        return isSureToExitAfterDoubleClick(getWindow().getDecorView(), tip, DEFAULT_EXIT_DURATION);
+        return isSureToExitAfterDoubleClick(
+                getWindow().getDecorView().findViewById(R.id.fragment_container),
+                tip, DEFAULT_EXIT_DURATION);
     }
 
     protected boolean isSureToExitAfterDoubleClick() {
-        return isSureToExitAfterDoubleClick(getWindow().getDecorView(), getString(R.string.exit_tip), DEFAULT_EXIT_DURATION);
+        return isSureToExitAfterDoubleClick(
+                getWindow().getDecorView().findViewById(R.id.fragment_container),
+                getString(R.string.exit_tip), DEFAULT_EXIT_DURATION);
     }
 }
