@@ -27,13 +27,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.kunminx.linkage.bean.LinkageItem;
+import com.kunminx.linkage.bean.DefaultGroupedItem;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentSettingsBinding;
 import com.kunminx.rxmagic.ui.base.BaseFragment;
@@ -76,8 +73,8 @@ public class SettingsFragment extends BaseFragment {
 
     private void initLinkageDatas() {
         Gson gson = new Gson();
-        List<LinkageItem> items = gson.fromJson(getString(R.string.operators_json),
-                new TypeToken<List<LinkageItem>>() {
+        List<DefaultGroupedItem> items = gson.fromJson(getString(R.string.operators_json),
+                new TypeToken<List<DefaultGroupedItem>>() {
                 }.getType());
 
         mBinding.linkage.init(items);

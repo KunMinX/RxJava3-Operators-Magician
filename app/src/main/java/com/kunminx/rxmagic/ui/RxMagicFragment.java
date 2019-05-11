@@ -29,17 +29,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.kunminx.linkage.LinkageLevelOneAdapter;
-import com.kunminx.linkage.LinkageLevelTwoAdapter;
 import com.kunminx.linkage.LinkageRecyclerView;
-import com.kunminx.linkage.bean.LinkageItem;
+import com.kunminx.linkage.bean.DefaultGroupedItem;
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.bean.RxExpression;
 import com.kunminx.rxmagic.bean.RxOperator;
@@ -94,20 +89,12 @@ public class RxMagicFragment extends BaseFragment {
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
                 AlertDialog dialog = builder.setView(linkage).show();
                 linkage.setLayoutHeight(DIALOG_HEIGHT);
-                linkage.setClickListener(new LinkageRecyclerView.OnLinkageItemClickListener() {
-                    @Override
-                    public void onLinkageLevel1Click(LinkageLevelOneAdapter.LevelOneViewHolder holder,
-                                                     String group, int position) {
-
-                    }
-
-                    @Override
-                    public void onLinkageLevel2Click(LinkageLevelTwoAdapter.LevelTwoViewHolder holder,
-                                                     LinkageItem linkageItem, int position) {
-                        item.getRxOperator().setName(linkageItem.t.getTitle());
+                linkage.setOnItemDefaultBindListener(null, (holder, item1, position1) -> {
+                    holder.getView(R.id.level_2_item).setOnClickListener(v -> {
+                        item.getRxOperator().setName(item1.info.getTitle());
                         mAdapter.notifyDataSetChanged();
                         dialog.dismiss();
-                    }
+                    });
                 });
             }
 
@@ -193,8 +180,8 @@ public class RxMagicFragment extends BaseFragment {
 
     private void initLinkageDatas(LinkageRecyclerView linkage) {
         Gson gson = new Gson();
-        List<LinkageItem> items = gson.fromJson(getString(R.string.operators_json),
-                new TypeToken<List<LinkageItem>>() {
+        List<DefaultGroupedItem> items = gson.fromJson(getString(R.string.operators_json),
+                new TypeToken<List<DefaultGroupedItem>>() {
                 }.getType());
 
         linkage.init(items);

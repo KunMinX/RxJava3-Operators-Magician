@@ -41,7 +41,7 @@ import com.kunminx.samples.ui.search.SearchFragment;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 
-
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Create by KunMinX at 19/4/17
@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Fabric.with(this, new Crashlytics());
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         KeyboardVisibilityEvent.setEventListener(this, isOpen -> {
