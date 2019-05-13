@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
@@ -8,8 +9,8 @@ android {
         applicationId "com.kunminx.rxmagic"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 10600
-        versionName "1.6.0"
+        versionCode 10606
+        versionName "1.6.6"
     }
     buildTypes {
         release {
@@ -59,8 +60,9 @@ dependencies {
 
     implementation 'com.kunminx.linkage:linkage-recyclerview:1.3.5'
     implementation 'com.google.code.gson:gson:2.8.2'
-
-
     implementation 'com.orhanobut:logger:2.2.0'
+
+
+    
 
 }
