@@ -23,12 +23,12 @@
     android:layout_height="208dp"
     android:orientation="vertical">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_drawer"
         android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="@dimen/margin12"
-        android:scaleType="centerInside"
+        android:layout_height="208dp"
+        android:padding="@dimen/margin12"
+        android:scaleType="fitXY"
         android:src="@drawable/bg_drawer_header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -39,9 +39,9 @@
         android:id="@+id/tv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="56dp"
+        android:layout_marginEnd="56dp"
         android:layout_marginBottom="12dp"
-        android:text="Rx 魔法师"
+        android:text="@string/drawer_header_rx_magic"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_2"
         app:layout_constraintRight_toRightOf="parent" />
@@ -50,9 +50,9 @@
         android:id="@+id/tv_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="68dp"
+        android:layout_marginEnd="68dp"
         android:layout_marginBottom="6dp"
-        android:text="你用不惯 RxJava"
+        android:text="@string/drawer_header_not_used_to"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_3"
         app:layout_constraintRight_toRightOf="parent" />
@@ -61,9 +61,9 @@
         android:id="@+id/tv_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="48dp"
-        android:text="只因缺了这把钥匙"
+        android:text="@string/drawer_header_lack_key"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
