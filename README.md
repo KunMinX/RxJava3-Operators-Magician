@@ -34,8 +34,8 @@
 
 # 下载体验
 
-[![getFromGooglePlay](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/img/get_it_on_google_play_36dp.svg)](https://www.coolapk.com/apk/227547)
-[![getFromCoolapk](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/img/get_it_on_coolapk.svg)](https://www.coolapk.com/apk/227547)
+[![getFromGooglePlay](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/img/google-play.png)](https://www.coolapk.com/apk/227547)
+[![getFromCoolapk](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/img/coolapk.png)](https://www.coolapk.com/apk/227547)
 
 # 往期热门动态
 
