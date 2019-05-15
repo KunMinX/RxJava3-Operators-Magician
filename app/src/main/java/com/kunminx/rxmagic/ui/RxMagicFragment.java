@@ -89,13 +89,18 @@ public class RxMagicFragment extends BaseFragment {
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
                 AlertDialog dialog = builder.setView(linkage).show();
                 linkage.setLayoutHeight(DIALOG_HEIGHT);
-                linkage.setOnItemDefaultBindListener(null, (holder, item1, position1) -> {
-                    holder.getView(R.id.level_2_item).setOnClickListener(v -> {
-                        item.getRxOperator().setName(item1.info.getTitle());
-                        mAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    });
-                });
+                linkage.setScrollSmoothly(false);
+                linkage.setOnItemDefaultBindListener(
+                        null,
+                        null,
+                        (holder, item1, position1) -> {
+                            holder.getView(R.id.level_2_item).setOnClickListener(v -> {
+                                item.getRxOperator().setName(item1.info.getTitle());
+                                mAdapter.notifyDataSetChanged();
+                                dialog.dismiss();
+                            });
+                        },
+                        null);
             }
 
             @Override

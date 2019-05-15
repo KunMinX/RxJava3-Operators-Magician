@@ -78,6 +78,7 @@ public class SettingsFragment extends BaseFragment {
                 }.getType());
 
         mBinding.linkage.init(items);
+        mBinding.linkage.setScrollSmoothly(false);
     }
 
     @Override
