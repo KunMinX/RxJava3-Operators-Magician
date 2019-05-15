@@ -90,7 +90,7 @@ public class RxMagicFragment extends BaseFragment {
                 AlertDialog dialog = builder.setView(linkage).show();
                 linkage.setLayoutHeight(DIALOG_HEIGHT);
                 linkage.setScrollSmoothly(false);
-                linkage.setOnItemDefaultBindListener(
+                linkage.setDefaultOnItemBindListener(
                         null,
                         null,
                         (holder, item1, position1) -> {

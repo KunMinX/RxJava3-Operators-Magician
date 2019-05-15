@@ -58,7 +58,7 @@ dependencies {
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
     implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'
 
-    implementation 'com.kunminx.linkage:linkage-recyclerview:1.4.3'
+    implementation 'com.kunminx.linkage:linkage-recyclerview:1.4.7'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.orhanobut:logger:2.2.0'
 

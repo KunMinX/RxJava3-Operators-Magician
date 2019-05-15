@@ -86,12 +86,9 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
 
         binding.btnOp.setText(item.getRxOperator().getName());
         binding.et.setText(mTextCache.get(holder.getAdapterPosition()));
-        binding.et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    mEtFocusPosition = holder.getAdapterPosition();
-                }
+        binding.et.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                mEtFocusPosition = holder.getAdapterPosition();
             }
         });
 
@@ -155,7 +152,6 @@ public class RxExpressionAdapter extends BaseBindingAdapter<RxExpression, Adapte
     }
 
     public interface OnItemClickListener {
-//        void onItemClick(View view, RxExpression item, int position);
 
         void onOperatorButtonClick(View view, RxExpression item, int position);
 
