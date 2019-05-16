@@ -9,8 +9,8 @@ android {
         applicationId "com.kunminx.rxmagic"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 10608
-        versionName "1.6.8"
+        versionCode 10703
+        versionName "1.7.3"
     }
     buildTypes {
         release {
@@ -58,7 +58,7 @@ dependencies {
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
     implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'
 
-    implementation 'com.kunminx.linkage:linkage-recyclerview:1.4.7'
+    implementation 'com.kunminx.linkage:linkage-recyclerview:1.5.4'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.orhanobut:logger:2.2.0'
 
