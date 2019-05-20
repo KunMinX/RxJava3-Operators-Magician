@@ -17,17 +17,11 @@
 
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="margin12">12dp</dimen>
-    <dimen name="margin4">4dp</dimen>
-    <dimen name="margin8">8dp</dimen>
-    <dimen name="btn_op_width">96dp</dimen>
 
-    <dimen name="header_rx_magic_margin_end">42dp</dimen>
+    <dimen name="header_rx_magic_margin_end">56dp</dimen>
     <dimen name="header_rx_magic_margin_bottom">12dp</dimen>
-    <dimen name="header_use_to_margin_end">48dp</dimen>
+    <dimen name="header_use_to_margin_end">68dp</dimen>
     <dimen name="header_used_to_margin_bottom">6dp</dimen>
-    <dimen name="header_key_margin_end">42dp</dimen>
-    <dimen name="header_key_margin_bottom">56dp</dimen>
+    <dimen name="header_key_margin_end">60dp</dimen>
+    <dimen name="header_key_margin_bottom">48dp</dimen>
 </resources>
