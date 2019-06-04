@@ -43,8 +43,6 @@
 
 [2019.4.18：你用不惯 RxJava，只因缺了这把钥匙 🔥](https://github.com/KunMinX/RxJava2-Operators-Sample/blob/master/README_old_article.md#key20190418)
 
-[# 最新动态，微信公众号每周四下午 3 点准时更新，不见不散](#wechatQrcode)
-
 # Thanks to
 
 [LinkageRecyclerView](https://github.com/KunMinX/LinkageRecyclerView)
@@ -68,9 +66,7 @@ Home：[KunMinX 的个人博客](https://kunminx.github.io/)
 
 Juejin：[KunMinX 在掘金](https://juejin.im/user/58ab0de9ac502e006975d757/posts)
 
-<span id="wechatQrcode">KunMinX's WeChat Public Account：</span>
-
-![公众号](https://upload-images.jianshu.io/upload_images/57036-dc3af94a5daf478c.jpg)
+![xzl](https://upload-images.jianshu.io/upload_images/57036-39b1220659cdbbda.png)
 
 # License
 
