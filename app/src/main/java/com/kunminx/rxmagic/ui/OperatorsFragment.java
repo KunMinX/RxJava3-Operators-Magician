@@ -24,18 +24,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.kunminx.rxmagic.R;
+import com.kunminx.rxmagic.databinding.FragmentOperatorsBinding;
+import com.kunminx.rxmagic.ui.base.BaseFragment;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.kunminx.rxmagic.R;
-import com.kunminx.rxmagic.databinding.FragmentOperatorsBinding;
-import com.kunminx.rxmagic.ui.base.BaseFragment;
-import com.kunminx.rxmagic.ui.manager.TabLayoutMediator;
 
 /**
  * Create by KunMinX at 19/4/23
@@ -73,11 +71,11 @@ public class OperatorsFragment extends BaseFragment {
         mFragmentTitles = getResources().getStringArray(R.array.fragments);
         mFragments = new Fragment[mFragmentTitles.length];
 
-        mBinding.viewPager.setAdapter(new FragmentStateAdapter(getActivity()) {
+        mBinding.viewPager.setAdapter(new FragmentStateAdapter(this) {
             @NonNull
             @Override
-            public Fragment getItem(int position) {
-                return createFragment(position);
+            public Fragment createFragment(int position) {
+                return OperatorsFragment.this.createFragment(position);
             }
 
             @Override
