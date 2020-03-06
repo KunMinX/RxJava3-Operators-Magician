@@ -1,7 +1,6 @@
 ![](https://upload-images.jianshu.io/upload_images/57036-a656f3cb7ab534cd.jpg)
 
 # Rx钥匙：为无聊而生的 Android 开发者工具
-`更新动态 | 2019.4.25`
 
 很高兴和大家见面！
 
