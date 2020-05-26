@@ -1,6 +1,6 @@
 ![](https://upload-images.jianshu.io/upload_images/57036-a656f3cb7ab534cd.jpg)
 
-# Rx钥匙：为无聊而生的 Android 开发者工具
+# Rx钥匙：为声明式编程而生的 Android 开发者工具
 
 很高兴和大家见面！
 
