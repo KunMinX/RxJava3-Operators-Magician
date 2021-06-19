@@ -19,7 +19,7 @@
 除了提供 “解决无聊” 这一最核心功能之外，你还可以从这个开源项目获得的内容包括：
 
 1. 整洁的代码风格和标准的资源命名规范。
-2. 基于前沿的、遵循关注点分离的 JetPack MVVM 架构。
+2. 基于前沿的、遵循关注点分离的 Jetpack MVVM 架构。
 3. 使用 RxJava 和 lambda 表达式。
 4. AndroidX 和 Material Design 2 的全面使用。
 5. ConstraintLayout 约束布局的最佳实践。
