@@ -17,71 +17,60 @@ import com.kunminx.samples.utils.AppConstant;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class WindowExampleFragment extends Fragment {
 
-    private static final String TAG = WindowExampleFragment.class.getSimpleName();
-    Button btn;
-    TextView textView;
+  private static final String TAG = WindowExampleFragment.class.getSimpleName();
+  Button btn;
+  TextView textView;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_example, container, false);
-    }
+  @Nullable
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_example, container, false);
+  }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        btn = view.findViewById(R.id.btn);
-        textView = view.findViewById(R.id.textView);
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    btn = view.findViewById(R.id.btn);
+    textView = view.findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
-    }
+    btn.setOnClickListener(view1 -> doSomeWork());
+  }
 
-    /*
-     * Example using window operator -> It periodically
-     * subdivide items from an Observable into
-     * Observable windows and emit these windows rather than
-     * emitting the items one at a time
-     */
-    protected void doSomeWork() {
+  /*
+   * Example using window operator -> It periodically
+   * subdivide items from an Observable into
+   * Observable windows and emit these windows rather than
+   * emitting the items one at a time
+   */
+  protected void doSomeWork() {
 
-        Observable.interval(1, TimeUnit.SECONDS).take(12)
-                .window(3, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(getConsumer());
-    }
+    Observable.interval(1, TimeUnit.SECONDS).take(12)
+            .window(3, TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getConsumer());
+  }
 
-    public Consumer<Observable<Long>> getConsumer() {
-        return new Consumer<Observable<Long>>() {
-            @Override
-            public void accept(Observable<Long> observable) {
-                Log.d(TAG, "Sub Divide begin....");
-                textView.append("Sub Divide begin ....");
+  public Consumer<Observable<Long>> getConsumer() {
+    return observable -> {
+      Log.d(TAG, "Sub Divide begin....");
+      textView.append("Sub Divide begin ....");
+      textView.append(AppConstant.LINE_SEPARATOR);
+      observable
+              .subscribeOn(Schedulers.io())
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe(value -> {
+                Log.d(TAG, "Next:" + value);
+                textView.append("Next:" + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                observable
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Consumer<Long>() {
-                            @Override
-                            public void accept(Long value) {
-                                Log.d(TAG, "Next:" + value);
-                                textView.append("Next:" + value);
-                                textView.append(AppConstant.LINE_SEPARATOR);
-                            }
-                        });
-            }
-        };
-    }
+              });
+    };
+  }
 }

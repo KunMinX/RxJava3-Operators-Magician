@@ -6,16 +6,16 @@ package com.kunminx.samples.model;
 
 public class Events {
 
-    private Events() {
+  private Events() {
 
-    }
+  }
 
-    public static class TapEvent {
+  public static class TapEvent {
 
-    }
+  }
 
-    public static class AutoEvent {
+  public static class AutoEvent {
 
-    }
+  }
 
 }

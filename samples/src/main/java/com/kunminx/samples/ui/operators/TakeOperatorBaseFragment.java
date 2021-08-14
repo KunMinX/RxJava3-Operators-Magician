@@ -16,69 +16,69 @@ import com.kunminx.samples.R;
 import com.kunminx.samples.utils.AppConstant;
 import com.kunminx.samples.utils.ObserverAdapter;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 public abstract class TakeOperatorBaseFragment extends Fragment {
-    private static final String TAG = TakeWhileExampleFragment.class.getSimpleName();
+  private static final String TAG = TakeWhileExampleFragment.class.getSimpleName();
 
-    private Button btn;
+  private Button btn;
 
-    protected TextView textView;
+  protected TextView textView;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_example, container, false);
-    }
+  @Nullable
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_example, container, false);
+  }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        btn = view.findViewById(R.id.btn);
-        textView = view.findViewById(R.id.textView);
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    btn = view.findViewById(R.id.btn);
+    textView = view.findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
-    }
+    btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        doSomeWork();
+      }
+    });
+  }
 
-    /**
-     * Need to be override based on the operation.
-     */
-    abstract void doSomeWork();
+  /**
+   * Need to be override based on the operation.
+   */
+  abstract void doSomeWork();
 
-    protected Observer<? super String> getObserver() {
-        return new ObserverAdapter<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                Log.d(TAG, " onSubscribe : " + d.isDisposed());
-            }
+  protected Observer<? super String> getObserver() {
+    return new ObserverAdapter<String>() {
+      @Override
+      public void onSubscribe(Disposable d) {
+        Log.d(TAG, " onSubscribe : " + d.isDisposed());
+      }
 
-            @Override
-            public void onNext(String value) {
-                textView.append(" onNext : value : " + value);
-                textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext value : " + value);
-            }
+      @Override
+      public void onNext(String value) {
+        textView.append(" onNext : value : " + value);
+        textView.append(AppConstant.LINE_SEPARATOR);
+        Log.d(TAG, " onNext value : " + value);
+      }
 
-            @Override
-            public void onComplete() {
-                textView.append(" onComplete");
-                textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onComplete");
-            }
-        };
-    }
+      @Override
+      public void onComplete() {
+        textView.append(" onComplete");
+        textView.append(AppConstant.LINE_SEPARATOR);
+        Log.d(TAG, " onComplete");
+      }
+    };
+  }
 
 
-    protected Observable<String> getStringObservable() {
-        return Observable.just("Alpha", "Beta", "Cupcake", "Doughnut", "Eclair", "Froyo", "GingerBread",
-                "Honeycomb", "Ice cream sandwich");
-    }
+  protected Observable<String> getStringObservable() {
+    return Observable.just("Alpha", "Beta", "Cupcake", "Doughnut", "Eclair", "Froyo", "GingerBread",
+            "Honeycomb", "Ice cream sandwich");
+  }
 
 }
