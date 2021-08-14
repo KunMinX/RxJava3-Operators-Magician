@@ -41,14 +41,13 @@ dependencies {
 
     implementation project(":samples")
 
-    implementation 'thereisnospon.codeview:codeview:0.3.1'
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
     implementation 'net.yslibrary.licenseadapter:licenseadapter:2.2.2'
 
     implementation 'com.kunminx.linkage:linkage-recyclerview:2.4.0'
     implementation 'com.orhanobut:logger:2.2.0'
 
-
+    implementation 'org.jsoup:jsoup:1.9.2'
     
 
 }
