@@ -45,173 +45,173 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
  */
 public class MainActivity extends BaseActivity {
 
-    private ActivityMainBinding mBinding;
-    private RxGuideFragment mRxGuideFragment;
-    private RxMagicFragment mRxMagicFragment;
-    private OperatorsFragment mOperatorsFragment;
-    private OtherSampleFragment mOtherSampleFragment;
-    private SettingsFragment mSettingsFragment;
-    private AboutFragment mAboutFragment;
-    private Fragment mLastFragment;
+  private ActivityMainBinding mBinding;
+  private RxGuideFragment mRxGuideFragment;
+  private RxMagicFragment mRxMagicFragment;
+  private OperatorsFragment mOperatorsFragment;
+  private OtherSampleFragment mOtherSampleFragment;
+  private SettingsFragment mSettingsFragment;
+  private AboutFragment mAboutFragment;
+  private Fragment mLastFragment;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        KeyboardVisibilityEvent.setEventListener(this, isOpen -> {
-            mRxMagicFragment.setCardViewVisible(isOpen);
-        });
+    KeyboardVisibilityEvent.setEventListener(this, isOpen -> {
+      mRxMagicFragment.setCardViewVisible(isOpen);
+    });
 
-        hideNavigationViewScrollbars(mBinding.navView);
-        mBinding.navView.setNavigationItemSelectedListener(item -> {
-            if (item.isChecked()) {
-                closeDrawer();
-                return true;
-            }
-            switch (item.getItemId()) {
-                case R.id.nav_guide:
-                    loadGuideFragment();
-                    break;
-                case R.id.nav_declare:
-                    loadMagicFragment();
-                    break;
-                case R.id.nav_operators:
-                    loadOperatorsFragment();
-                    break;
-                case R.id.nav_networking:
-                    loadOtherSampleFragment(NetworkingFragment.class.getSimpleName());
-                    break;
-                case R.id.nav_cache:
-                    loadOtherSampleFragment(CacheExampleFragment.class.getSimpleName());
-                    break;
-                case R.id.nav_rxbus:
-                    loadOtherSampleFragment(RxBusFragment.class.getSimpleName());
-                    break;
-                case R.id.nav_pagination:
-                    loadOtherSampleFragment(PaginationFragment.class.getSimpleName());
-                    break;
-                case R.id.nav_compose:
-                    loadOtherSampleFragment(CompletableObserverExampleFragment.class.getSimpleName());
-                    break;
-                case R.id.nav_search:
-                    loadOtherSampleFragment(SearchFragment.class.getSimpleName());
-                    break;
-                case R.id.nav_settings:
-                    loadSettingFragment();
-                    break;
-                case R.id.nav_about:
-                    loadAboutFragment();
-                    break;
-                default:
-            }
-            closeDrawer();
-            return true;
-        });
+    hideNavigationViewScrollbars(mBinding.navView);
+    mBinding.navView.setNavigationItemSelectedListener(item -> {
+      if (item.isChecked()) {
+        closeDrawer();
+        return true;
+      }
+      switch (item.getItemId()) {
+        case R.id.nav_guide:
+          loadGuideFragment();
+          break;
+        case R.id.nav_declare:
+          loadMagicFragment();
+          break;
+        case R.id.nav_operators:
+          loadOperatorsFragment();
+          break;
+        case R.id.nav_networking:
+          loadOtherSampleFragment(NetworkingFragment.class.getSimpleName());
+          break;
+        case R.id.nav_cache:
+          loadOtherSampleFragment(CacheExampleFragment.class.getSimpleName());
+          break;
+        case R.id.nav_rxbus:
+          loadOtherSampleFragment(RxBusFragment.class.getSimpleName());
+          break;
+        case R.id.nav_pagination:
+          loadOtherSampleFragment(PaginationFragment.class.getSimpleName());
+          break;
+        case R.id.nav_compose:
+          loadOtherSampleFragment(CompletableObserverExampleFragment.class.getSimpleName());
+          break;
+        case R.id.nav_search:
+          loadOtherSampleFragment(SearchFragment.class.getSimpleName());
+          break;
+        case R.id.nav_settings:
+          loadSettingFragment();
+          break;
+        case R.id.nav_about:
+          loadAboutFragment();
+          break;
+        default:
+      }
+      closeDrawer();
+      return true;
+    });
 
-        loadMagicFragment();
+    loadMagicFragment();
 
-    }
+  }
 
-    private void hideNavigationViewScrollbars(NavigationView navigationView) {
-        if (navigationView != null) {
-            for (int i = 0; i < navigationView.getChildCount(); i++) {
-                View view = navigationView.getChildAt(i);
-                if (view instanceof NavigationMenuView) {
-                    NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView.getChildAt(i);
-                    if (navigationMenuView != null) {
-                        navigationMenuView.setVerticalScrollBarEnabled(false);
-                        navigationMenuView.setOverScrollMode(navigationMenuView.OVER_SCROLL_NEVER);
-                    }
-                }
-            }
+  private void hideNavigationViewScrollbars(NavigationView navigationView) {
+    if (navigationView != null) {
+      for (int i = 0; i < navigationView.getChildCount(); i++) {
+        View view = navigationView.getChildAt(i);
+        if (view instanceof NavigationMenuView) {
+          NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView.getChildAt(i);
+          if (navigationMenuView != null) {
+            navigationMenuView.setVerticalScrollBarEnabled(false);
+            navigationMenuView.setOverScrollMode(navigationMenuView.OVER_SCROLL_NEVER);
+          }
         }
+      }
     }
+  }
 
-    public void loadMagicFragment() {
-        if (mRxMagicFragment == null) {
-            mRxMagicFragment = RxMagicFragment.newInstance();
+  public void loadMagicFragment() {
+    if (mRxMagicFragment == null) {
+      mRxMagicFragment = RxMagicFragment.newInstance();
+    }
+    loadFragment(mRxMagicFragment);
+  }
+
+  private void loadGuideFragment() {
+    if (mRxGuideFragment == null) {
+      mRxGuideFragment = RxGuideFragment.newInstance();
+    }
+    loadFragment(mRxGuideFragment);
+  }
+
+  private void loadOperatorsFragment() {
+    if (mOperatorsFragment == null) {
+      mOperatorsFragment = OperatorsFragment.newInstance();
+    }
+    loadFragment(mOperatorsFragment);
+  }
+
+  private void loadOtherSampleFragment(String fragmentTag) {
+    if (mOtherSampleFragment == null) {
+      mOtherSampleFragment = OtherSampleFragment.newInstance(fragmentTag);
+      loadFragment(mOtherSampleFragment);
+    } else {
+      mOtherSampleFragment.replaceSubFragment(fragmentTag);
+      loadFragment(mOtherSampleFragment);
+    }
+  }
+
+  private void loadSettingFragment() {
+    if (mSettingsFragment == null) {
+      mSettingsFragment = SettingsFragment.newInstance();
+    }
+    loadFragment(mSettingsFragment);
+  }
+
+  private void loadAboutFragment() {
+    if (mAboutFragment == null) {
+      mAboutFragment = AboutFragment.newInstance();
+    }
+    loadFragment(mAboutFragment);
+  }
+
+  private void loadFragment(Fragment fragment) {
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+    if (!fragment.isAdded()) {
+      transaction.add(R.id.fragment_container, fragment, fragment.getClass().getSimpleName());
+    } else if (!fragment.isVisible()) {
+      transaction.show(fragment);
+    }
+    if (mLastFragment != null && !mLastFragment.equals(fragment)) {
+      transaction.hide(mLastFragment);
+    }
+    transaction.commit();
+    mLastFragment = fragment;
+  }
+
+  public void openDrawer() {
+    mBinding.drawer.openDrawer(GravityCompat.START);
+  }
+
+  public boolean closeDrawer() {
+    if (mBinding.drawer.isDrawerOpen(GravityCompat.START)) {
+      mBinding.drawer.closeDrawer(GravityCompat.START);
+      return true;
+    }
+    return false;
+  }
+
+  @Override
+  public boolean onKeyDown(int keyCode, KeyEvent event) {
+    switch (keyCode) {
+      case KeyEvent.KEYCODE_BACK:
+        if (closeDrawer() || isSureToExitAfterDoubleClick()) {
+          return true;
         }
-        loadFragment(mRxMagicFragment);
+        break;
+      default:
     }
-
-    private void loadGuideFragment() {
-        if (mRxGuideFragment == null) {
-            mRxGuideFragment = RxGuideFragment.newInstance();
-        }
-        loadFragment(mRxGuideFragment);
-    }
-
-    private void loadOperatorsFragment() {
-        if (mOperatorsFragment == null) {
-            mOperatorsFragment = OperatorsFragment.newInstance();
-        }
-        loadFragment(mOperatorsFragment);
-    }
-
-    private void loadOtherSampleFragment(String fragmentTag) {
-        if (mOtherSampleFragment == null) {
-            mOtherSampleFragment = OtherSampleFragment.newInstance(fragmentTag);
-            loadFragment(mOtherSampleFragment);
-        } else {
-            mOtherSampleFragment.replaceSubFragment(fragmentTag);
-            loadFragment(mOtherSampleFragment);
-        }
-    }
-
-    private void loadSettingFragment() {
-        if (mSettingsFragment == null) {
-            mSettingsFragment = SettingsFragment.newInstance();
-        }
-        loadFragment(mSettingsFragment);
-    }
-
-    private void loadAboutFragment() {
-        if (mAboutFragment == null) {
-            mAboutFragment = AboutFragment.newInstance();
-        }
-        loadFragment(mAboutFragment);
-    }
-
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        if (!fragment.isAdded()) {
-            transaction.add(R.id.fragment_container, fragment, fragment.getClass().getSimpleName());
-        } else if (!fragment.isVisible()) {
-            transaction.show(fragment);
-        }
-        if (mLastFragment != null && !mLastFragment.equals(fragment)) {
-            transaction.hide(mLastFragment);
-        }
-        transaction.commit();
-        mLastFragment = fragment;
-    }
-
-    public void openDrawer() {
-        mBinding.drawer.openDrawer(GravityCompat.START);
-    }
-
-    public boolean closeDrawer() {
-        if (mBinding.drawer.isDrawerOpen(GravityCompat.START)) {
-            mBinding.drawer.closeDrawer(GravityCompat.START);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                if (closeDrawer() || isSureToExitAfterDoubleClick()) {
-                    return true;
-                }
-                break;
-            default:
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+    return super.onKeyDown(keyCode, event);
+  }
 
 }

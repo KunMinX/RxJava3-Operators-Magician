@@ -30,14 +30,14 @@ import com.kunminx.rxmagic.R;
 public class BaseFragment extends Fragment {
 
 
-    protected void showTipOfDeveloping(View v) {
-        showTip(v, getString(R.string.tip_developing));
-    }
+  protected void showTipOfDeveloping(View v) {
+    showTip(v, getString(R.string.tip_developing));
+  }
 
-    protected void showTip(View v, String tip) {
-        Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
-                .setAnchorView(v)
-                .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
-                .show();
-    }
+  protected void showTip(View v, String tip) {
+    Snackbar.make(v, tip, Snackbar.LENGTH_SHORT)
+            .setAnchorView(v)
+            .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_FADE)
+            .show();
+  }
 }

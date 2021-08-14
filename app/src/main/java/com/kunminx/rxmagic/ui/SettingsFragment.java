@@ -42,60 +42,60 @@ import java.util.List;
  */
 public class SettingsFragment extends BaseFragment {
 
-    private FragmentSettingsBinding mBinding;
+  private FragmentSettingsBinding mBinding;
 
-    public static SettingsFragment newInstance() {
-        Bundle args = new Bundle();
-        SettingsFragment fragment = new SettingsFragment();
-        fragment.setArguments(args);
-        return fragment;
+  public static SettingsFragment newInstance() {
+    Bundle args = new Bundle();
+    SettingsFragment fragment = new SettingsFragment();
+    fragment.setArguments(args);
+    return fragment;
+  }
+
+  @Nullable
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_settings, container, false);
+    mBinding = FragmentSettingsBinding.bind(view);
+    setHasOptionsMenu(true);
+    return view;
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    mBinding.toolbar.setTitle(R.string.setting);
+    mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
+    ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
+
+    initLinkageDatas();
+  }
+
+  private void initLinkageDatas() {
+    Gson gson = new Gson();
+    List<DefaultGroupedItem> items = gson.fromJson(getString(R.string.operators_json),
+            new TypeToken<List<DefaultGroupedItem>>() {
+            }.getType());
+
+    mBinding.linkage.init(items);
+    mBinding.linkage.setScrollSmoothly(false);
+  }
+
+  @Override
+  public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+    inflater.inflate(R.menu.rxmagic_menu, menu);
+    super.onCreateOptionsMenu(menu, inflater);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        ((MainActivity) getActivity()).openDrawer();
+
+        break;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        mBinding = FragmentSettingsBinding.bind(view);
-        setHasOptionsMenu(true);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        mBinding.toolbar.setTitle(R.string.setting);
-        mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
-
-        initLinkageDatas();
-    }
-
-    private void initLinkageDatas() {
-        Gson gson = new Gson();
-        List<DefaultGroupedItem> items = gson.fromJson(getString(R.string.operators_json),
-                new TypeToken<List<DefaultGroupedItem>>() {
-                }.getType());
-
-        mBinding.linkage.init(items);
-        mBinding.linkage.setScrollSmoothly(false);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.rxmagic_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                ((MainActivity) getActivity()).openDrawer();
-
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+    return super.onOptionsItemSelected(item);
+  }
 }

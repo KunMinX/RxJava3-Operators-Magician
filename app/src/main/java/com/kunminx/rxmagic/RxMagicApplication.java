@@ -18,24 +18,15 @@ package com.kunminx.rxmagic;
 
 import android.app.Application;
 
-import com.kunminx.rxmagic.log.CrashHandler;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.DiskLogAdapter;
-import com.orhanobut.logger.Logger;
-
 /**
  * Create by KunMinX at 19/4/30
  */
 public class RxMagicApplication extends Application {
 
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+  @Override
+  public void onCreate() {
+    super.onCreate();
 
-//        Logger.addLogAdapter(new AndroidLogAdapter());
-//        Logger.addLogAdapter(new DiskLogAdapter());
-//        CrashHandler.init(this);
-
-    }
+  }
 }

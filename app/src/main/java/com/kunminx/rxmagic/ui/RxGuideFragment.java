@@ -27,17 +27,14 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.kunminx.rxmagic.R;
 import com.kunminx.rxmagic.databinding.FragmentRxGuideBinding;
 import com.kunminx.rxmagic.ui.base.BaseFragment;
 import com.kunminx.rxmagic.ui.widget.ScrollListenableWebView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 /**
  * Create by KunMinX at 19/4/22
@@ -45,85 +42,85 @@ import androidx.fragment.app.Fragment;
 public class RxGuideFragment extends BaseFragment {
 
 
-    private FragmentRxGuideBinding mBinding;
+  private FragmentRxGuideBinding mBinding;
 
-    public static RxGuideFragment newInstance() {
-        Bundle args = new Bundle();
-        RxGuideFragment fragment = new RxGuideFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+  public static RxGuideFragment newInstance() {
+    Bundle args = new Bundle();
+    RxGuideFragment fragment = new RxGuideFragment();
+    fragment.setArguments(args);
+    return fragment;
+  }
 
-    @Nullable
+  @Nullable
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_rx_guide, container, false);
+    mBinding = FragmentRxGuideBinding.bind(view);
+    setHasOptionsMenu(true);
+    return view;
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    mBinding.toolbar.setTitle(R.string.guide);
+    mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
+    ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
+
+    mBinding.webView.getSettings().setUseWideViewPort(true);
+    mBinding.webView.getSettings().setJavaScriptEnabled(true);
+    mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
+    mBinding.webView.loadUrl(getString(R.string.link_guide));
+    mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
+    mBinding.webView.setListener(new ScrollListenableWebView.OnScrollChangeListener() {
+      @Override
+      public void onPageEnd(int l, int t, int oldl, int oldt) {
+        mBinding.btnGot.setVisibility(View.VISIBLE);
+      }
+
+      @Override
+      public void onPageTop(int l, int t, int oldl, int oldt) {
+
+      }
+
+      @Override
+      public void onScrollChanged(int l, int t, int oldl, int oldt) {
+
+      }
+    });
+
+    mBinding.btnGot.setOnClickListener(v -> {
+      showTip(v, getString(R.string.tip_got_it));
+    });
+  }
+
+  private class WebChromeClientProgress extends WebChromeClient {
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_rx_guide, container, false);
-        mBinding = FragmentRxGuideBinding.bind(view);
-        setHasOptionsMenu(true);
-        return view;
+    public void onProgressChanged(WebView view, int progress) {
+      mBinding.progress.setProgress(progress);
+      if (progress == 100) {
+        mBinding.progress.setVisibility(View.GONE);
+      }
+      super.onProgressChanged(view, progress);
+    }
+  }
+
+  @Override
+  public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+    inflater.inflate(R.menu.rxmagic_menu, menu);
+    super.onCreateOptionsMenu(menu, inflater);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        ((MainActivity) getActivity()).openDrawer();
+
+        break;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        mBinding.toolbar.setTitle(R.string.guide);
-        mBinding.toolbar.setNavigationIcon(R.drawable.ic_drawer_menu);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mBinding.toolbar);
-
-        mBinding.webView.getSettings().setUseWideViewPort(true);
-        mBinding.webView.getSettings().setJavaScriptEnabled(true);
-        mBinding.webView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
-        mBinding.webView.loadUrl(getString(R.string.link_guide));
-        mBinding.webView.setWebChromeClient(new WebChromeClientProgress());
-        mBinding.webView.setListener(new ScrollListenableWebView.OnScrollChangeListener() {
-            @Override
-            public void onPageEnd(int l, int t, int oldl, int oldt) {
-                mBinding.btnGot.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onPageTop(int l, int t, int oldl, int oldt) {
-
-            }
-
-            @Override
-            public void onScrollChanged(int l, int t, int oldl, int oldt) {
-
-            }
-        });
-
-        mBinding.btnGot.setOnClickListener(v -> {
-            showTip(v, getString(R.string.tip_got_it));
-        });
-    }
-
-    private class WebChromeClientProgress extends WebChromeClient {
-        @Override
-        public void onProgressChanged(WebView view, int progress) {
-            mBinding.progress.setProgress(progress);
-            if (progress == 100) {
-                mBinding.progress.setVisibility(View.GONE);
-            }
-            super.onProgressChanged(view, progress);
-        }
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.rxmagic_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                ((MainActivity) getActivity()).openDrawer();
-
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+    return super.onOptionsItemSelected(item);
+  }
 }

@@ -25,44 +25,44 @@ import android.webkit.WebView;
  */
 public class ScrollListenableWebView extends WebView {
 
-    private OnScrollChangeListener mListener;
-    private int mCalCount;
+  private OnScrollChangeListener mListener;
+  private int mCalCount;
 
-    public ScrollListenableWebView(Context context) {
-        super(context);
+  public ScrollListenableWebView(Context context) {
+    super(context);
+  }
+
+  public ScrollListenableWebView(Context context, AttributeSet attrs) {
+    super(context, attrs);
+  }
+
+  public ScrollListenableWebView(Context context, AttributeSet attrs, int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+  }
+
+  @Override
+  protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+    super.onScrollChanged(l, t, oldl, oldt);
+    float contentHeight = getContentHeight() * getScale();
+    float currentHeight = getHeight() + getScrollY();
+    if (Math.abs(contentHeight - currentHeight) < 1) {
+      mListener.onPageEnd(l, t, oldl, oldt);
+    } else if (getScrollY() == 0) {
+      mListener.onPageTop(l, t, oldl, oldt);
+    } else {
+      mListener.onScrollChanged(l, t, oldl, oldt);
     }
+  }
 
-    public ScrollListenableWebView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+  public void setListener(OnScrollChangeListener listener) {
+    mListener = listener;
+  }
 
-    public ScrollListenableWebView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+  public interface OnScrollChangeListener {
+    void onPageEnd(int l, int t, int oldl, int oldt);
 
-    @Override
-    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-        super.onScrollChanged(l, t, oldl, oldt);
-        float contentHeight = getContentHeight() * getScale();
-        float currentHeight = getHeight() + getScrollY();
-        if (Math.abs(contentHeight - currentHeight) < 1) {
-            mListener.onPageEnd(l, t, oldl, oldt);
-        } else if (getScrollY() == 0) {
-            mListener.onPageTop(l, t, oldl, oldt);
-        } else {
-            mListener.onScrollChanged(l, t, oldl, oldt);
-        }
-    }
+    void onPageTop(int l, int t, int oldl, int oldt);
 
-    public void setListener(OnScrollChangeListener listener) {
-        mListener = listener;
-    }
-
-    public interface OnScrollChangeListener {
-        void onPageEnd(int l, int t, int oldl, int oldt);
-
-        void onPageTop(int l, int t, int oldl, int oldt);
-
-        void onScrollChanged(int l, int t, int oldl, int oldt);
-    }
+    void onScrollChanged(int l, int t, int oldl, int oldt);
+  }
 }

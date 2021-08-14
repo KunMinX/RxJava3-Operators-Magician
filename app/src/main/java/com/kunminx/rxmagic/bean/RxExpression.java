@@ -21,36 +21,36 @@ package com.kunminx.rxmagic.bean;
  */
 public class RxExpression {
 
-    /**
-     * operator of a operator
-     */
-    private RxOperator rxOperator;
-    /**
-     * expression of a operator
-     */
-    private String expression;
+  /**
+   * operator of a operator
+   */
+  private RxOperator rxOperator;
+  /**
+   * expression of a operator
+   */
+  private String expression;
 
-    public RxExpression() {
-    }
+  public RxExpression() {
+  }
 
-    public RxExpression(RxOperator rxOperator, String expression) {
-        this.rxOperator = rxOperator;
-        this.expression = expression;
-    }
+  public RxExpression(RxOperator rxOperator, String expression) {
+    this.rxOperator = rxOperator;
+    this.expression = expression;
+  }
 
-    public RxOperator getRxOperator() {
-        return rxOperator;
-    }
+  public RxOperator getRxOperator() {
+    return rxOperator;
+  }
 
-    public void setRxOperator(RxOperator rxOperator) {
-        this.rxOperator = rxOperator;
-    }
+  public void setRxOperator(RxOperator rxOperator) {
+    this.rxOperator = rxOperator;
+  }
 
-    public String getExpression() {
-        return expression;
-    }
+  public String getExpression() {
+    return expression;
+  }
 
-    public void setExpression(String expression) {
-        this.expression = expression;
-    }
+  public void setExpression(String expression) {
+    this.expression = expression;
+  }
 }

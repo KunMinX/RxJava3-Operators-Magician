@@ -29,40 +29,40 @@ import com.orhanobut.logger.Logger;
  */
 public class CrashHandler {
 
-    private static final String TAG = CrashHandler.class.getSimpleName();
+  private static final String TAG = CrashHandler.class.getSimpleName();
 
-    public static void init(final Context context) {
+  public static void init(final Context context) {
 
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable th) {
-                String sb = ("\nModel:" + Build.MODEL) +
-                        "\nSystemVersion:" + Build.VERSION.RELEASE +
-                        "\nCPU arch:" + Build.CPU_ABI +
-                        "\nVersionCode:" + getVersionCode(context) +
-                        "\nVersionName:" + getVersionName(context) + "\n";
-                Logger.t(TAG).e(sb + Log.getStackTraceString(th));
-                System.exit(1);
-                throw new RuntimeException(th);
-            }
-        });
+    Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+      @Override
+      public void uncaughtException(Thread thread, Throwable th) {
+        String sb = ("\nModel:" + Build.MODEL) +
+                "\nSystemVersion:" + Build.VERSION.RELEASE +
+                "\nCPU arch:" + Build.CPU_ABI +
+                "\nVersionCode:" + getVersionCode(context) +
+                "\nVersionName:" + getVersionName(context) + "\n";
+        Logger.t(TAG).e(sb + Log.getStackTraceString(th));
+        System.exit(1);
+        throw new RuntimeException(th);
+      }
+    });
+  }
+
+  private static int getVersionCode(Context context) {
+    try {
+      PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+      return pi.versionCode;
+    } catch (PackageManager.NameNotFoundException e) {
     }
+    return -1;
+  }
 
-    private static int getVersionCode(Context context) {
-        try {
-            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            return pi.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        return -1;
+  private static String getVersionName(Context context) {
+    try {
+      PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+      return pi.versionName;
+    } catch (PackageManager.NameNotFoundException e) {
     }
-
-    private static String getVersionName(Context context) {
-        try {
-            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            return pi.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        return null;
-    }
+    return null;
+  }
 }

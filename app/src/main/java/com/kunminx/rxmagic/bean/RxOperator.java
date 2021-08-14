@@ -21,31 +21,30 @@ package com.kunminx.rxmagic.bean;
  */
 public class RxOperator {
 
-    /**
-     * name of operator
-     */
-    private String name;
+  /**
+   * name of operator
+   */
+  private String name;
 
-    /**
-     * group for operator
-     */
-    private String group;
+  /**
+   * group for operator
+   */
+  private String group;
 
 
+  public String getName() {
+    return name;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getGroup() {
+    return group;
+  }
 
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
+  public void setGroup(String group) {
+    this.group = group;
+  }
 }
