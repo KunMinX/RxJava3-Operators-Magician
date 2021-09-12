@@ -35,7 +35,6 @@ dependencies {
     api 'com.google.android.material:material:1.4.0'
     api 'androidx.constraintlayout:constraintlayout:2.1.0'
 
-    // RxJava2 Dependencies
     api 'io.reactivex.rxjava3:rxjava:3.0.0'
     api 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
