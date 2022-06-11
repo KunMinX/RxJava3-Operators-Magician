@@ -1,30 +1,22 @@
 ![](https://upload-images.jianshu.io/upload_images/57036-a656f3cb7ab534cd.jpg)
 
-# Rx钥匙：为声明式编程而生的 Android 开发者工具
+# 由来
 
-很高兴和大家见面！
-
-有不少热心网友关心，上一期的 [《你用不惯 RxJava，只因缺了这把钥匙》](https://juejin.im/post/5cb82a42e51d456e62545ac6) 后来怎么样了，再次谢谢大家的期待，原本目标只是给大家一把钥匙，方便大家意会 RxJava 操作符的本质，想不到在后台收到 40 多条留言，且有不少网友对 Rx钥匙 的期待远远超出了其本身，期望那是一把能够带给自己更多的魔法棒。
-
-![](https://upload-images.jianshu.io/upload_images/57036-d64787fa6df74e62.png)
-
-再加上，我自己也因为 **“拿 SQL 来隐喻操作符”** 的那番见解，而心生灵感：
-
-不如秉着匠心打磨一次吧 —— **像设计师一样将每个像素都抠到极致，像工程师一样将工程设计模式和原则应用到每一个功能的编写，用极致的方式来谱写极致** —— 这是一款为灵感而生的面向 Android 开发者的操作符练习工具。
+这是一款为 “声明式编程” 而生 RxJava 练习工具。
 
 | Add Operators | Output Code |  Clear Expressions |
 | :-: | :-: | :-: |
 |![](https://upload-images.jianshu.io/upload_images/57036-bcb97adb16f309ea.gif)|![](https://upload-images.jianshu.io/upload_images/57036-77454b962bfc9d09.gif) |![](https://upload-images.jianshu.io/upload_images/57036-4dfd67d168698644.gif) |
 
-除了提供 “灵感” 这一最核心功能之外，你还可以从这个开源项目获得的内容包括：
+除提供 “灵感” 这一核心功能外，你还可从该开源项目获得内容包括：
 
-1. 整洁的代码风格和标准的资源命名规范。
-2. 基于前沿的、遵循关注点分离的 Jetpack MVVM 架构。
+1. 整洁代码风格 和 标准资源命名规范。
+2. 基于前沿 Jetpack 架构组件。
 3. 使用 RxJava 和 lambda 表达式。
-4. AndroidX 和 Material Design 2 的全面使用。
-5. ConstraintLayout 约束布局的最佳实践。
-6. 为提升手机桌面的逼格做贡献，让知识与美观并存，即使从不打开。
-7. 绝不使用 Dagger，绝不使用奇技淫巧、编写艰深晦涩的代码。
+4. AndroidX 和 Material Design 2 全面使用。
+5. ConstraintLayout 约束布局最佳实践。
+6. 为提升手机桌面逼格做贡献，让知识与美观并存，即使从不打开。
+7. 绝不使用 Dagger，绝不使用奇技淫巧、编写艰深晦涩代码。
 
 
 # 下载体验
@@ -52,16 +44,7 @@
 
 Email：[kunminx@gmail.com](mailto:kunminx@gmail.com)
 
-Home：[KunMinX 的个人博客](https://kunminx.github.io/)
-
 Juejin：[KunMinX 在掘金](https://juejin.im/user/58ab0de9ac502e006975d757/posts)
-
-[《重学安卓》 专栏](https://xiaozhuanlan.com/kunminx?rel=kunminx)
-
-付费读者加微信进群：myatejx
-
-[![重学安卓小专栏](https://images.xiaozhuanlan.com/photo/2021/d493a54a32e38e7fbcfa68d424ebfd1e.png)](https://xiaozhuanlan.com/kunminx)
-
 
 # License
 
