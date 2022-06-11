@@ -4,6 +4,8 @@
 
 这是一款为 “声明式编程” 而生 RxJava 练习工具。
 
+作为[《你用不惯 RxJava，只因缺了这把钥匙》](https://juejin.cn/post/6844903825761894413)配套。
+
 | Add Operators | Output Code |  Clear Expressions |
 | :-: | :-: | :-: |
 |![](https://upload-images.jianshu.io/upload_images/57036-bcb97adb16f309ea.gif)|![](https://upload-images.jianshu.io/upload_images/57036-77454b962bfc9d09.gif) |![](https://upload-images.jianshu.io/upload_images/57036-4dfd67d168698644.gif) |
